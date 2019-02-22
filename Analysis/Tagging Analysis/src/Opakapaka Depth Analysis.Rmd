@@ -1,0 +1,132 @@
+---
+title: "Diurnal Depth Analysis - Testing Depth vs. Time of Day using a random effects linear model and a Breusch-Pagan test"
+output: html_notebook
+---
+
+The purpose of this notebook is to test if the range of depths tagged opakapaka occupy changes with different times of day. 
+
+To acomplish this, we will fit a random effects linear model and see if time of day is a significant predictor of depth. Even when the mean effects estimated using a linear model are the same between treatments one treatment may have greater overall variance in residuals. We will use a Breusch-Pagan test to test if residuals from a linear model are homo or hetero-skedastic across predictor variables. In a nutshell, do we see the same amount of variability in the residuals of our linear model across levels of our fixed effect (null-hypothesis) or or does variability change with our predictors. If the test statistic has a p-value below an appropriate threshold (e.g. p<0.05) then the null hypothesis of homoskedasticity is rejected and heteroskedasticity assumed.
+
+We will do this twice, once for tags that have depth recorders, and a second time inferring depth from the depth of the station where fish were recorded.
+
+### Install principle dependencies
+```{r}
+library('ggplot2')
+library('gridExtra')
+library('lmerTest')
+library('MuMIn')
+```
+
+### Tags with depth transmitters
+How many tags do we have with depth transmitters?
+```{r}
+length(unique(analysis_summary$data$tag_id[!is.na(analysis_summary$data$depth)]))
+```
+
+#### Fitting a Generalized Linear Model with Random Effects
+First we fit a GLM. In the most basic sense, we are interested whether depth is affected by time of day. 
+
+We will use tag_id as a random effect, allowing individual fish to vary in their overall depth distribution and the interaction between time of day and tag ID to allow fish to vary in their response to time of day.
+```{r}
+## For tags with depth sensors
+depth_data = analysis_summary$data[!is.na(analysis_summary$data$depth), ]
+depth_data$tag_id = as.factor(depth_data$tag_id)
+
+## Remove first 15 minutes of detection allowing fish time to swim down...
+indicies_to_remove = c()
+for(i in 1:length(unique(depth_data$tag_id))){
+ indicies_to_remove = c(indicies_to_remove, which(depth_data$tag_id == unique(depth_data$tag_id)[i] & depth_data$datetime <= (tagging_data$datetime[tagging_data$vem_tag_id == unique(depth_data$tag_id)[i]] + 15 * 60)))
+}
+
+depth_lmer = lmer(depth~time_of_day* + (1|tag_id), data = depth_data) 
+summary(depth_lmer)
+```
+
+How much variability does our model explain?
+```{r}
+r.squaredGLMM(depth_lmer)
+```
+
+We can see that none of our time_of_day levels are significantly different from one another. 
+
+But do they vary in range?
+
+#### Performing Breusch-Pagan test 
+Unforutnately the BP test can't handle random effects so we will need to include tag_id as a fixed effect in this model. This shouldn't be an issue however, as we're not actually interested in estimating model effects and don't mind a more complicated output (even though this affects the degrees of freedom for our model fit). 
+```{r}
+depth_test = bptest(depth~time_of_day*tag_id, data = depth_data)
+
+if(depth_test$p.value <= 0.05){
+  print(paste('Depth residuals were heteroskedastic with time of day for the', uniqueN(depth_data$tag_id), 'fish with V13Ps. The difference between depths during daytime periods (day, dawn, night, dusk) was significant'))
+  resid_depths = (depth_data$depth - predict(depth_lmer, new_data = depth_data, type = 'response'))^2
+} else {
+  print(paste('Depth residuals are homoskedastic with time of day. There is no descernable difference between depths daytime periods (day, dawn, night, dusk) for the', uniqueN(depth_data$tag_id), 'fish with V13P tags'))
+}
+```
+
+What are the depth ranges by diurnal period
+```{r}
+aggregate(depth_data$depth, by = list(depth_data$time_of_day), FUN = range)
+```
+Now lets plot our results
+```{r}
+tag_plot = ggplot(data = depth_data, aes(x = time_of_day, y = depth)) + 
+    geom_boxplot() +
+    labs(x = 'Time of Day', y = 'Observed Depth (m)') +
+    annotate(geom="text", x=.75, y=-10, label='a', size = 10)
+```
+
+And we can see here that while our mean values are fairly consistant across time of day, there is a signifant shift in the range of observed depths across conditions. 
+
+### For tags without depth sensors using depth of receiver to infer tag depth
+
+We now repeat this analysis for all tags using the depth of the receiver station recorded at the time it was deployed as a proxy for animal depth. We will do this with far less commentary.
+
+#### Fitting random effects linear model
+```{r}
+station_depth_data = analysis_summary$data[!is.na(analysis_summary$data$station_depth), ]
+station_depth_data$tag_id = as.factor(station_depth_data$tag_id)
+
+station_depth_lmer = lmer(station_depth~time_of_day + (1|tag_id), data = station_depth_data)
+
+summary(station_depth_lmer)
+```
+
+How much variability does our model explain?
+```{r}
+r.squaredGLMM(station_depth_lmer)
+```
+
+
+```{r}
+depth_test = bptest(station_depth~time_of_day*tag_id, data = analysis_summary$data)
+if(depth_test$p.value <= 0.05){
+  print(paste('Depth residuals were heteroskedastic with time of day for all', uniqueN(analysis_summary$data$tag_id), 'fish. The difference between depths during daytime periods (day, dawn, night, dusk) was significant'))
+  depth.lm = lm(station_depth~time_of_day*tag_id, data = analysis_summary$data)
+  resid_depths = (analysis_summary$data$depth - predict(depth.lm, new_data = analysis_summary$data, type = 'response'))^2
+} else {
+  print(paste('Depth residuals are homoskedastic with time of day. There is no descernable difference between depths daytime periods (day, dawn, night, dusk) for all', uniqueN(analysis_summary$data$tag_id), 'fish'))
+}
+
+```
+
+What are the depth ranges by diurnal period
+```{r}
+aggregate(analysis_summary$data$station_depth, by = list(analysis_summary$data$time_of_day), FUN = range)
+```
+
+Now lets plot our results
+```{r}
+station_plot = ggplot(data = analysis_summary$data, aes(x = time_of_day, y = station_depth)) + 
+    geom_boxplot() +
+    labs(x = 'Time of Day', y = 'Inferred Depth (m)') +
+    annotate(geom="text", x=.75, y=-10, label='b', size = 10)
+```
+
+Finally, lets stack both of our plots using grid.arrange and export them as a pdf 
+```{r}
+pdf('Depth Analysis Plots.pdf')
+  grid.arrange(tag_plot, station_plot, nrow = 2)
+dev.off()
+```
+The range of station depths where fish were detected varied with diurnal period. The detection with the shallowest station depth (-8 m) occurred at night and night overall had the smallest variation in station depths as well as the shallowest station depth (Figure XX). The deepest station depth was -335 m. Fish were detected at this depth during dawn, day. and dusk periods.

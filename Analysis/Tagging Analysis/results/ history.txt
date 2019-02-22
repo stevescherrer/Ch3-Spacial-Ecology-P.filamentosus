@@ -1,0 +1,512 @@
+start = as.numeric(c(names(which.min(abs(brfa[ ,ncol(brfa)] - target_depth))), max(colnames(brfa)))) # North
+end = as.numeric(c(names(which.min(abs(brfa[ ,1] - target_depth))), min(colnames(brfa)))) # South
+locations = rbind(start, end)
+points(locations, col = 'red')
+get.depth(brfa, locations, locator = F)
+trans1 = trans.mat(brfa, min.depth = target_depth_contour[1] , max.depth = target_depth_contour[2] )
+brfa_l_path = lc.dist(trans1, locations, res = c("dist"))
+### BRFA M
+brfa = subsetBathy(mat = bathy_50m, x = c(convert_lat_lon(-155, 37), convert_lat_lon(-155, 41)), y = c( convert_lat_lon(18, 57), convert_lat_lon(18, 51)), locator = FALSE)
+plot.bathy(brfa, land = TRUE, image=TRUE, bpal = list(c(min(target_depth_contour), max(target_depth_contour), "red")), deepest.isobath = c(-10000), shallowest.isobath = c(-1), step = c(100), drawlabels = TRUE, main = 'BRFA M')
+# West to East
+start = as.numeric(c(max(rownames(brfa)), names(brfa[nrow(brfa), ])[which.min(abs(brfa[1, ] - target_depth))]) )# West
+end = as.numeric(c(min(rownames(brfa)), names(brfa[1, ])[which.min(abs(brfa[nrow(brfa), ] - target_depth))])) # East
+locations = rbind(start, end)
+points(locations, col = 'red')
+get.depth(brfa, locations, locator = F)
+trans1 = trans.mat(brfa, min.depth = target_depth_contour[1] , max.depth = target_depth_contour[2] )
+brfa_m_path = lc.dist(trans1, locations, res = c("dist"))
+if(save.plot){
+dev.off()
+}
+### ALL BRFA DIMENSIONS!!!!
+brfa_dimensions = c(brfa_a_path, brfa_b_path, brfa_c_path, brfa_d_path, brfa_e_path, brfa_f_path, brfa_g_path, brfa_h_path, brfa_j_path, brfa_k_path, brfa_l_path, brfa_m_path)
+return(brfa_dimensions)
+}
+#### For getting bathymetry region for a study in one place
+get_bathymetry = function(region, resolution = 'low'){
+## Region options include : "Makapuu", "Oahu", "Oahu and Penguin Banks"
+## Note: if high_res == TRUE, then will use 5m bathymetry. This takes forever to load but is so so pretty.
+if(tolower(resolution) == 'low'){
+if(file.exists('/Volumes/GoogleDrive/My Drive/Weng Lab/Data/Hawaii Bathymetry/Hawaii 1 km/Oahu and Penguin Banks Bathymetry')){
+bathymetry = read.csv('/Volumes/GoogleDrive/My Drive/Weng Lab/Data/Hawaii Bathymetry/Hawaii 1 km/Oahu and Penguin Banks Bathymetry', sep = ",")
+bathymetry = as.bathy(bathymetry)
+}else{
+bathymetry = getNOAA.bathy(lon1 = -161, lon2 = -154, lat1 = 18.4, lat2 = 22.44, resolution = 1)
+}
+} else if (tolower(resolution) == 'medium'){
+## Load in ncdf of 50m bathy dataset and convert to bathy class
+oahu_50m_bathy = nc_open('/Volumes/GoogleDrive/My Drive/Weng Lab/Data/Hawaii Bathymetry/Hawaii 50m Bathymetry/himbsyn.bathy.v19.grd')
+bathymetry = ncvar_get(oahu_50m_bathy, varid = 'z')
+rownames(bathymetry) = ncvar_get(oahu_50m_bathy, varid = 'lon')
+colnames(bathymetry) = ncvar_get(oahu_50m_bathy, varid = 'lat')
+class(bathymetry) <- "bathy"
+} else if (tolower(resolution) == 'high'){
+bathymetry = read.bathy('/Volumes/GoogleDrive/My Drive/Weng Lab/Data/Hawaii Bathymetry/Hawaii 5m Bathymetry/oahu_5m_bathy_lat_lon.xyz')
+}
+## Subset by region
+if(tolower(region) == 'makapuu'){
+bathymetry = subsetBathy(mat = bathymetry, x = c(-157.8, -157.4), y = c( 21.2, 21.5), locator = FALSE)
+}else if(tolower(region) == 'oahu'){
+bathymetry = subsetBathy(bathymetry, x = c(-158.49,-157.5015), y = c( 21.175, 21.81), locator = FALSE)
+}else if(tolower(region) == 'oahu and penguin banks'){
+bathymetry = subsetBathy(mat = bathymetry, x = c(-158.25, -157.24), y = c(20.85, 21.8), locator = FALSE)
+}else if(tolower(region) %in% c('mhi', 'main hawaiian islands')){
+bathymetry = subsetBathy(mat = bathymetry, x = c(-160.98, -154.1), y = c(18.42, 22.43), locator = FALSE)
+}
+return(bathymetry)
+}
+valid_tags = c(2127, 2133, 2136, 2157, 28179, 30684, 30685, 30695, 30705, 30721, 30729, 51582, 51586, 51588, 51596)
+questionable_tags = c(2139, # Possible movement but depth record doesnt change any
+track_status$status_df$tag_id[track_status$status_df$status == 'Unknown'])
+dead_tags = c(6, # Algorthm thrown off by single deep ping, otherwise definitely dead
+2140) # Algorthm thrown off by apparent movement, but depth record indicates fish is dead
+p1 = c(as.POSIXct("2012-09-01") , as.POSIXct('2014-12-06'))
+p2 = c(as.POSIXct("2015-01-20") , as.POSIXct('2015-05-23'))
+p3 = c(as.POSIXct('2015-05-30') , as.POSIXct('2015-09-17'))
+p4 = c(as.POSIXct('2015-09-18') , as.POSIXct('2016-01-10'))
+p5 = c(as.POSIXct('2016-01-10') , as.POSIXct('2016-03-07'))
+p6 = c(as.POSIXct('2016-03-08') , as.POSIXct('2016-05-28'))
+p7 = c(as.POSIXct('2016-05-28') , as.POSIXct('2016-12-05'))
+p8 = c(as.POSIXct('2016-12-07') , as.POSIXct('2017-06-10'))
+p9 = c(as.POSIXct('2017-06-10') , as.POSIXct('2017-06-24'))
+p10 = c(as.POSIXct('2017-06-26') , as.POSIXct('2018-04-25'))
+phases = list(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10)
+phase_10_valid = run(run_description = paste("Phase 10 Valid Tags - QC"),
+vue_df = vue_data,
+receiver_df = receiver_data,
+tagging_df = tagging_data,
+start_date = phases[[10]][1],
+end_date = phases[[10]][2],
+region = "Makapuu",
+tag_ids = valid_tags,
+plot = T)
+phase_10_valid_and_questionable = run(run_description = paste("Phase 10 Valid and Questionable tags"),
+vue_df = vue_data,
+receiver_df = receiver_data,
+tagging_df = tagging_data,
+start_date = phases[[10]][1],
+end_date = phases[[10]][2],
+region = "Makapuu",
+tag_ids = c(valid_tags, questionable_tags),
+plot = TRUE)
+send_push(user = 'uGEHvA4hr37tsrCCtpSv4sUUxVuTqN', message = 'if you get this before run complete, something went wrong...')
+phase_10_valid_and_questionable = run(run_description = paste("Phase 10 Valid and Questionable tags"),
+vue_df = vue_data,
+receiver_df = receiver_data,
+tagging_df = tagging_data,
+start_date = phases[[10]][1],
+end_date = phases[[10]][2],
+region = "Makapuu",
+tag_ids = c(valid_tags, questionable_tags),
+plot = FALSE)
+View(phase_10_valid$homerange)
+length(phase_10_valid_and_questionable$tag_ids)
+length(questionable_tags)
+length(c(questionable_tags, valid_tags))
+length(track_status$status_df$tag_id)
+length(track_status$status_df$tag_id[track_status$status_df$status == 'Valid'])
+unique(track_status$status_df$tag_id)
+unique(track_status$status_df$status)
+length(track_status$status_df$tag_id[track_status$status_df$status == 'Alive'])
+length(track_status$status_df$tag_id[track_status$status_df$status == 'Dead'])
+range(vue_data$datetime)
+### How many fish made it?
+track_status = determine_track_status(vue_data, bathymetry = get_bathymetry(region = 'mhi', resolution = 'low'))
+mean(phase_10_valid_and_questionable$homerange$z_constrained_path_distance)
+sd(phase_10_valid_and_questionable$homerange$z_constrained_path_distance)
+fivenum(phase_10_valid_and_questionable$homerange$z_constrained_path_distance)
+receiver_event_data$rotation_angle
+get_brfa_areas = function(target_depth = -120, target_depth_contour = c(-100, -400), save.plot = TRUE){
+bathy_50m = get_bathymetry('mhi', 'medium')
+## Somewhere for plots to dump out
+if(save.plot){
+pdf('BRFA Habitat Areas.pdf', width = 11, height = 8.5)
+par(mfrow = c(3, 4))
+}
+### BRFA A
+brfa = subsetBathy(mat = bathy_50m, x = c(convert_lat_lon(-160, 39), convert_lat_lon(-160, 30)), y = c( convert_lat_lon(21, 44), convert_lat_lon(21, 41)), locator = FALSE)
+plot.bathy(brfa, land = TRUE, image=TRUE, bpal = list(c(min(target_depth_contour), max(target_depth_contour), "red")), deepest.isobath = c(-10000), shallowest.isobath = c(-1), step = c(100), drawlabels = TRUE, main = 'BRFA A')
+# South to south
+start = as.numeric(c(rownames(brfa[1:round(nrow(brfa)/3), ])[which.min(abs(brfa[1:round(nrow(brfa)/3 ) ,1] - target_depth))], min(colnames(brfa))))
+end = as.numeric(c(rownames(brfa[round(nrow(brfa)/2):nrow(brfa), ])[which.min(abs(brfa[round(nrow(brfa)/2):nrow(brfa), 1] - target_depth))], min(colnames(brfa))))
+locations = as.matrix(rbind(start, end))
+points(start[1], start[2], col = 'red')
+points(end[1], end[2], col = 'red')
+get.depth(brfa, start[1], start[2], locator = F)
+get.depth(brfa, end[1], end[2], locator = F)
+trans1 = trans.mat(brfa, min.depth = target_depth_contour[1] , max.depth = target_depth_contour[2] )
+brfa_a_path = lc.dist(trans1, locations, res = "dist")
+### BRFA B
+brfa = subsetBathy(mat = bathy_50m, x = c(convert_lat_lon(-160, 04.50), convert_lat_lon(-160, 07.50)), y = c( convert_lat_lon(21, 50.41666),  convert_lat_lon(21, 46.50)), locator = FALSE)
+plot.bathy(brfa, land = TRUE, image=TRUE, bpal = list(c(min(target_depth_contour), max(target_depth_contour), "red")), deepest.isobath = c(-10000), shallowest.isobath = c(-1), step = c(100), drawlabels = TRUE, main = 'BRFA B')
+## All fucked up
+## In three parts (but really in two)
+## First we need to get the length of the strip across the northern side of niihau - Runs East West
+start = as.numeric(c(max(rownames(brfa)), names(brfa[nrow(brfa), 75:ncol(brfa)])[which.min(abs(brfa[1, 75:ncol(brfa)] - target_depth))]) )# West
+end = as.numeric(c(names(which.min(abs(brfa[ ,ncol(brfa)] - target_depth))), max(colnames(brfa)))) # North
+locations = rbind(start, end)
+points(start[1], start[2], col = 'red')
+points(end[1], end[2], col = 'red')
+get.depth(brfa, start[1], start[2], locator = F)
+get.depth(brfa, end[1], end[2], locator = F)
+points(locations, col = 'green')
+get.depth(brfa, locations, locator = F)
+trans1 = trans.mat(brfa, min.depth = target_depth_contour[1] , max.depth = target_depth_contour[2] )
+brfa_b_path_north = lc.dist(trans1, locations, res = c("dist"))
+### Now we need to find a start and end point around the mound. This is probably
+if(target_depth <= min(brfa[which(rownames(brfa) <= -160.1155 & rownames(brfa) >= -160.0798) , which(colnames(brfa) >= 21.77928 & colnames(brfa) <= 21.81752)])){
+row_m1 = which.min(abs(as.numeric(rownames(brfa)) - -160.1005))
+row_m2 = which.min(abs(as.numeric(rownames(brfa)) - -160.1055))
+row_m3 = which.min(abs(as.numeric(rownames(brfa)) - -160.093))
+mound_1  = as.numeric(c(rownames(brfa)[row_m1], names(which.min(abs(brfa[row_m1, which(colnames(brfa) > 21.805)] - target_depth)))))
+mound_2  = as.numeric(c(rownames(brfa)[row_m2], names(which.min(abs(brfa[row_m2, which(colnames(brfa) <= 21.805)] - target_depth)))))
+mound_3  = as.numeric(c(rownames(brfa)[row_m3], names(which.min(abs(brfa[row_m3, which(colnames(brfa) <= 21.805)] - target_depth)))))
+get.depth(brfa, mound_1[1], mound_1[2], locator = F)
+get.depth(brfa, mound_2[1], mound_2[2], locator = F)
+get.depth(brfa, mound_3[1], mound_3[2], locator = F)
+text(mound_1[1], mound_1[2], labels = 1, col = 'yellow')
+text(mound_2[1], mound_2[2], labels = 2, col = 'yellow')
+text(mound_3[1], mound_3[2], labels = 3, col = 'yellow')
+locations = rbind(mound_1, mound_2)
+trans1 = trans.mat(brfa, min.depth = target_depth_contour[1] , max.depth = target_depth_contour[2] )
+brfa_b_path_12 = lc.dist(trans1, locations, res = c("dist"))
+locations = rbind(mound_2, mound_3)
+trans1 = trans.mat(brfa, min.depth = target_depth_contour[1] , max.depth = target_depth_contour[2] )
+brfa_b_path_23 = lc.dist(trans1, locations, res = c("dist"))
+locations = rbind(mound_3, mound_1)
+trans1 = trans.mat(brfa, min.depth = target_depth_contour[1] , max.depth = target_depth_contour[2] )
+brfa_b_path_31 = lc.dist(trans1, locations, res = c("dist"))
+brfa_mound = sum(brfa_b_path_12, brfa_b_path_23, brfa_b_path_31)
+} else {
+brfa_mound = 0
+}
+brfa_b_path = sum(brfa_b_path_north, brfa_mound)
+### BRFA C
+brfa = subsetBathy(mat = bathy_50m, x = c(convert_lat_lon(-159, 32), convert_lat_lon(-159, 23)), y = c( convert_lat_lon(21, 52.50), convert_lat_lon( 21, 50.50)), locator = FALSE)
+plot.bathy(brfa, land = TRUE, image=TRUE, bpal = list(c(min(target_depth_contour), max(target_depth_contour), "red")), deepest.isobath = c(-10000), shallowest.isobath = c(-1), step = c(100), drawlabels = TRUE, main = 'BRFA C')
+# East to west
+start = as.numeric(c(max(rownames(brfa)), names(brfa[nrow(brfa), ])[which.min(abs(brfa[1, ] - target_depth))]) )# West
+end = as.numeric(c(min(rownames(brfa)), names(brfa[1, ])[which.min(abs(brfa[nrow(brfa), ] - target_depth))])) # East
+locations = rbind(start, end)
+points(locations, col = 'red')
+get.depth(brfa, locations, locator = F)
+trans1 = trans.mat(brfa, min.depth = target_depth_contour[1] , max.depth = target_depth_contour[2] )
+brfa_c_path = lc.dist(trans1, locations, res = c("dist"))
+### BRFA D
+brfa = subsetBathy(mat = bathy_50m, x = c(convert_lat_lon(-158, 24), convert_lat_lon(-158, 15)), y = c( North  = convert_lat_lon( 21, 39), North  = convert_lat_lon( 21, 36)), locator = FALSE)
+plot.bathy(brfa, land = TRUE, image=TRUE, bpal = list(c(min(target_depth_contour), max(target_depth_contour), "red")), deepest.isobath = c(-10000), shallowest.isobath = c(-1), step = c(100), drawlabels = TRUE, main = 'BRFA D')
+# South to east
+start = as.numeric(c(names(which.min(abs(brfa[ ,1] - target_depth))), min(colnames(brfa)))) # South
+end = as.numeric(c(min(rownames(brfa)), names(brfa[1, ])[which.min(abs(brfa[nrow(brfa), ] - target_depth))])) # East
+locations = rbind(start, end)
+points(locations, col = 'red')
+get.depth(brfa, locations, locator = F)
+trans1 = trans.mat(brfa, min.depth = target_depth_contour[1] , max.depth = target_depth_contour[2] )
+brfa_d_path = lc.dist(trans1, locations, res = c("dist"))
+## BRFA E
+brfa = subsetBathy(mat = bathy_50m, x = c(convert_lat_lon(-157, 41), convert_lat_lon(-157, 32)), y = c( convert_lat_lon(21, 25), convert_lat_lon(21, 17)), locator = FALSE)
+plot.bathy(brfa, land = TRUE, image=TRUE, bpal = list(c(min(target_depth_contour), max(target_depth_contour), "red")), deepest.isobath = c(-10000), shallowest.isobath = c(-1), step = c(100), drawlabels = TRUE, main = 'BRFA E')
+# North to south
+start = as.numeric(c(names(which.min(abs(brfa[ ,ncol(brfa)] - target_depth))), max(colnames(brfa)))) # North
+end = as.numeric(c(names(which.min(abs(brfa[ ,1] - target_depth))), min(colnames(brfa)))) # South
+locations = rbind(start, end)
+points(locations, col = 'red')
+get.depth(brfa, locations, locator = F)
+trans1 = trans.mat(brfa, min.depth = target_depth_contour[1] , max.depth = target_depth_contour[2] )
+brfa_e_path = lc.dist(trans1, locations, res = c("dist"))
+### BRFA F
+brfa = subsetBathy(mat = bathy_50m, x = c(convert_lat_lon(-157, 34), convert_lat_lon(-157, 22)), y = c( convert_lat_lon( 21, 02), convert_lat_lon(20, 55)), locator = FALSE)
+plot.bathy(brfa, land = TRUE, image=TRUE, bpal = list(c(min(target_depth_contour), max(target_depth_contour), "red")), deepest.isobath = c(-10000), shallowest.isobath = c(-1), step = c(100), drawlabels = TRUE, main = 'BRFA F')
+# West to East
+start = as.numeric(c(max(rownames(brfa)), names(brfa[nrow(brfa), ])[which.min(abs(brfa[1, ] - target_depth))]) )# West
+end = as.numeric(c(min(rownames(brfa)), names(brfa[1, ])[which.min(abs(brfa[nrow(brfa), ] - target_depth))])) # East
+locations = rbind(start, end)
+points(locations, col = 'red')
+get.depth(brfa, locations, locator = F)
+trans1 = trans.mat(brfa, min.depth = target_depth_contour[1] , max.depth = target_depth_contour[2] )
+brfa_f_path = lc.dist(trans1, locations, res = c("dist"))
+### BRFA G
+brfa = subsetBathy(mat = bathy_50m, x = c(convert_lat_lon(-156, 58), convert_lat_lon(-156, 52)), y = c( convert_lat_lon(21, 14), convert_lat_lon(21, 10)), locator = FALSE)
+plot.bathy(brfa, land = TRUE, image=TRUE, bpal = list(c(min(target_depth_contour), max(target_depth_contour), "red")), deepest.isobath = c(-10000), shallowest.isobath = c(-1), step = c(100), drawlabels = TRUE, main = 'BRFA G')
+# West to East
+start = as.numeric(c(max(rownames(brfa)), names(brfa[nrow(brfa), ])[which.min(abs(brfa[1, ] - target_depth))]) )# West
+end = as.numeric(c(min(rownames(brfa)), names(brfa[1, ])[which.min(abs(brfa[nrow(brfa), ] - target_depth))])) # East
+locations = rbind(start, end)
+points(locations, col = 'red')
+get.depth(brfa, locations, locator = F)
+trans1 = trans.mat(brfa, min.depth = target_depth_contour[1] , max.depth = target_depth_contour[2] )
+brfa_g_path = lc.dist(trans1, locations, res = c("dist"))
+###  BRFA H
+brfa = subsetBathy(mat = bathy_50m, x = c(convert_lat_lon(-156, 42), convert_lat_lon(-156, 38)), y = c( convert_lat_lon(21, 07), convert_lat_lon(21, 03)), locator = FALSE)
+if(min(brfa) >= min(target_depth_contour) & max(brfa) <= max(target_depth_contour)){
+plot.bathy(brfa, land = TRUE, image=TRUE, bpal =  "red", deepest.isobath = c(-10000), shallowest.isobath = c(-1), step = c(100), drawlabels = TRUE, main = 'BRFA H')
+### THIS WHOLE BRFA IS FUCKING PROTECTED HABITAT.
+corner_to_corner_dim = lldist(point1 = c(convert_lat_lon(-156, 42), convert_lat_lon(21, 07)), point2 = c(convert_lat_lon(-156, 38), convert_lat_lon(21, 03)))
+points(point1[1], point1[2], col = 'yellow')
+points(point2[1], point2[2], col = 'yellow')
+brfa_h_path = corner_to_corner_dim
+}else{
+print('YOURE GOING TO NEED TO RECALCULATE AREA FOR BRFA H BECAUSE THE WHOLE THING IS NOT HABITAT')
+plot.bathy(brfa, land = TRUE, image=TRUE, bpal = list(c(-100, -120, "red")), deepest.isobath = c(-10000), shallowest.isobath = c(-1), step = c(25), drawlabels = TRUE, main = 'BRFA H')
+## Or... west to north
+west = as.numeric(c(max(rownames(brfa)), names(brfa[nrow(brfa), ])[which.min(abs(brfa[1, ] - target_depth))]) )# West
+north = as.numeric(c(names(which.min(abs(brfa[ ,ncol(brfa)] - target_depth))), max(colnames(brfa)))) # North
+locations = rbind(west, north)
+points(locations, col = 'red')
+get.depth(brfa, locations, locator = F)
+locations = rbind(west, north)
+trans1 = trans.mat(brfa, min.depth = target_depth_contour[1] , max.depth = target_depth_contour[2] )
+brfa_path_north_west = lc.dist(trans1, locations, res = c("dist"))
+## South to east
+south = as.numeric(c(names(which.min(abs(brfa[ ,1] - target_depth))), min(colnames(brfa)))) # South
+east = as.numeric(c(min(rownames(brfa)), names(brfa[1, ])[which.min(abs(brfa[nrow(brfa), ] - target_depth))])) # East
+locations = rbind(south, east)
+points(locations, col = 'red')
+get.depth(brfa, locations, locator = F)
+locations = rbind(south, east)
+trans1 = trans.mat(brfa, min.depth = target_depth_contour[1] , max.depth = target_depth_contour[2] )
+brfa_path_south_east = lc.dist(trans1, locations, res = c("dist"))
+## Two mounds.
+# south west mound
+if(target_depth <= min(brfa[which(rownames(brfa) <= -156.69 & rownames(brfa) >= -156.6727) , which(colnames(brfa) >= 21.06 & colnames(brfa) <= 21.075)])){
+### Now we need to find a start and end point around the mound. This is probably
+row_m1 = which.min(abs(as.numeric(rownames(brfa)) - -156.6845))
+row_m2 = which.min(abs(as.numeric(rownames(brfa)) - -156.6805))
+row_m3 = which.min(abs(as.numeric(rownames(brfa)) - -156.678))
+mound_1  = as.numeric(c(rownames(brfa)[row_m1], names(which.min(abs(brfa[row_m1, which(colnames(brfa) < 21.07457)] - target_depth)))))
+mound_2  = as.numeric(c(rownames(brfa)[row_m2], names(which.min(abs(brfa[row_m2, which(colnames(brfa) <= 21.07457 & colnames(brfa) >= 21.06703)] - target_depth)))))
+mound_3  = as.numeric(c(rownames(brfa)[row_m3], names(which.min(abs(brfa[row_m3, which(colnames(brfa) <= 21.07 & colnames(brfa) >= 21.05859)] - target_depth)))))
+get.depth(brfa, mound_1[1], mound_1[2], locator = F)
+get.depth(brfa, mound_2[1], mound_2[2], locator = F)
+get.depth(brfa, mound_3[1], mound_3[2], locator = F)
+text(mound_1[1], mound_1[2], labels = 1, col = 'blue')
+text(mound_2[1], mound_2[2], labels = 2, col = 'blue')
+text(mound_3[1], mound_3[2], labels = 3, col = 'blue')
+locations = rbind(mound_1, mound_2)
+trans1 = trans.mat(brfa, min.depth = target_depth_contour[1] , max.depth = target_depth_contour[2] )
+brfa_path_12 = lc.dist(trans1, locations, res = c("dist"))
+locations = rbind(mound_2, mound_3)
+trans1 = trans.mat(brfa, min.depth = target_depth_contour[1] , max.depth = target_depth_contour[2] )
+brfa_path_23 = lc.dist(trans1, locations, res = c("dist"))
+locations = rbind(mound_3, mound_1)
+trans1 = trans.mat(brfa, min.depth = target_depth_contour[1] , max.depth = target_depth_contour[2] )
+brfa_path_31 = lc.dist(trans1, locations, res = c("dist"))
+mound_1_length = sum(brfa_path_12, brfa_path_23, brfa_path_31)
+} else {
+mound_1_length = 0
+}
+### Mound 2
+if(target_depth <= min(brfa[which(rownames(brfa) <= -156.6782 & rownames(brfa) >= -156.6544) , which(colnames(brfa) >= 21.07653 & colnames(brfa) <= 21.09154)])){
+row_m1 = which.min(abs(as.numeric(rownames(brfa)) - -156.675))
+row_m2 = which.min(abs(as.numeric(rownames(brfa)) - -156.6655))
+row_m3 = which.min(abs(as.numeric(rownames(brfa)) - -156.658))
+mound_1  = as.numeric(c(rownames(brfa)[row_m1], names(which.min(abs(brfa[row_m1, which(colnames(brfa) > 21.07371 & colnames(brfa) < 21.09)] - target_depth)))))
+mound_2  = as.numeric(c(rownames(brfa)[row_m2], names(which.min(abs(brfa[row_m2, which(colnames(brfa) <= 21.1 & colnames(brfa) >= 21.085)] - target_depth)))))
+mound_3  = as.numeric(c(rownames(brfa)[row_m3], names(which.min(abs(brfa[row_m3, which(colnames(brfa) <= 21.084 & colnames(brfa) >= 21.075)] - target_depth)))))
+get.depth(brfa, mound_1[1], mound_1[2], locator = F)
+get.depth(brfa, mound_2[1], mound_2[2], locator = F)
+get.depth(brfa, mound_3[1], mound_3[2], locator = F)
+points(mound_1[1], mound_1[2], col = 'blue', cex = 2)
+points(mound_2[1], mound_2[2], cex = 2, col = 'blue')
+points(mound_3[1], mound_3[2], cex = 2, col = 'blue')
+locations = rbind(mound_1, mound_2)
+trans1 = trans.mat(brfa, min.depth = target_depth_contour[1] , max.depth = target_depth_contour[2] )
+brfa_path_12 = lc.dist(trans1, locations, res = c("dist"))
+locations = rbind(mound_2, mound_3)
+trans1 = trans.mat(brfa, min.depth = target_depth_contour[1] , max.depth = target_depth_contour[2] )
+brfa_path_23 = lc.dist(trans1, locations, res = c("dist"))
+locations = rbind(mound_3, mound_1)
+trans1 = trans.mat(brfa, min.depth = target_depth_contour[1] , max.depth = target_depth_contour[2] )
+brfa_path_31 = lc.dist(trans1, locations, res = c("dist"))
+mound_2_length = sum(brfa_path_12, brfa_path_23, brfa_path_31)
+} else {
+mound_2_length = 0
+}
+brfa_h_path = sum(brfa_path_south_east, brfa_path_north_west, mound_1_length, mound_2_length)
+}
+### BRFA J
+brfa = subsetBathy(mat = bathy_50m, x = c(convert_lat_lon(-156, 08), convert_lat_lon(-155, 59)), y = c( convert_lat_lon(20, 55), convert_lat_lon(20, 47)), locator = FALSE)
+plot.bathy(brfa, land = TRUE, image=TRUE, bpal = list(c(min(target_depth_contour), max(target_depth_contour), "red")), deepest.isobath = c(-10000), shallowest.isobath = c(-1), step = c(100), drawlabels = TRUE, main = 'BRFA J')
+# West to East
+start = as.numeric(c(max(rownames(brfa)), names(brfa[nrow(brfa), ])[which.min(abs(brfa[1, ] - target_depth))]) )# West
+end = as.numeric(c(min(rownames(brfa)), names(brfa[1, ])[which.min(abs(brfa[nrow(brfa), ] - target_depth))])) # East
+locations = rbind(start, end)
+points(locations, col = 'red')
+get.depth(brfa, locations, locator = F)
+trans1 = trans.mat(brfa, min.depth = target_depth_contour[1] , max.depth = target_depth_contour[2] )
+brfa_j_path = lc.dist(trans1, locations, res = c("dist"))
+### BRFA K
+brfa = subsetBathy(mat = bathy_50m, x = c(convert_lat_lon(-155, 53), convert_lat_lon(-155, 25)), y = c( convert_lat_lon(20, 21), convert_lat_lon(20, 05.5)), locator = FALSE)
+plot.bathy(brfa, land = TRUE, image=TRUE, bpal = list(c(min(target_depth_contour), max(target_depth_contour), "red")), deepest.isobath = c(-10000), shallowest.isobath = c(-1), step = c(100), drawlabels = TRUE, main = 'BRFA K')
+# West to East
+start = as.numeric(c(max(rownames(brfa)), names(brfa[nrow(brfa), ])[which.min(abs(brfa[1, ] - target_depth))]) )# West
+end = as.numeric(c(min(rownames(brfa)), names(brfa[1, ])[which.min(abs(brfa[nrow(brfa), ] - target_depth))])) # East
+locations = rbind(start, end)
+points(locations, col = 'red')
+get.depth(brfa, locations, locator = F)
+trans1 = trans.mat(brfa, min.depth = target_depth_contour[1] , max.depth = target_depth_contour[2] )
+brfa_k_path = lc.dist(trans1, locations, res = c("dist"))
+### BRFA L
+brfa = subsetBathy(mat = bathy_50m, x = c(convert_lat_lon(-154, 59.8333), convert_lat_lon(-154, 54)), y = c( convert_lat_lon(19, 35), convert_lat_lon(19, 44)), locator = FALSE)
+plot.bathy(brfa, land = TRUE, image=TRUE, bpal = list(c(min(target_depth_contour), max(target_depth_contour), "red")), deepest.isobath = c(-10000), shallowest.isobath = c(-1), step = c(100), drawlabels = TRUE, main = 'BRFA L')
+# North to South
+start = as.numeric(c(names(which.min(abs(brfa[ ,ncol(brfa)] - target_depth))), max(colnames(brfa)))) # North
+end = as.numeric(c(names(which.min(abs(brfa[ ,1] - target_depth))), min(colnames(brfa)))) # South
+locations = rbind(start, end)
+points(locations, col = 'red')
+get.depth(brfa, locations, locator = F)
+trans1 = trans.mat(brfa, min.depth = target_depth_contour[1] , max.depth = target_depth_contour[2] )
+brfa_l_path = lc.dist(trans1, locations, res = c("dist"))
+### BRFA M
+brfa = subsetBathy(mat = bathy_50m, x = c(convert_lat_lon(-155, 37), convert_lat_lon(-155, 41)), y = c( convert_lat_lon(18, 57), convert_lat_lon(18, 51)), locator = FALSE)
+plot.bathy(brfa, land = TRUE, image=TRUE, bpal = list(c(min(target_depth_contour), max(target_depth_contour), "red")), deepest.isobath = c(-10000), shallowest.isobath = c(-1), step = c(100), drawlabels = TRUE, main = 'BRFA M')
+# West to East
+start = as.numeric(c(max(rownames(brfa)), names(brfa[nrow(brfa), ])[which.min(abs(brfa[1, ] - target_depth))]) )# West
+end = as.numeric(c(min(rownames(brfa)), names(brfa[1, ])[which.min(abs(brfa[nrow(brfa), ] - target_depth))])) # East
+locations = rbind(start, end)
+points(locations, col = 'red')
+get.depth(brfa, locations, locator = F)
+trans1 = trans.mat(brfa, min.depth = target_depth_contour[1] , max.depth = target_depth_contour[2] )
+brfa_m_path = lc.dist(trans1, locations, res = c("dist"))
+if(save.plot){
+dev.off()
+}
+### ALL BRFA DIMENSIONS!!!!
+brfa_dimensions = c(brfa_a_path, brfa_b_path, brfa_c_path, brfa_d_path, brfa_e_path, brfa_f_path, brfa_g_path, brfa_h_path, brfa_j_path, brfa_k_path, brfa_l_path, brfa_m_path)
+return(brfa_dimensions)
+}
+library('marmap')
+bathy_50m = get_bathymetry('mhi', 'medium')
+# install.packages('ncdf4')
+library('ncdf4')
+bathy_50m = get_bathymetry('mhi', 'medium')
+### BRFA A
+brfa = subsetBathy(mat = bathy_50m, x = c(convert_lat_lon(-160, 39), convert_lat_lon(-160, 30)), y = c( convert_lat_lon(21, 44), convert_lat_lon(21, 41)), locator = FALSE)
+plot.bathy(brfa, land = TRUE, image=TRUE, bpal = list(c(min(target_depth_contour), max(target_depth_contour), "red")), deepest.isobath = c(-10000), shallowest.isobath = c(-1), step = c(100), drawlabels = TRUE, main = 'BRFA A')
+target_depth = -120
+target_depth_contour = c(-100, -400)
+### BRFA A
+brfa = subsetBathy(mat = bathy_50m, x = c(convert_lat_lon(-160, 39), convert_lat_lon(-160, 30)), y = c( convert_lat_lon(21, 44), convert_lat_lon(21, 41)), locator = FALSE)
+plot.bathy(brfa, land = TRUE, image=TRUE, bpal = list(c(min(target_depth_contour), max(target_depth_contour), "red")), deepest.isobath = c(-10000), shallowest.isobath = c(-1), step = c(100), drawlabels = TRUE, main = 'BRFA A')
+start = as.numeric(c(rownames(brfa[1:round(nrow(brfa)/3), ])[which.min(abs(brfa[1:round(nrow(brfa)/3 ) ,1] - target_depth))], min(colnames(brfa))))
+end = as.numeric(c(rownames(brfa[round(nrow(brfa)/2):nrow(brfa), ])[which.min(abs(brfa[round(nrow(brfa)/2):nrow(brfa), 1] - target_depth))], min(colnames(brfa))))
+locations = as.matrix(rbind(start, end))
+points(start[1], start[2], col = 'red')
+points(end[1], end[2], col = 'red')
+get.depth(brfa, start[1], start[2], locator = F)
+get.depth(brfa, end[1], end[2], locator = F)
+trans1 = trans.mat(brfa, min.depth = target_depth_contour[1] , max.depth = target_depth_contour[2] )
+out1 = lc.dist(trans1, locations, res = "path"))
+out1 = lc.dist(trans1, locations, res = "path")
+### Cull depreciated functions
+### Drop first 5 days from analysis??
+### Debug n-stations detected
+### Fix depth sensor for tag 32
+### Do detections change with day night dusk dawn? - Individual and in total
+### Does depth of receivers detected change with day night dusk dawn? - Individual and in total
+### Do detections coorrelate wtih moonrise moonset?
+### Note: All analysis results should be ordered by tag ID number. always use sort(unique(vue_data$tag_id)) if indexing mannually.
+### Work to remove clean_vue() function as it's only used once
+#### Incorperate some other random analysis currently above run function.
+#### Incorperate changes in receiver placement to analysis plots.
+#### Sink Hypothesis reports
+#### Turned off "make_detection_plot()" in
+#### Turned off "movement_graph_standardized_by_distance calculations and output.
+#### Modified run_analysis() incorperates movement_graph and brfa_movements_by_time_at_liberty
+### Utility Functions Available
+# clean_vue_data()
+# clean_receiver_stations()
+# create_save_directory()
+# load_vemco()
+# load_receiver_data()
+# receiver_col_names()
+# load_tagging_data()
+# remove_location()
+# clean_vue()
+# convert_lat_lon
+# remove_detections_before_tagging()
+### Analysis Functions Available
+# cluster_receivers()
+# get_graph()
+# build_detection_matrix()
+# calculate_time_at_liberty()
+# calculate_days_before_detection()
+# calculate_days_detected()
+# generate_tagging_detection()
+# generate_study_date()
+# list_stations_detected()
+# remove_false_detections()
+# spatial_evenness()
+# days_present()
+# length_to_weight()
+# lldist()
+# distance_tracked()
+# in_brfa_e()
+# in_brfa_f()
+# brfa_movements()
+# brfa_movements_by_time_at_liberty()
+# n_movements()
+# max_movement()
+# get_fork_length()
+# get_tagging_date()
+# remove_only_tagging_date_entries()
+# run_analysis()
+# generate_analysis_report()
+# create_analysis_csv()
+# run()
+# distance_between_vue_receivers()
+# distance_between_receivers()
+# get_recovery_rates()
+# days_detected()
+# stations_detected()
+# brfa_size()
+### Plotting Functions
+# tag_detection_histogram()
+# plot_receiver_map()
+# plot_depths()
+# plot_movements()
+# plot_path_use()
+# plot_tag_detections()
+# tagging_histogram()
+# assign_color_palette()
+# generate_stripchart()
+# detection_stripchart()
+# indv_difftimes_hist
+# plot_receiver_maps()
+# create_day_night_plot()
+# plot_detections_by_receiver()
+# generate_gif_images()
+# make_detection_plot()
+# detection_stripcharts()
+# plot_receiver_histories()
+# make_detection_plot()
+# plot_station_map()
+# plot_clusters()
+#### TODO:
+####  plotting index as part of analysis (unfilled circles for uncertain detections etc...)
+####  plot receivers detected by # of detections
+####  % of days detected / days since tagging
+####  Total days detected /days at liberty = fidelity index
+####  Track length vs. Size? Good tracks vs. size
+####  Residence behavior vs. Size?
+####  Fix get_graph() function
+####  Plot histogram for how long tags were heard after tagging. Both if tagged then heard 1 week, assume detection for entire week, and only for intervals detected.
+####  Giant excel calendar of detections?
+####  Cluster analysis of receivers?
+#### Bottomfish Movement Analysis
+#### Written: January 2016 by Stephen R. Scherrer
+#### Code for the analysis of Acoustic Tags and VR2W
+#### Data applied to Opakapaka tagged in Oahu, Hawaii
+##### Clearning Workspace and Setting Directories #####
+rm(list=ls()) # Clear workspace
+gc()
+script_timer = proc.time()
+project_dir = '/Volumes/GoogleDrive/My Drive/Weng Lab/Personal_Folders/Steve/dissertation work/Opakapaka Tagging/Opakapaka Tagging Analysis'
+data_dir = '/Volumes/GoogleDrive/My Drive/Weng Lab/Data/Bottomfish/Oahu Receiver Data Files'
+results_dir = paste(project_dir, '/results/', sep = "")
+# fig.dir = paste(project_dir, '/figures/', sep = "")
+src_dir = paste(project_dir, '/src', sep = "")
+bin_dir = paste(project_dir, '/bin', sep = "")
+setwd(project_dir)
+savehistory(file=paste(results_dir, 'history.txt'))

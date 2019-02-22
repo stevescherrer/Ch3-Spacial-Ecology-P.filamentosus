@@ -1,0 +1,102 @@
+---
+title: "Comparing predicted and observed fork length distributions through simulation"
+output: html_notebook
+---
+
+The purpose of this notebook is to determine if there is a size selection bias for fish that survived tagging. This is accomplished by simulation by resampling our distribution of tagged fish and comparing that to those that survived tagging (were classified "alive" for the purpose of our project).
+
+```{r}
+library('ggplot2')
+library('gridExtra')
+set.seed(44)
+```
+
+We do this through simulation. First we'll set up a couple of important variables
+```{r}
+resample_n_times = 10000
+
+#tracks_to_include = valid_tags
+#pdf_name = 'valid_tags_size_distribution.pdf'
+
+tracks_to_include = c(valid_tags, questionable_tags)
+pdf_name = 'valid_and_uncertain_size_distribution.pdf'
+
+number_of_fish_to_sample = length(tracks_to_include)
+```
+
+Now we'll repeatedly resample our tagging data
+```{r}
+ # Sampling tagging data 10000 times without replacement
+      while(dim(resample_mat)[1] < resample_n_times){
+          sim_sample = sample(tagging_data$`fork_length(cm)`[!is.na(tagging_data$vem_tag_id) & tagging_data$species == 'Opakapaka' & !is.na(tagging_data$`fork_length(cm)`)], size = length(tracks_to_include))
+          resample_mat = rbind(resample_mat, cbind(mean(sim_sample), sd(sim_sample), fivenum(sim_sample)[2], fivenum(sim_sample)[3], fivenum(sim_sample)[4]))
+        }
+        resample_df = as.data.frame(resample_mat)
+        colnames(resample_df) = c('mean', 'sd', 'iqr1', 'median', 'iqr3')
+```  
+
+Lets also estimate confidence intervals using our resampled data
+```{r}
+     
+    ## What are cut-offs for CIs?
+    ## For Means
+    conf_level = .95
+    min_cutoff_mean = sort(resample_df$mean)[resample_n_times * ((1-conf_level)/2)]
+    max_cutoff_mean = sort(resample_df$mean)[resample_n_times * ((1-conf_level)/2 + conf_level)]
+        
+    ## For standard deviations
+        min_cutoff_sd = sort(resample_df$sd)[resample_n_times * ((1-conf_level)/2)]
+        max_cutoff_sd = sort(resample_df$sd)[resample_n_times * ((1-conf_level)/2 + conf_level)]
+```
+
+Lets plot our results
+```{r}              
+  ## Plotting simulation distributions for mean and standard deviation
+  mean_plot = ggplot(resample_df, aes(mean)) + 
+    geom_histogram() + 
+    geom_vline(xintercept =  mean(tagging_data$`fork_length(cm)`[tagging_data$vem_tag_id %in% tracks_to_include]), col = 'blue') +
+  geom_vline(xintercept = c(min_cutoff_mean, max_cutoff_mean), linetype = "dotted")
+  
+sd_plot = ggplot(resample_df, aes(sd)) + 
+    geom_histogram() + 
+    geom_vline(xintercept =  sd(tagging_data$`fork_length(cm)`[tagging_data$vem_tag_id %in% tracks_to_include & tagging_data$species == 'Opakapaka']), col = 'blue')  + geom_vline(xintercept = c(min_cutoff_sd, max_cutoff_sd), linetype = "dotted")
+```
+
+Lets go as far as to pre-compose our results for easy dumping into our manuscript
+```{r}
+        did_or_did_not_there_was_no_try = 'did not fall'
+        if(mean(tagging_data$`fork_length(cm)`[tagging_data$vem_tag_id %in% tracks_to_include & tagging_data$species == 'Opakapaka']) > min_cutoff_mean & mean(tagging_data$`fork_length(cm)`[tagging_data$vem_tag_id %in% tracks_to_include & tagging_data$species == 'Opakapaka']) < max_cutoff_mean){
+          did_or_did_not_there_was_no_try = 'fell'
+        }
+        
+        print(paste('The mean fork length of P. filamentosus classified alive (', round(mean(tagging_data$`fork_length(cm)`[tagging_data$vem_tag_id %in% tracks_to_include & tagging_data$species == 'Opakapaka']), digits = 3),' cm) ', did_or_did_not_there_was_no_try, ' within the ', conf_level*100, '% confidence interval from simulation data sampled without replacement (', round(min_cutoff_mean, digits = 3), ' - ', round(max_cutoff_mean, digits = 3), ').', sep = ""))
+```        
+
+Finally we repeate confidence interval profiling and results for our standard deviations
+```{r}
+
+        
+        did_or_did_not_there_was_no_try = 'did not fall'
+        if(sd(tagging_data$`fork_length(cm)`[tagging_data$vem_tag_id %in% tracks_to_include & tagging_data$species == 'Opakapaka']) > min_cutoff_sd & sd(tagging_data$`fork_length(cm)`[tagging_data$vem_tag_id %in% tracks_to_include & tagging_data$species == 'Opakapaka']) < max_cutoff_sd){
+          did_or_did_not_there_was_no_try = 'fell'
+        }
+        
+        print(paste('The standard deviation of fork lengths of P. filamentosus classified alive (', round(sd(tagging_data$`fork_length(cm)`[tagging_data$vem_tag_id %in% tracks_to_include & tagging_data$species == 'Opakapaka']), digits = 3),' cm) ', did_or_did_not_there_was_no_try, ' within the ', conf_level*100, '% confidence interval from simulation data sampled without replacement (', round(min_cutoff, digits = 3), ' - ', round(max_cutoff, digits = 3), ').', sep = ""))
+```        
+
+Finally, lets make a histogram of our fork lengths
+```{r}        
+# df('Size Selection Bias.pdf')
+size_selection_bias_plot = ggplot() + 
+  geom_histogram(data = tagging_data[tagging_data$species == 'Opakapaka' & !is.na(tagging_data$`fork_length(cm)`), ], aes(x = `fork_length(cm)`), fill = 'lightblue', color = 'blue', binwidth = 2.5, show.legend = T) + 
+  geom_histogram(data = tagging_data[tagging_data$species == 'Opakapaka' & tagging_data$vem_tag_id %in% valid, ], aes(x = `fork_length(cm)`), fill = 'orange', color = 'darkorange', binwidth = 2.5, show.legend = T) + 
+  labs(x = 'Fork Length (cm)', y = 'Frequency')
+# dev.off()
+```
+
+```{r}
+{setwd(results_dir)
+pdf(pdf_name)
+  grid.arrange(size_selection_bias_plot, mean_plot, sd_plot, nrow = 3)
+dev.off()}
+```

@@ -1,0 +1,31 @@
+model {
+    #Detection probability
+    for (t in 2:N){                                   # number of P periods (rows of REC)
+    for (j in 1:R){                                 # Receivers (columns of REC)
+    REC[t,j]~dbin(p[t,j],detmax)                  # Expected number of detections (conditional to p and detmax)
+    logit(p[t,j])<-alpha[t]+beta[t]*d[t,j]
+    #d[t,j]<-sqrt((x[t]-rx[j])^2+(y[t]-ry[j])^2)  # Fish:receiver distance
+    d[t,j]<-sqrt((mean(x[(t-1):t])-rx[j])^2+(mean(y[(t-1):t])-ry[j])^2)   # Fish:receiver distance
+    
+    }
+    }
+    #moving the fish (movement model)
+    #initial position
+    x[1]<-x0
+    y[1]<-y0
+    #successive positions
+    for (t in 1:(N-1)){                               # number of P periods (rows of REC)
+    tempy[t+1]<-(exp(-k*dt)*(y[t]-HRy))+HRy         # Equation 5 (longitude)
+    y[t+1]~dnorm(tempy[t+1],tau)                    # tau is the inverse of sd^2
+    tempx[t+1]<-(exp(-k*dt)*(x[t]-HRx))+HRx         # Equation 5 (latitude)
+    x[t+1]~dnorm(tempx[t+1],tau)
+    }
+    tau<-(2*k)/(ep*(1-exp(-2*k*dt)))                  # Equation 6; tau is the inverse of sd^2
+    ep<--radius^2*k/log(1-0.95)                       # Equation 7 
+    
+    #priors
+    HRy~dnorm(0,10E-6)
+    HRx~ dnorm(0,10E-6)
+    k~dunif(0,1)#dgamma(0.01,0.01)
+    radius~dnorm(0,10E-6)
+    }

@@ -1,0 +1,40 @@
+---
+title: "Modeling animal behavior from passive acoustic telemetry data"
+output: html_notebook
+---
+
+This R notebook is designed to provide basic model fitting to acoustic telemetry data for the purpose of characterizing and quantifying movement patterns and behavior.
+
+
+First we'll need to load in some data and set our directories
+```{r}
+load(file.path(project_dir, "workspace_image_updated"))
+if(!file.exists('scratchpad')){
+  dir.create(file.path(src_dir, 'scratchpad'))
+}
+setwd(file.path(src_dir, 'scratchpad'))
+```
+
+
+We also define some common objects from results from our workspace
+```{r}
+analysis_summary = phase_10_valid
+vue_df = analysis_summary$data
+tagging_df = analysis_summary$tagging_data
+receiver_df = analysis_summary$receiver_data
+```
+
+
+We're interested in looking at how movement behavior patterns are affected by enviornmental co-variates. These include time of day, temperature, current direction, tide, and lunar phase. 
+
+First lets look at time of day
+```{r}
+plot(cars)
+```
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Cmd+Option+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Cmd+Shift+K* to preview the HTML file). 
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+

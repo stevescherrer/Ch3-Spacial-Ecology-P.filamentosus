@@ -1,0 +1,472 @@
+---
+title: "Paka Tagging Paper"
+output: html_notebook
+---
+
+#### Loading in all libraries.
+
+###### Importing principle dependencies #####
+```{r}
+# install.packages('marmap')
+library('marmap') # bathymetry()
+# install.packages('lubridate')
+library('lubridate') # floor_date(), ceil_date()
+# install.packages('doParallel')
+library('doParallel') # foreach()
+# install.packages('beepr')
+library('beepr') # beep
+# install.packages('dplyr')
+library('dplyr') # filter()
+# install.packages('useful')
+library('useful') # compare.list()
+# install.packages('RAtmosphere')
+library('RAtmosphere')
+# install.packages('geosphere')
+library('geosphere') # areaPolygon(), # distGeo() Note: wrapped in old lldist function
+# install.packages('igraph')
+library('igraph') # graph.adjacency()
+# install.packages('notifyR')
+library('notifyR') # send_push()
+# install.packages('png')
+library('png')
+# install.packages('lunar')
+library('lunar') # lunar.phase()
+# install.packages('suncalc')
+library('suncalc') # getSunlightTimes
+# install.packages('data.table')
+library('data.table') # uniqueN
+# install.packages('lattice')
+library('lattice')
+# install.packages('ncdf4')
+library('ncdf4') #nc_open()
+# install.packages('xts')
+library('xts')
+
+registerDoParallel(cores = 7)
+```
+
+Loading in our data
+```{r}
+load(file.path(project_dir, "workspace_image_updated"))
+```
+
+
+#### Getting Period of Analysis ####
+We need to decide what our analysis period is. To make comparisons between fish, we need to limit our analysis to a specific period. We will use the period of maximum receivers. This period began sometime in June 2017.
+
+```{r}
+period_start = as.POSIXct('2018-05-06') # first day after receiver array went in water
+print(period_start)
+```
+
+Similarly we know that we want to end the analysis period when the first receiver was pulled from the water (or in this case, when 338 broke it's mooring.) This occurred sometime in spring 2018.
+```{r}
+period_end = '2019-01-06' # Day we began pulling receivers
+print(period_end)
+```
+
+#### Tag Status
+In this section we will count the total number of fish tagged, determine their status, and print out some 6 pannel plots to confirm those statuses.
+
+Now we run our data through our mortality algorthm to catagorize status and subset out just the opakapaka
+```{r}
+track_status_all = determine_track_status(vue_df = vue_data[vue_data$tag_id %in% tagging_data$vem_tag_id[tagging_data$species == 'Opakapaka'] & vue_data$datetime <= period_end, ], bathymetry = get_bathymetry('mhi', 'low'))
+track_status = track_status_all$status_df
+```
+
+Which of these "valid" tags were detected in our analysis period. Run our analysis on this and make six pannel plots for each so we can validate
+```{r}
+print(track_status$tag_id[track_status$status == 'Alive' & track_status$tag_id %in% unique(vue_data$tag_id[vue_data$datetime >= period_start & vue_data$datetime <= period_end])])
+
+## Run analysis on all those tags because six pannel plots need to be passed an analysis summary
+  all_summary = run(run_description = "All Data for Tags Detected After 6-25-2018",
+                 vue_df = vue_data, 
+                 receiver_df = receiver_data, 
+                 tagging_df = tagging_data,
+                 end_date = end_date, 
+                 region = "Makapuu",
+                 plot = FALSE,
+                 tag_ids = track_status$tag_id)
+
+## Set directory for dumping plots - previously these were dumped into src...
+cur_dir = getwd()
+six_plot_dir = file.path(results_dir, 'six pannel plots')
+dir.create(six_plot_dir)
+setwd(six_plot_dir)
+
+## Generate plots
+six_pannel_plot(analysis_summary = all_summary, vue_df = vue_data[vue_data$tag_id %in% track_status$tag_id[track_status$status == 'Alive'], ])
+## Save this workspace in case we need to reference it later
+save.image('six_pannel_workspace')
+## Return to our previous directory
+setwd(cur_dir)
+```
+
+How many tags did we put out?
+```{r}
+tagged_ids = unique(tagging_data$vem_tag_id[tagging_data$datetime >= as.POSIXct('2017-01-09') & tagging_data$species == "Opakapaka"])
+length(tagged_ids)
+```
+Lets see whats alive...
+```{r}
+valid_tags = track_status$tag_id[track_status$status == 'Alive' & track_status$tag_id %in% tagging_data$vem_tag_id[tagging_data$species == 'Opakapaka'] & track_status$tag_id %in% tagged_ids]
+```
+
+... and reassign things we think the algorthm got wrong.
+```{r}
+assigned_valid_but_questionable = c(
+ # 2122 # Has some early movement that looks diurnal and at the right depth ranges, then dissapears for ages before coming back one last time,
+ 2127, # Kevin thinks this behavior looks more like a sizgill shark. Time at liberty is 96 days.
+ 2139, # this fish goes from a normal depth and then totally drops off, though movement is greater than 2km so…
+ 2140,  #	alive	questionable (dead?)	this fish goes from a normal depth and then totally drops off, though movement is greater than 2km so…
+  2157, # Kevin thinks this behavior looks more like a sizgill shark. Time at liberty is 66 days.
+ 30729 # rapid movement followed by sporadic appearance of fish at same station and one movement. could be real but seems more likely its dead and only movement is to an adjacent station. 
+) 
+
+assigned_questionable_but_valid = c(
+ # Description
+)
+
+  
+assigned_valid_but_dead = c(
+12, # Classified b/c of depth sensor but probably dead because only movement looks like faulty sensor
+6, # Classified b/c of depth sensor but probably dead because only movement looks like faulty sensor
+# 927, # Seems like a tag stuck in the middle of the fence
+30685 # rapid movements at first and then solid one station. looks like it just broke our 14 day threshold
+)
+
+assigned_questionable_but_dead = c(
+# 12, # Classified b/c of depth sensor but probably dead because only movement looks like faulty sensor
+# 6 # Classified b/c of depth sensor but probably dead because only movement looks like faulty sensor
+)
+
+assigned_dead_but_questionable = c(
+  # Desc.
+)
+
+# Remove statuses from fish we are not interested in
+track_status = track_status[track_status$tag_id %in% tagging_data$vem_tag_id[tagging_data$datetime >= '2017-01-09'] & track_status$tag_id %in% tagging_data$vem_tag_id[tagging_data$species == 'Opakapaka'] & track_status$tag_id %in% vue_data$tag_id[vue_data$datetime >= start_date], ]
+  
+valid_tags = unique(c(track_status$tag_id[track_status$status == 'Alive' & !(track_status$tag_id %in% c(assigned_valid_but_questionable, assigned_valid_but_dead)) & track_status$tag_id %in% vue_data$tag_id[vue_data$datetime >= '2017-06-26']], assigned_questionable_but_valid))
+length(valid_tags)
+
+questionable_tags = unique(c(track_status$tag_id[track_status$status == 'Unknown' & !track_status$tag_id %in% c(assigned_questionable_but_dead, assigned_questionable_but_valid) & track_status$tag_id %in% vue_data$tag_id[vue_data$datetime >= '2017-06-26']], assigned_valid_but_questionable, assigned_dead_but_questionable ))
+
+dead_tags = unique(c(track_status$tag_id[track_status$status == 'Dead' & !track_status$tag_id %in% c(assigned_dead_but_questionable) & track_status$tag_id %in% vue_data$tag_id[vue_data$datetime >= '2017-06-26']], assigned_valid_but_dead, assigned_questionable_but_dead))
+
+excluded_tags = unique(c(track_status$tag_id[track_status$status == 'Excluded From Analysis' & track_status$tag_id %in% vue_data$tag_id[vue_data$datetime >= '2017-06-26']], tagged_ids[!tagged_ids %in% vue_data$tag_id]))
+
+never_detected = unique(track_status$tag_id[!track_status$tag_id %in% vue_data$tag_id[vue_data$datetime >= '2017-06-26']])
+
+length(valid_tags) + length(questionable_tags) + length(dead_tags) + length(excluded_tags) + length(never_detected)
+
+length(c(valid_tags, questionable_tags, dead_tags, excluded_tags, never_detected)) == length(track_status$tag_id)
+
+## Did we get everyone?
+tagged_ids[-which(tagged_ids %in% c(valid_tags, questionable_tags, dead_tags, excluded_tags, never_detected))]
+```
+
+Now we'll construct a table to summarize all of this
+```{r}
+status_table = aggregate(track_status$tag_id, by = list(track_status$status), FUN = uniqueN)
+  colnames(status_table) = c('Status', 'Assigned Algorthmically')
+
+status_table$`Researcher Assigned` = 0
+status_table$`Researcher Assigned`[status_table$Status == 'Alive'] = length(valid_tags)
+status_table$`Researcher Assigned`[status_table$Status == 'Dead'] = length(dead_tags)
+status_table$`Researcher Assigned`[status_table$Status == 'Unknown'] = length(questionable_tags)
+status_table$`Researcher Assigned`[status_table$Status == 'Excluded From Analysis'] = length(excluded_tags)
+```
+
+Calculating survivorship
+```{r}
+## Without Excluded Tags
+length(valid_tags) / length(c(valid_tags, questionable_tags, dead_tags))
+
+length(c(questionable_tags, valid_tags)) / length(c(valid_tags, questionable_tags, dead_tags))
+
+## With Excluded Tags
+length(valid_tags) / length(c(valid_tags, questionable_tags, dead_tags, excluded_tags))
+
+length(c(questionable_tags, valid_tags)) / length(c(valid_tags, questionable_tags, dead_tags, excluded_tags))
+```
+
+Getting Tagging info
+```{r}  
+  ## What was the minimum tagging date of our valid fish
+  min(tagging_data$datetime[tagging_data$vem_tag_id %in% valid_tags])
+
+  ## Earliest reported tagging date
+    start_tagging_date = as.POSIXct('2017-01-09')  
+  
+  ## How many opakapaka were tagged after that date?
+    length(tagging_data$unique_id[tagging_data$datetime >= start_tagging_date & tagging_data$species == 'Opakapaka'])
+    
+  ## How many tags were detected on the array?
+  length(unique(vue_data$tag_id[vue_data$datetime >= '2017-06-26' & vue_data$tag_id %in% unique(tagging_data$vem_tag_id[tagging_data$species == 'Opakapaka'])]))
+  
+  ## How many tags detected were 'valid'
+length(valid_tags)
+  
+  ## How many tags detected were 'questionable'
+   length(questionable_tags)
+    
+  ## How many tags are straight up dead?
+   length(dead_tags)
+    
+  ## How many tags were excluded?
+   length(excluded_tags)
+   
+  ## How many tags never appeared on the array?
+   length(never_detected)
+   
+  vue_data = vue_data[vue_data$datetime >= start_date & vue_data$datetime < end_date, ]
+```
+
+Running our analyses
+```{r}
+valid_data = run(run_description = "Fall 2018 - Valid Track Data without Plots",
+                      vue_df = vue_data, 
+                      receiver_df = receiver_data, 
+                      tagging_df = tagging_data,
+                      start_date = as.POSIXct('2018-05-06'), 
+                      end_date = as.POSIXct('2019-01-06'), 
+                      region = "Makapuu",
+                      plot = FALSE,
+                      tag_ids = valid_tags
+)
+
+valid_and_quest_data = run(run_description = "Fall 2018 - Valid and Questionble Track Data without Plots",
+                  vue_df = vue_data, 
+                  receiver_df = receiver_data, 
+                  tagging_df = tagging_data,
+                  start_date = as.POSIXct('2018-05-06'), 
+                  end_date = as.POSIXct('2019-01-06'), 
+                  region = "Makapuu",
+                  plot = F,
+                  tag_ids = c(valid_tags, questionable_tags)
+)
+```
+#### Making Six Pannel Plots of these fish
+
+```{r}
+## Generate six pannel plots
+six_pannel_plot(analysis_summary = valid_data, vue_df = vue_data[vue_data$tag_id %in% valid_data$tag_ids, ])
+
+six_pannel_plot(analysis_summary = valid_and_quest_data, vue_df = vue_data[vue_data$tag_id %in% valid_and_quest_data$tag_ids, ])
+```
+
+
+#### Calculating tagging date range for fish
+```{r}
+range(phase_10_valid$tagging_date$tagging_date)
+
+## Subset tagging data
+subset_tagging_data = tagging_data[tagging_data$datetime >= floor_date(min(range(phase_10_valid$tagging_date$tagging_date)), unit = 'day') & tagging_data$species == "Opakapaka" & !is.na(tagging_data$vem_tag_id), ]
+
+## How many individuals tagged?
+length(subset_tagging_data$unique_id) -1 # Note on tag 925 indicates individual was dead.
+
+## How many individuals tagged with pressure tags?
+length(which(tolower(subset_tagging_data$vem_tag_type) == 'v13p')) - 13
+              
+## How were these fish tagged?
+aggergate(subset_tagging_data$vem_tag_id, by = list(subset_tagging_data$release_method), FUN = length)
+
+## How many of these fish ended up super dead?
+track_status = determine_track_status(vue_df = vue_data[vue_data$tag_id %in% subset_tagging_data$vem_tag_id, ])
+
+## How many fish showed up on the array?
+length(which(subset_tagging_data$vem_tag_id %in% vue_data$tag_id))
+
+## How many Pressure tags showed up on the array?
+length(which(subset_tagging_data$vem_tag_id[tolower(subset_tagging_data$vem_tag_type) == 'v13p'] %in% vue_data$tag_id))
+
+## What was transmission interval of tags?
+unique(tag_specs$min_interval_sec[tag_specs$tag_id %in% subset_tagging_data$vem_tag_id])
+
+unique(tag_specs$max_interval_sec[tag_specs$tag_id %in% subset_tagging_data$vem_tag_id])
+```
+
+How many fish were tagged total in this period?
+```{r}
+tagging_data.period = tagging_data[tagging_data$datetime >= as.POSIXct('2017-01-9') & tagging_data$species == "Opakapaka", ]
+dim(tagging_data.period)[1]
+```
+
+How many tags were detected on the array in this period?
+```{r}
+tagging_data.detected = tagging_data.period[tagging_data.period$vem_tag_id %in% vue_data$tag_id[vue_data$datetime >= period_start], ]
+
+dim(tagging_data.detected)[1]
+```
+
+How many were pressure tags?
+```{r}
+length(which(tagging_data.detected$vem_tag_type == 'V13P'))
+```
+
+How many fish of each status?
+```{r}
+
+length(which(track_status.detected$status == "Alive"))
+
+length(which(track_status.detected$status == "Questionable"))
+
+length(which(track_status.detected$status == "Dead"))
+
+length(which(track_status.detected$status == "Excluded From Analysis"))
+```
+
+How many fish never detected?
+```{r}
+length(unique(tagging_data.period$vem_tag_id)) - length(unique(tagging_data.detected$vem_tag_id))
+```
+
+What was survivorship rate for tags minus tags with insufficent data
+```{r}
+length(valid) / length(track_status$tag_id[track_status$tag_id %in% tagging_data.detected$vem_tag_id & track_status$status != "Excluded From Analysis"])
+```
+
+### Getting results for each run scenario
+```{r}
+## Mean and sd time at liberty
+mean(valid_data$time_at_liberty$days_at_liberty)
+sd(valid_data$time_at_liberty$days_at_liberty)
+
+## Mean and sd time at liberty
+mean(valid_and_quest_data$time_at_liberty$days_at_liberty)
+sd(valid_and_quest_data$time_at_liberty$days_at_liberty)
+
+valid_time_at_lib = calculate_time_at_liberty(vue_df = vue_data[vue_data$datetime >= period_start & vue_data$datetime < period_end & vue_data$tag_id %in% valid_tags, ])
+
+quest_time_at_lib = calculate_time_at_liberty(vue_df = vue_data[vue_data$datetime >= period_start & vue_data$datetime < period_end & vue_data$tag_id %in% c(valid_tags, questionable_tags), ])
+```
+
+#### Testing Receiver Fence Robustness
+We are going to test the robustness of our receiver gates by looking at the detection rate of a sync tag (located within one of our VR2ARs) at a receiver station located a fixed distance away. 
+
+The workspace we have preloaded contains our detection database (vue_df) and our receiver locations (receiver_df). We have also loaded a handfull of helpful functions. Let's first look at a map of our study area:
+
+```{r}
+plot_receiver_map(receiver_data, receiver_numbers = TRUE, save_plot = FALSE)
+```
+
+From our map, we can see that station 336 is within the detection region of station 14. We will isolate just detections from the internal sync tag of station 336 at station 14 and determine how far these stations are from one another.
+```{r}
+tag_id = 61375 # From receiver "Oahu - Makapuu BRFA 336"
+station_id = "Oahu - Makapuu BRFA 14"
+receiver_id = receiver_data$vr2w_serial[which(receiver_data$station_name == station_id & receiver_data$deployment_date > as.POSIXct('2017-06-01') & !is.na(receiver_data$recovery_date))]
+vue_df = raw_vue_data 
+vue_df = vue_df[vue_df$datetime > fy2018 & vue_df$tag_id == tag_id & vue_df$receiver == receiver_id, ]
+vue_df = clean_vue_data(vue_df, receiver_data)
+dist = distance_between_receivers(receiver_df = receiver_data, start_date = fy2018)
+dist['Oahu - Makapuu BRFA 14', "Oahu - Makapuu BRFA 336"] * 1000 # m
+  print(paste('Station 14 and Station 336 are', round(dist['Oahu - Makapuu BRFA 14', "Oahu - Makapuu BRFA 336"] * 1000, digits = 0), 'm from one another', sep = " "))
+```
+
+
+It would be helpful to understand how far apart fence receivers are in space. We should look at the maximum distance between any two nodes in each of the four fences to understand the space relationships between subsequent nodes. 
+
+Note that because detection envelopes are probability distributions, detection probability is additive when detection envelopes overlap. Therefore the distance between two subsequent receivers is usefull, but half that distance (the midpoint between two receivers), is what we will actually look at to understand detection rates
+
+```{r}
+ ## Which receivers were parts of fence?
+  outside_north = paste('Oahu - Makapuu BRFA', c(5, 4, 3, 2))
+  outside_south = paste('Oahu - Makapuu BRFA', c(311, 312, 313, 314, 315, 316, 317, 318, 319, 320))
+  inside_north = paste('Oahu - Makapuu BRFA', c(331, 332, 333))
+  inside_south = paste('Oahu - Makapuu BRFA', c(334, 335, 336, 337, 338, 339, 340, 341))
+  
+  ## How far apart were receivers spaced?
+  outside_north_receiver_dist_mat = distance_between_receivers(receiver_data[receiver_data$station_name %in% outside_north, ], start_date = fy2018, end_date = fy2018 + (24*60*60), include_lost = TRUE)
+    range(apply(outside_north_receiver_dist_mat$matrix, 1, min, na.rm = TRUE))
+
+  outside_south_receiver_dist_mat = distance_between_receivers(receiver_data[receiver_data$station_name %in% outside_south, ], start_date = fy2018, end_date = fy2018 + (24*60*60), include_lost = TRUE)
+    range(apply(outside_south_receiver_dist_mat$matrix, 1, min, na.rm = TRUE))
+  
+  inside_north_receiver_dist_mat = distance_between_receivers(receiver_data[receiver_data$station_name %in% inside_north, ], start_date = fy2018, end_date = fy2018 + (24*60*60), include_lost = TRUE)
+    range(apply(inside_north_receiver_dist_mat$matrix, 1, min, na.rm = TRUE))
+  
+  inside_south_receiver_dist_mat = distance_between_receivers(receiver_data[receiver_data$station_name %in% inside_south, ], start_date = fy2018, end_date = fy2018 + (24*60*60), include_lost = TRUE)
+    range(apply(inside_south_receiver_dist_mat$matrix, 1, min, na.rm = TRUE))
+  
+  ## Which fence nodes were lost? When?
+  View(receiver_data[receiver_data$recovered != "" & receiver_data$recovery_date >= fy2018 & receiver_data$deployment_date <= fy2018, ])
+  View(receiver_data[receiver_data$station_name == 'Oahu - Makapuu BRFA 338', ])
+  
+  ## What does this mean for detection?
+  inside_south_recovered_receiver_dist_mat = distance_between_receivers(receiver_data[receiver_data$station_name %in% inside_south & receiver_data$recovered == "", ], start_date = fy2018, end_date = fy2018 + (24*60*60), include_lost = TRUE)
+  max_dist_between_is_fence_receivers = max(apply(inside_south_recovered_receiver_dist_mat$matrix, 1, min, na.rm = TRUE))
+    max_dist_between_is_fence_receivers / 2 
+```
+
+From our range testing results, we know that at 827 m, we should have an aproximate detection rate of 6.06 %. Let's look at how many periods we had such a detection rate.
+We need to define how long each period is, the number of transmissions sent during each period and the number of those transmissions that were detected.
+```{r}
+## Binning hours into periods 
+hours_per_bin = 2
+hourbins = seq.POSIXt(from = as.POSIXct('2017-08-30'), to = max(vue_df$datetime), by = 'hours') 
+  hourbins = hourbins[seq(from = 1, to = length(hourbins), by = hours_per_bin)]
+  
+## Calculating sent transmissions per period
+  transmissions_per_hour = 6 * hours_per_bin
+
+## Counting the number of detections from sync tag detected by station hourly
+hourly_self_detections = c()
+for(i in 1:length(hourbins)){
+  hourly_self_detections = c(hourly_self_detections, length(vue_df$datetime[vue_df$datetime >= hourbins[i] & vue_df$datetime < hourbins[i+1]]))
+}
+
+## Plotting results
+plot(hourly_self_detections ~ hourbins, pch = 19, cex = .5)
+
+# What percentage of hourly detections were greater than the threshold?
+length(which(hourly_self_detections >= transmissions_per_hour * 0.0606)) / length(hourbins)
+  # 85.5%
+
+# How many total hour bins are we talking about?
+length(hourly_det)
+
+```
+So for 2 receivers separated by 828 m, the number of times shit falls beneath the acceptable threshold is 7.5%. 
+
+I feel reasonably confident that this means the detection rate is adaquate at half that distance.
+
+38% of the time we're below our 25% mark at this distance, which means the majority of the time, we're more than good with half of the current receiver spacing. 
+
+To me it stands to reason that at 503 m (half of 1046 m, the dist between two stations in fence) we're probably well and good. 
+
+From our range testing, 503 m corrosponded to 27.27% detection threshold.
+
+
+#### Fish Capture and Tagging
+```{r}
+## Minimum fork lengths
+analysis_summary = fy2018_valid_and_uncertain
+## Table of stuff
+individual_fish_table = data.frame(
+                            'Species' = "P. filamentosus", 
+                            'Tag ID' = analysis_summary$summary_df$tag_id, 
+                            'Track Status' = 'Questionable',
+                            'Fork Length (cm)' = analysis_summary$summary_df$fork_length_cm,
+                            'Tagging Date' = analysis_summary$summary_df$tagging_date,
+                            'Days at Liberty' = analysis_summary$summary_df$days_at_liberty,
+                            'Transmissions Detected' = analysis_summary$summary_df$n_detections,
+                            'Unique Days Detected' = analysis_summary$summary_df$unique_days,
+                            'Linear Home Range (km)' = analysis_summary$summary_df$z_constrained_path_distance,
+                            'Movements Detected' = analysis_summary$summary_df$movements_detected,
+                            'Movements Across BRFA Boundaries' = analysis_summary$summary_df$total_brfa_crossings,
+                            stringsAsFactors = FALSE)
+individual_fish_table$`Track.Status`[individual_fish_table$Tag.ID %in% valid_tracks] = 'Valid'
+write.csv(individual_fish_table, 'Fish Table.csv')
+```
+
+We'll wrap up by saving our analysis to a workspace image so we can go in and pick at it later if we need to 
+```{r}
+save.image('../Manuscript/Manuscript Analysis Image')
+
+valid_tags = c(2133, 2136, 28179, 30684, 30705, 30721, 51582, 51586, 51588, 51596)
+questionable_tags = c(valid_tags, 2122, 2127, 2139, 2140, 2157, 28171, 28178, 28181, 28185, 30683, 30703, 30707, 30714, 30715, 30717, 30722, 30729, 30734, 30739, 30742, 30743, 30747, 30749,30751, 36810, 51581, 51584, 51585, 51587, 51598)
+
+
+```

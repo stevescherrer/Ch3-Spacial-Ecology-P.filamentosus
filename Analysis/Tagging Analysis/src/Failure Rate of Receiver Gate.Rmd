@@ -1,0 +1,132 @@
+---
+title: "Paka Tagging Paper""
+output: html_notebook
+---
+
+#### Getting Period of Analysis ####
+We need to decide what our analysis period is. To make comparisons between fish, we need to limit our analysis to a specific period. We will use the period of maximum receivers. This period began sometime in June 2017.
+
+```{r}
+period_start = max(receiver_data$deployment_date[receiver_data$deployment_date <= as.POSIXct('2017-07-01')])
+print(period_start)
+```
+
+Similarly we know that we want to end the analysis period when the first receiver was pulled from the water (or in this case broke it's mooring.) This occurred sometime in spring 2018.
+```{r}
+period_end = min(receiver_data$recovery_date[receiver_data$recovery_date >= as.POSIXct('2018-01-01')], na.rm = TRUE)
+print(period_end)
+```
+
+We can go ahead and limit our data to just this period. While we're at it, lets also eliminate any detections that have been flagged as potentially false
+```{r}
+vue_data = vue_data[vue_data$datetime >= start_date & vue_data$datetime < end_date, ]
+vue_data = vue_data[vue_data$detection_status == TRUE, ]
+```
+
+#### Running Analysis ####
+How many valid fish were detected on the array?
+```{r}
+    track_status_all = determine_track_status(vue_df = vue_data, bathymetry = get_bathymetry('mhi', 'low'))
+
+```
+
+#### Testing Receiver Fence Robustness
+We are going to test the robustness of our receiver gates by looking at the detection rate of a sync tag (located within one of our VR2ARs) at a receiver station located a fixed distance away. 
+
+First we need to load in our workspace as well as a bunch of helpful packages:
+```{r}
+load(file.path(project_dir, "workspace_image_updated"))
+# install.packages('marmap')
+library('marmap') # bathymetry()
+# install.packages('lubridate')
+library('lubridate') # floor_date(), ceil_date()
+# install.packages('doParallel')
+library('doParallel') # foreach()
+# install.packages('beepr')
+library('beepr') # beep
+# install.packages('dplyr')
+library('dplyr') # filter()
+# install.packages('useful')
+library('useful') # compare.list()
+# install.packages('RAtmosphere')
+library('RAtmosphere')
+# install.packages('geosphere')
+library('geosphere') # areaPolygon(), # distGeo() Note: wrapped in old lldist function
+# install.packages('igraph')
+library('igraph') # graph.adjacency()
+# install.packages('notifyR')
+library('notifyR') # send_push()
+# install.packages('png')
+library('png')
+# install.packages('lunar')
+library('lunar') # lunar.phase()
+# install.packages('suncalc')
+library('suncalc') # getSunlightTimes
+# install.packages('data.table')
+library('data.table') # uniqueN
+# install.packages('lattice')
+library('lattice')
+# install.packages('ncdf4')
+library('ncdf4') #nc_open()
+# install.packages('xts')
+library('xts')
+
+## Setup for parallel processing
+registerDoParallel(cores = 7)
+```
+
+The workspace we have preloaded contains our detection database (vue_df) and our receiver locations (receiver_df). We have also loaded a handfull of helpful functions. Let's first look at a map of our study area:
+
+```{r}
+plot_receiver_map(receiver_data, receiver_numbers = TRUE, save_plot = FALSE)
+```
+
+From our map, we can see that station 336 is within the detection region of station 14. We will isolate just detections from the internal sync tag of station 336 at station 14 and determine how far these stations are from one another.
+```{r}
+tag_id = 61375 # From receiver "Oahu - Makapuu BRFA 336"
+station_id = "Oahu - Makapuu BRFA 14"
+receiver_id = receiver_data$vr2w_serial[which(receiver_data$station_name == station_id & receiver_data$deployment_date > as.POSIXct('2017-06-01') & !is.na(receiver_data$recovery_date))]
+vue_df = raw_vue_data 
+vue_df = vue_df[vue_df$datetime > fy2018 & vue_df$tag_id == tag_id & vue_df$receiver == receiver_id, ]
+vue_df = clean_vue_data(vue_df, receiver_data)
+dist = distance_between_receivers(receiver_df = receiver_data, start_date = fy2018)
+dist['Oahu - Makapuu BRFA 14', "Oahu - Makapuu BRFA 336"] * 1000 # m
+  print(paste('Station 14 and Station 336 are', round(dist['Oahu - Makapuu BRFA 14', "Oahu - Makapuu BRFA 336"] * 1000, digits = 0), 'm from one another', sep = " "))
+```
+
+
+From our range testing results, we know that at 828 m, we should have an aproximate detection rate of XX %. Let's look at how many periods we had such a detection rate.
+We need to define how long each period is, the number of transmissions sent during each period and the number of those transmissions that were detected.
+```{r}
+## Binning hours into periods 
+hours_per_bin = 2
+hourbins = seq.POSIXt(from = as.POSIXct('2017-08-30'), to = max(vue_df$datetime), by = 'hours') 
+  hourbins = hourbins[seq(from = 1, to = length(hourbins), by = hours_per_bin)]
+  
+## Calculating sent transmissions per period
+  transmissions_per_hour = 6 * hours_per_bin
+
+## Counting the number of detections from sync tag detected by station hourly
+hourly_self_detections = c()
+for(i in 1:length(hourbins)){
+  hourly_self_detections = c(hourly_self_detections, length(vue_df$datetime[vue_df$datetime >= hourbins[i] & vue_df$datetime < hourbins[i+1]]))
+}
+
+## Plotting results
+plot(hourly_self_detections ~ hourbins, pch = 19, cex = .5)
+
+# What percentage of hourly detections were greater than the threshold?
+length(which(hourly_self_detections >= transmissions_per_hour * 0.05)) / length(hourbins)
+  # 85.5%
+
+# How many total hour bins are we talking about?
+length(hourly_det)
+
+```
+So for 2 receivers separated by 827 m, the number of times shit falls beneath the acceptable threshold is 7.5%. 
+
+I feel reasonably confident that this means the detection rate is adaquate at half that distance.
+
+38% of the time we're below our 25% mark at this distance, which means the majority of the time, we're more than good with half of the current receiver spacing. 
+to me it stands to reason that at 502 m (half of 1046 m, the dist between two  stations in fence) we're probably well and good.
+```

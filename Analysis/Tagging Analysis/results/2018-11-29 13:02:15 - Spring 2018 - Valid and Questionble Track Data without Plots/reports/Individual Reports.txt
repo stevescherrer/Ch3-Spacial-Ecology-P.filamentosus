@@ -1,0 +1,2706 @@
+Transmitter ID:  51581 
+Species:  Opakapaka 
+Fork Length:  47  cm 
+Tagging Date:  2018-01-09 12:24:00 
+ Tagging Date:  2018-01-09 12:54:00 
+ Tagging Date:  2018-01-09 13:18:00 
+ Tagging Date:  2018-01-09 13:25:00 
+ Tagging Date:  2018-01-09 13:59:00 
+ Tagging Date:  2018-01-09 14:31:00 
+ Tagging Date:  2018-01-10 14:58:00 
+ Tagging Date:  2018-01-11 14:35:00 
+ Tagging Date:  2018-01-11 14:10:00 
+ Tagging Date:  2018-01-11 14:18:00 
+ Tagging Date:  2018-01-11 11:01:00 
+ Tagging Date:  2018-01-11 13:14:00 
+ Tagging Date:  2017-08-28 13:04:00 
+ Tagging Date:  2017-08-28 13:28:00 
+ Tagging Date:  2017-08-28 13:44:00 
+ Tagging Date:  2017-08-28 22:39:00 
+ Tagging Date:  2017-08-29 08:02:00 
+ Tagging Date:  2017-08-29 12:46:00 
+ Tagging Date:  2017-06-24 20:47:00 
+ Tagging Date:  2017-06-24 21:01:00 
+ Tagging Date:  2017-06-24 21:19:00 
+ Tagging Date:  2017-06-24 22:08:00 
+ Tagging Date:  2017-06-24 22:33:00 
+ Tagging Date:  2017-06-25 19:24:00 
+ Tagging Date:  2017-06-25 22:36:00 
+ Tagging Date:  2017-06-26 00:42:00 
+ Tagging Date:  2017-06-26 01:48:00 
+ Tagging Date:  2017-08-28 08:14:00 
+ Tagging Date:  2017-08-28 09:29:00 
+ Tagging Date:  2018-01-11 17:59:00 
+ Tagging Date:  2018-01-11 18:32:00 
+ Tagging Date:  2017-06-24 21:06:00 
+ Tagging Date:  2017-01-13 14:29:00 
+ Tagging Date:  2017-03-18 04:32:00 
+ Tagging Date:  2017-03-18 11:16:00 
+ Tagging Date:  2017-03-18 14:30:00 
+ Tagging Date:  2017-03-18 13:54:00 
+ Tagging Date:  2017-03-18 14:51:00 
+ Tagging Date:  2017-03-18 15:32:00 
+ Tagging Date:  2017-08-28 10:49:00 
+ Tagging Date:  2017-08-29 17:44:00 
+Tagging Location:  Makapuu 
+Day of First Detected:  2017-06-26 01:51:33 
+Day of Last Detection:  2018-01-29 
+Days at Liberty:  21 
+Track Length:  2018-01-29 
+Unique Days Detected:  4 
+Number of Detections (Total):  470 
+Number of Detections / Day at Liberty:  22.3809523809524 
+Number of Detections / Day Detected:  117.5 
+Number of Receivers Detected (Total):  5 
+Number of receivers Detected / Days at Liberty:  0.238095238095238 
+Movements from inside to outside BRFA (Total):  2 
+Movements from inside to outside BRFA / Day:  0.0952380952380952 
+Movements from outside to inside BRFA (Total):  2 
+Movements from outside to inside BRFA / Day:  0.0952380952380952 
+Time in BRFA:  18.44 
+Time out of BRFA:  1.44 
+Approximate Distance Tracked (Total):  28.96 km 
+Approximate Distance Tracked / Day:  1.37904761904762 km 
+Unique Stations_Detected 5 
+Area of detected homerange 2122 km^2
+
+Transmitter ID:  51582 
+Species:  Opakapaka 
+Fork Length:  49.5  cm 
+Tagging Date:  2018-01-09 12:24:00 
+ Tagging Date:  2018-01-09 12:54:00 
+ Tagging Date:  2018-01-09 13:18:00 
+ Tagging Date:  2018-01-09 13:25:00 
+ Tagging Date:  2018-01-09 13:59:00 
+ Tagging Date:  2018-01-09 14:31:00 
+ Tagging Date:  2018-01-10 14:58:00 
+ Tagging Date:  2018-01-11 14:35:00 
+ Tagging Date:  2018-01-11 14:10:00 
+ Tagging Date:  2018-01-11 14:18:00 
+ Tagging Date:  2018-01-11 11:01:00 
+ Tagging Date:  2018-01-11 13:14:00 
+ Tagging Date:  2017-08-28 13:04:00 
+ Tagging Date:  2017-08-28 13:28:00 
+ Tagging Date:  2017-08-28 13:44:00 
+ Tagging Date:  2017-08-28 22:39:00 
+ Tagging Date:  2017-08-29 08:02:00 
+ Tagging Date:  2017-08-29 12:46:00 
+ Tagging Date:  2017-06-24 20:47:00 
+ Tagging Date:  2017-06-24 21:01:00 
+ Tagging Date:  2017-06-24 21:19:00 
+ Tagging Date:  2017-06-24 22:08:00 
+ Tagging Date:  2017-06-24 22:33:00 
+ Tagging Date:  2017-06-25 19:24:00 
+ Tagging Date:  2017-06-25 22:36:00 
+ Tagging Date:  2017-06-26 00:42:00 
+ Tagging Date:  2017-06-26 01:48:00 
+ Tagging Date:  2017-08-28 08:14:00 
+ Tagging Date:  2017-08-28 09:29:00 
+ Tagging Date:  2018-01-11 17:59:00 
+ Tagging Date:  2018-01-11 18:32:00 
+ Tagging Date:  2017-06-24 21:06:00 
+ Tagging Date:  2017-01-13 14:29:00 
+ Tagging Date:  2017-03-18 04:32:00 
+ Tagging Date:  2017-03-18 11:16:00 
+ Tagging Date:  2017-03-18 14:30:00 
+ Tagging Date:  2017-03-18 13:54:00 
+ Tagging Date:  2017-03-18 14:51:00 
+ Tagging Date:  2017-03-18 15:32:00 
+ Tagging Date:  2017-08-28 10:49:00 
+ Tagging Date:  2017-08-29 17:44:00 
+Tagging Location:  Makapuu 
+Day of First Detected:  2017-06-26 10:45:05 
+Day of Last Detection:  2018-04-14 
+Days at Liberty:  96 
+Track Length:  2018-04-14 
+Unique Days Detected:  68 
+Number of Detections (Total):  950 
+Number of Detections / Day at Liberty:  10 
+Number of Detections / Day Detected:  13.9705882352941 
+Number of Receivers Detected (Total):  5 
+Number of receivers Detected / Days at Liberty:  0.0520833333333333 
+Movements from inside to outside BRFA (Total):  7 
+Movements from inside to outside BRFA / Day:  0.0729166666666667 
+Movements from outside to inside BRFA (Total):  7 
+Movements from outside to inside BRFA / Day:  0.0729166666666667 
+Time in BRFA:  90.71 
+Time out of BRFA:  3.93 
+Approximate Distance Tracked (Total):  162.54 km 
+Approximate Distance Tracked / Day:  1.693125 km 
+Unique Stations_Detected 5 
+Area of detected homerange 2127 km^2
+
+Transmitter ID:  51584 
+Species:  Opakapaka 
+Fork Length:  43  cm 
+Tagging Date:  2018-01-09 12:24:00 
+ Tagging Date:  2018-01-09 12:54:00 
+ Tagging Date:  2018-01-09 13:18:00 
+ Tagging Date:  2018-01-09 13:25:00 
+ Tagging Date:  2018-01-09 13:59:00 
+ Tagging Date:  2018-01-09 14:31:00 
+ Tagging Date:  2018-01-10 14:58:00 
+ Tagging Date:  2018-01-11 14:35:00 
+ Tagging Date:  2018-01-11 14:10:00 
+ Tagging Date:  2018-01-11 14:18:00 
+ Tagging Date:  2018-01-11 11:01:00 
+ Tagging Date:  2018-01-11 13:14:00 
+ Tagging Date:  2017-08-28 13:04:00 
+ Tagging Date:  2017-08-28 13:28:00 
+ Tagging Date:  2017-08-28 13:44:00 
+ Tagging Date:  2017-08-28 22:39:00 
+ Tagging Date:  2017-08-29 08:02:00 
+ Tagging Date:  2017-08-29 12:46:00 
+ Tagging Date:  2017-06-24 20:47:00 
+ Tagging Date:  2017-06-24 21:01:00 
+ Tagging Date:  2017-06-24 21:19:00 
+ Tagging Date:  2017-06-24 22:08:00 
+ Tagging Date:  2017-06-24 22:33:00 
+ Tagging Date:  2017-06-25 19:24:00 
+ Tagging Date:  2017-06-25 22:36:00 
+ Tagging Date:  2017-06-26 00:42:00 
+ Tagging Date:  2017-06-26 01:48:00 
+ Tagging Date:  2017-08-28 08:14:00 
+ Tagging Date:  2017-08-28 09:29:00 
+ Tagging Date:  2018-01-11 17:59:00 
+ Tagging Date:  2018-01-11 18:32:00 
+ Tagging Date:  2017-06-24 21:06:00 
+ Tagging Date:  2017-01-13 14:29:00 
+ Tagging Date:  2017-03-18 04:32:00 
+ Tagging Date:  2017-03-18 11:16:00 
+ Tagging Date:  2017-03-18 14:30:00 
+ Tagging Date:  2017-03-18 13:54:00 
+ Tagging Date:  2017-03-18 14:51:00 
+ Tagging Date:  2017-03-18 15:32:00 
+ Tagging Date:  2017-08-28 10:49:00 
+ Tagging Date:  2017-08-29 17:44:00 
+Tagging Location:  Makapuu 
+Day of First Detected:  2017-06-26 03:05:21 
+Day of Last Detection:  2018-02-05 
+Days at Liberty:  28 
+Track Length:  2018-02-05 
+Unique Days Detected:  23 
+Number of Detections (Total):  451 
+Number of Detections / Day at Liberty:  16.7037037037037 
+Number of Detections / Day Detected:  19.6086956521739 
+Number of Receivers Detected (Total):  7 
+Number of receivers Detected / Days at Liberty:  0.25 
+Movements from inside to outside BRFA (Total):  3 
+Movements from inside to outside BRFA / Day:  0.107142857142857 
+Movements from outside to inside BRFA (Total):  3 
+Movements from outside to inside BRFA / Day:  0.107142857142857 
+Time in BRFA:  27.05 
+Time out of BRFA:  0.18 
+Approximate Distance Tracked (Total):  117.5 km 
+Approximate Distance Tracked / Day:  4.19642857142857 km 
+Unique Stations_Detected 7 
+Area of detected homerange 2133 km^2
+
+Transmitter ID:  51586 
+Species:  Opakapaka 
+Fork Length:  42  cm 
+Tagging Date:  2018-01-09 12:24:00 
+ Tagging Date:  2018-01-09 12:54:00 
+ Tagging Date:  2018-01-09 13:18:00 
+ Tagging Date:  2018-01-09 13:25:00 
+ Tagging Date:  2018-01-09 13:59:00 
+ Tagging Date:  2018-01-09 14:31:00 
+ Tagging Date:  2018-01-10 14:58:00 
+ Tagging Date:  2018-01-11 14:35:00 
+ Tagging Date:  2018-01-11 14:10:00 
+ Tagging Date:  2018-01-11 14:18:00 
+ Tagging Date:  2018-01-11 11:01:00 
+ Tagging Date:  2018-01-11 13:14:00 
+ Tagging Date:  2017-08-28 13:04:00 
+ Tagging Date:  2017-08-28 13:28:00 
+ Tagging Date:  2017-08-28 13:44:00 
+ Tagging Date:  2017-08-28 22:39:00 
+ Tagging Date:  2017-08-29 08:02:00 
+ Tagging Date:  2017-08-29 12:46:00 
+ Tagging Date:  2017-06-24 20:47:00 
+ Tagging Date:  2017-06-24 21:01:00 
+ Tagging Date:  2017-06-24 21:19:00 
+ Tagging Date:  2017-06-24 22:08:00 
+ Tagging Date:  2017-06-24 22:33:00 
+ Tagging Date:  2017-06-25 19:24:00 
+ Tagging Date:  2017-06-25 22:36:00 
+ Tagging Date:  2017-06-26 00:42:00 
+ Tagging Date:  2017-06-26 01:48:00 
+ Tagging Date:  2017-08-28 08:14:00 
+ Tagging Date:  2017-08-28 09:29:00 
+ Tagging Date:  2018-01-11 17:59:00 
+ Tagging Date:  2018-01-11 18:32:00 
+ Tagging Date:  2017-06-24 21:06:00 
+ Tagging Date:  2017-01-13 14:29:00 
+ Tagging Date:  2017-03-18 04:32:00 
+ Tagging Date:  2017-03-18 11:16:00 
+ Tagging Date:  2017-03-18 14:30:00 
+ Tagging Date:  2017-03-18 13:54:00 
+ Tagging Date:  2017-03-18 14:51:00 
+ Tagging Date:  2017-03-18 15:32:00 
+ Tagging Date:  2017-08-28 10:49:00 
+ Tagging Date:  2017-08-29 17:44:00 
+Tagging Location:  Makapuu 
+Day of First Detected:  2017-06-26 00:51:24 
+Day of Last Detection:  2018-04-08 
+Days at Liberty:  90 
+Track Length:  2018-04-08 
+Unique Days Detected:  86 
+Number of Detections (Total):  4737 
+Number of Detections / Day at Liberty:  52.6333333333333 
+Number of Detections / Day Detected:  55.0813953488372 
+Number of Receivers Detected (Total):  8 
+Number of receivers Detected / Days at Liberty:  0.0888888888888889 
+Movements from inside to outside BRFA (Total):  0 
+Movements from inside to outside BRFA / Day:  0 
+Movements from outside to inside BRFA (Total):  0 
+Movements from outside to inside BRFA / Day:  0 
+Time in BRFA:  89.23 
+Time out of BRFA:  0 
+Approximate Distance Tracked (Total):  770.72 km 
+Approximate Distance Tracked / Day:  8.56355555555556 km 
+Unique Stations_Detected 8 
+Area of detected homerange 2136 km^2
+
+Transmitter ID:  51585 
+Species:  Opakapaka 
+Fork Length:  50  cm 
+Tagging Date:  2018-01-09 12:24:00 
+ Tagging Date:  2018-01-09 12:54:00 
+ Tagging Date:  2018-01-09 13:18:00 
+ Tagging Date:  2018-01-09 13:25:00 
+ Tagging Date:  2018-01-09 13:59:00 
+ Tagging Date:  2018-01-09 14:31:00 
+ Tagging Date:  2018-01-10 14:58:00 
+ Tagging Date:  2018-01-11 14:35:00 
+ Tagging Date:  2018-01-11 14:10:00 
+ Tagging Date:  2018-01-11 14:18:00 
+ Tagging Date:  2018-01-11 11:01:00 
+ Tagging Date:  2018-01-11 13:14:00 
+ Tagging Date:  2017-08-28 13:04:00 
+ Tagging Date:  2017-08-28 13:28:00 
+ Tagging Date:  2017-08-28 13:44:00 
+ Tagging Date:  2017-08-28 22:39:00 
+ Tagging Date:  2017-08-29 08:02:00 
+ Tagging Date:  2017-08-29 12:46:00 
+ Tagging Date:  2017-06-24 20:47:00 
+ Tagging Date:  2017-06-24 21:01:00 
+ Tagging Date:  2017-06-24 21:19:00 
+ Tagging Date:  2017-06-24 22:08:00 
+ Tagging Date:  2017-06-24 22:33:00 
+ Tagging Date:  2017-06-25 19:24:00 
+ Tagging Date:  2017-06-25 22:36:00 
+ Tagging Date:  2017-06-26 00:42:00 
+ Tagging Date:  2017-06-26 01:48:00 
+ Tagging Date:  2017-08-28 08:14:00 
+ Tagging Date:  2017-08-28 09:29:00 
+ Tagging Date:  2018-01-11 17:59:00 
+ Tagging Date:  2018-01-11 18:32:00 
+ Tagging Date:  2017-06-24 21:06:00 
+ Tagging Date:  2017-01-13 14:29:00 
+ Tagging Date:  2017-03-18 04:32:00 
+ Tagging Date:  2017-03-18 11:16:00 
+ Tagging Date:  2017-03-18 14:30:00 
+ Tagging Date:  2017-03-18 13:54:00 
+ Tagging Date:  2017-03-18 14:51:00 
+ Tagging Date:  2017-03-18 15:32:00 
+ Tagging Date:  2017-08-28 10:49:00 
+ Tagging Date:  2017-08-29 17:44:00 
+Tagging Location:  Makapuu 
+Day of First Detected:  2017-07-29 16:15:11 
+Day of Last Detection:  2018-04-14 
+Days at Liberty:  96 
+Track Length:  2018-04-14 
+Unique Days Detected:  69 
+Number of Detections (Total):  317 
+Number of Detections / Day at Liberty:  3.30208333333333 
+Number of Detections / Day Detected:  4.59420289855072 
+Number of Receivers Detected (Total):  3 
+Number of receivers Detected / Days at Liberty:  0.03125 
+Movements from inside to outside BRFA (Total):  0 
+Movements from inside to outside BRFA / Day:  0 
+Movements from outside to inside BRFA (Total):  0 
+Movements from outside to inside BRFA / Day:  0 
+Time in BRFA:  95.06 
+Time out of BRFA:  0 
+Approximate Distance Tracked (Total):  48.76 km 
+Approximate Distance Tracked / Day:  0.507916666666667 km 
+Unique Stations_Detected 3 
+Area of detected homerange 2139 km^2
+
+Transmitter ID:  51587 
+Species:  Opakapaka 
+Fork Length:  39.5  cm 
+Tagging Date:  2018-01-09 12:24:00 
+ Tagging Date:  2018-01-09 12:54:00 
+ Tagging Date:  2018-01-09 13:18:00 
+ Tagging Date:  2018-01-09 13:25:00 
+ Tagging Date:  2018-01-09 13:59:00 
+ Tagging Date:  2018-01-09 14:31:00 
+ Tagging Date:  2018-01-10 14:58:00 
+ Tagging Date:  2018-01-11 14:35:00 
+ Tagging Date:  2018-01-11 14:10:00 
+ Tagging Date:  2018-01-11 14:18:00 
+ Tagging Date:  2018-01-11 11:01:00 
+ Tagging Date:  2018-01-11 13:14:00 
+ Tagging Date:  2017-08-28 13:04:00 
+ Tagging Date:  2017-08-28 13:28:00 
+ Tagging Date:  2017-08-28 13:44:00 
+ Tagging Date:  2017-08-28 22:39:00 
+ Tagging Date:  2017-08-29 08:02:00 
+ Tagging Date:  2017-08-29 12:46:00 
+ Tagging Date:  2017-06-24 20:47:00 
+ Tagging Date:  2017-06-24 21:01:00 
+ Tagging Date:  2017-06-24 21:19:00 
+ Tagging Date:  2017-06-24 22:08:00 
+ Tagging Date:  2017-06-24 22:33:00 
+ Tagging Date:  2017-06-25 19:24:00 
+ Tagging Date:  2017-06-25 22:36:00 
+ Tagging Date:  2017-06-26 00:42:00 
+ Tagging Date:  2017-06-26 01:48:00 
+ Tagging Date:  2017-08-28 08:14:00 
+ Tagging Date:  2017-08-28 09:29:00 
+ Tagging Date:  2018-01-11 17:59:00 
+ Tagging Date:  2018-01-11 18:32:00 
+ Tagging Date:  2017-06-24 21:06:00 
+ Tagging Date:  2017-01-13 14:29:00 
+ Tagging Date:  2017-03-18 04:32:00 
+ Tagging Date:  2017-03-18 11:16:00 
+ Tagging Date:  2017-03-18 14:30:00 
+ Tagging Date:  2017-03-18 13:54:00 
+ Tagging Date:  2017-03-18 14:51:00 
+ Tagging Date:  2017-03-18 15:32:00 
+ Tagging Date:  2017-08-28 10:49:00 
+ Tagging Date:  2017-08-29 17:44:00 
+Tagging Location:  Makapuu 
+Day of First Detected:  2017-07-28 17:07:29 
+Day of Last Detection:  2018-02-25 
+Days at Liberty:  48 
+Track Length:  2018-02-25 
+Unique Days Detected:  12 
+Number of Detections (Total):  67 
+Number of Detections / Day at Liberty:  1.39583333333333 
+Number of Detections / Day Detected:  5.58333333333333 
+Number of Receivers Detected (Total):  2 
+Number of receivers Detected / Days at Liberty:  0.0416666666666667 
+Movements from inside to outside BRFA (Total):  0 
+Movements from inside to outside BRFA / Day:  0 
+Movements from outside to inside BRFA (Total):  0 
+Movements from outside to inside BRFA / Day:  0 
+Time in BRFA:  46.99 
+Time out of BRFA:  0 
+Approximate Distance Tracked (Total):  5.06 km 
+Approximate Distance Tracked / Day:  0.105416666666667 km 
+Unique Stations_Detected 2 
+Area of detected homerange 2140 km^2
+
+Transmitter ID:  51588 
+Species:  Opakapaka 
+Fork Length:  52.5  cm 
+Tagging Date:  2018-01-09 12:24:00 
+ Tagging Date:  2018-01-09 12:54:00 
+ Tagging Date:  2018-01-09 13:18:00 
+ Tagging Date:  2018-01-09 13:25:00 
+ Tagging Date:  2018-01-09 13:59:00 
+ Tagging Date:  2018-01-09 14:31:00 
+ Tagging Date:  2018-01-10 14:58:00 
+ Tagging Date:  2018-01-11 14:35:00 
+ Tagging Date:  2018-01-11 14:10:00 
+ Tagging Date:  2018-01-11 14:18:00 
+ Tagging Date:  2018-01-11 11:01:00 
+ Tagging Date:  2018-01-11 13:14:00 
+ Tagging Date:  2017-08-28 13:04:00 
+ Tagging Date:  2017-08-28 13:28:00 
+ Tagging Date:  2017-08-28 13:44:00 
+ Tagging Date:  2017-08-28 22:39:00 
+ Tagging Date:  2017-08-29 08:02:00 
+ Tagging Date:  2017-08-29 12:46:00 
+ Tagging Date:  2017-06-24 20:47:00 
+ Tagging Date:  2017-06-24 21:01:00 
+ Tagging Date:  2017-06-24 21:19:00 
+ Tagging Date:  2017-06-24 22:08:00 
+ Tagging Date:  2017-06-24 22:33:00 
+ Tagging Date:  2017-06-25 19:24:00 
+ Tagging Date:  2017-06-25 22:36:00 
+ Tagging Date:  2017-06-26 00:42:00 
+ Tagging Date:  2017-06-26 01:48:00 
+ Tagging Date:  2017-08-28 08:14:00 
+ Tagging Date:  2017-08-28 09:29:00 
+ Tagging Date:  2018-01-11 17:59:00 
+ Tagging Date:  2018-01-11 18:32:00 
+ Tagging Date:  2017-06-24 21:06:00 
+ Tagging Date:  2017-01-13 14:29:00 
+ Tagging Date:  2017-03-18 04:32:00 
+ Tagging Date:  2017-03-18 11:16:00 
+ Tagging Date:  2017-03-18 14:30:00 
+ Tagging Date:  2017-03-18 13:54:00 
+ Tagging Date:  2017-03-18 14:51:00 
+ Tagging Date:  2017-03-18 15:32:00 
+ Tagging Date:  2017-08-28 10:49:00 
+ Tagging Date:  2017-08-29 17:44:00 
+Tagging Location:  Makapuu 
+Day of First Detected:  2017-06-26 01:39:23 
+Day of Last Detection:  2018-03-16 
+Days at Liberty:  66 
+Track Length:  2018-03-16 
+Unique Days Detected:  35 
+Number of Detections (Total):  515 
+Number of Detections / Day at Liberty:  7.8030303030303 
+Number of Detections / Day Detected:  14.7142857142857 
+Number of Receivers Detected (Total):  7 
+Number of receivers Detected / Days at Liberty:  0.106060606060606 
+Movements from inside to outside BRFA (Total):  9 
+Movements from inside to outside BRFA / Day:  0.136363636363636 
+Movements from outside to inside BRFA (Total):  9 
+Movements from outside to inside BRFA / Day:  0.136363636363636 
+Time in BRFA:  36.14 
+Time out of BRFA:  28.41 
+Approximate Distance Tracked (Total):  102.8 km 
+Approximate Distance Tracked / Day:  1.55757575757576 km 
+Unique Stations_Detected 7 
+Area of detected homerange 2157 km^2
+
+Transmitter ID:  30714 
+Species:  Opakapaka 
+Fork Length:  52  cm 
+Tagging Date:  2018-01-09 12:24:00 
+ Tagging Date:  2018-01-09 12:54:00 
+ Tagging Date:  2018-01-09 13:18:00 
+ Tagging Date:  2018-01-09 13:25:00 
+ Tagging Date:  2018-01-09 13:59:00 
+ Tagging Date:  2018-01-09 14:31:00 
+ Tagging Date:  2018-01-10 14:58:00 
+ Tagging Date:  2018-01-11 14:35:00 
+ Tagging Date:  2018-01-11 14:10:00 
+ Tagging Date:  2018-01-11 14:18:00 
+ Tagging Date:  2018-01-11 11:01:00 
+ Tagging Date:  2018-01-11 13:14:00 
+ Tagging Date:  2017-08-28 13:04:00 
+ Tagging Date:  2017-08-28 13:28:00 
+ Tagging Date:  2017-08-28 13:44:00 
+ Tagging Date:  2017-08-28 22:39:00 
+ Tagging Date:  2017-08-29 08:02:00 
+ Tagging Date:  2017-08-29 12:46:00 
+ Tagging Date:  2017-06-24 20:47:00 
+ Tagging Date:  2017-06-24 21:01:00 
+ Tagging Date:  2017-06-24 21:19:00 
+ Tagging Date:  2017-06-24 22:08:00 
+ Tagging Date:  2017-06-24 22:33:00 
+ Tagging Date:  2017-06-25 19:24:00 
+ Tagging Date:  2017-06-25 22:36:00 
+ Tagging Date:  2017-06-26 00:42:00 
+ Tagging Date:  2017-06-26 01:48:00 
+ Tagging Date:  2017-08-28 08:14:00 
+ Tagging Date:  2017-08-28 09:29:00 
+ Tagging Date:  2018-01-11 17:59:00 
+ Tagging Date:  2018-01-11 18:32:00 
+ Tagging Date:  2017-06-24 21:06:00 
+ Tagging Date:  2017-01-13 14:29:00 
+ Tagging Date:  2017-03-18 04:32:00 
+ Tagging Date:  2017-03-18 11:16:00 
+ Tagging Date:  2017-03-18 14:30:00 
+ Tagging Date:  2017-03-18 13:54:00 
+ Tagging Date:  2017-03-18 14:51:00 
+ Tagging Date:  2017-03-18 15:32:00 
+ Tagging Date:  2017-08-28 10:49:00 
+ Tagging Date:  2017-08-29 17:44:00 
+Tagging Location:  Makapuu 
+Day of First Detected:  2017-06-26 07:39:11 
+Day of Last Detection:  2018-04-14 
+Days at Liberty:  94 
+Track Length:  2018-04-14 
+Unique Days Detected:  81 
+Number of Detections (Total):  1392 
+Number of Detections / Day at Liberty:  14.8085106382979 
+Number of Detections / Day Detected:  17.1851851851852 
+Number of Receivers Detected (Total):  2 
+Number of receivers Detected / Days at Liberty:  0.0212765957446809 
+Movements from inside to outside BRFA (Total):  0 
+Movements from inside to outside BRFA / Day:  0 
+Movements from outside to inside BRFA (Total):  0 
+Movements from outside to inside BRFA / Day:  0 
+Time in BRFA:  92.52 
+Time out of BRFA:  0 
+Approximate Distance Tracked (Total):  7.07 km 
+Approximate Distance Tracked / Day:  0.0752127659574468 km 
+Unique Stations_Detected 2 
+Area of detected homerange 28171 km^2
+
+Transmitter ID:  30715 
+Species:  Opakapaka 
+Fork Length:  50  cm 
+Tagging Date:  2018-01-09 12:24:00 
+ Tagging Date:  2018-01-09 12:54:00 
+ Tagging Date:  2018-01-09 13:18:00 
+ Tagging Date:  2018-01-09 13:25:00 
+ Tagging Date:  2018-01-09 13:59:00 
+ Tagging Date:  2018-01-09 14:31:00 
+ Tagging Date:  2018-01-10 14:58:00 
+ Tagging Date:  2018-01-11 14:35:00 
+ Tagging Date:  2018-01-11 14:10:00 
+ Tagging Date:  2018-01-11 14:18:00 
+ Tagging Date:  2018-01-11 11:01:00 
+ Tagging Date:  2018-01-11 13:14:00 
+ Tagging Date:  2017-08-28 13:04:00 
+ Tagging Date:  2017-08-28 13:28:00 
+ Tagging Date:  2017-08-28 13:44:00 
+ Tagging Date:  2017-08-28 22:39:00 
+ Tagging Date:  2017-08-29 08:02:00 
+ Tagging Date:  2017-08-29 12:46:00 
+ Tagging Date:  2017-06-24 20:47:00 
+ Tagging Date:  2017-06-24 21:01:00 
+ Tagging Date:  2017-06-24 21:19:00 
+ Tagging Date:  2017-06-24 22:08:00 
+ Tagging Date:  2017-06-24 22:33:00 
+ Tagging Date:  2017-06-25 19:24:00 
+ Tagging Date:  2017-06-25 22:36:00 
+ Tagging Date:  2017-06-26 00:42:00 
+ Tagging Date:  2017-06-26 01:48:00 
+ Tagging Date:  2017-08-28 08:14:00 
+ Tagging Date:  2017-08-28 09:29:00 
+ Tagging Date:  2018-01-11 17:59:00 
+ Tagging Date:  2018-01-11 18:32:00 
+ Tagging Date:  2017-06-24 21:06:00 
+ Tagging Date:  2017-01-13 14:29:00 
+ Tagging Date:  2017-03-18 04:32:00 
+ Tagging Date:  2017-03-18 11:16:00 
+ Tagging Date:  2017-03-18 14:30:00 
+ Tagging Date:  2017-03-18 13:54:00 
+ Tagging Date:  2017-03-18 14:51:00 
+ Tagging Date:  2017-03-18 15:32:00 
+ Tagging Date:  2017-08-28 10:49:00 
+ Tagging Date:  2017-08-29 17:44:00 
+Tagging Location:  Makapuu 
+Day of First Detected:  2017-06-26 06:26:44 
+Day of Last Detection:  2018-02-15 
+Days at Liberty:  36 
+Track Length:  2018-02-15 
+Unique Days Detected:  7 
+Number of Detections (Total):  15 
+Number of Detections / Day at Liberty:  0.441176470588235 
+Number of Detections / Day Detected:  2.14285714285714 
+Number of Receivers Detected (Total):  2 
+Number of receivers Detected / Days at Liberty:  0.0555555555555556 
+Movements from inside to outside BRFA (Total):  0 
+Movements from inside to outside BRFA / Day:  0 
+Movements from outside to inside BRFA (Total):  0 
+Movements from outside to inside BRFA / Day:  0 
+Time in BRFA:  34.68 
+Time out of BRFA:  0 
+Approximate Distance Tracked (Total):  7.08 km 
+Approximate Distance Tracked / Day:  0.196666666666667 km 
+Unique Stations_Detected 2 
+Area of detected homerange 28178 km^2
+
+Transmitter ID:  36810 
+Species:  Opakapaka 
+Fork Length:  45  cm 
+Tagging Date:  2018-01-09 12:24:00 
+ Tagging Date:  2018-01-09 12:54:00 
+ Tagging Date:  2018-01-09 13:18:00 
+ Tagging Date:  2018-01-09 13:25:00 
+ Tagging Date:  2018-01-09 13:59:00 
+ Tagging Date:  2018-01-09 14:31:00 
+ Tagging Date:  2018-01-10 14:58:00 
+ Tagging Date:  2018-01-11 14:35:00 
+ Tagging Date:  2018-01-11 14:10:00 
+ Tagging Date:  2018-01-11 14:18:00 
+ Tagging Date:  2018-01-11 11:01:00 
+ Tagging Date:  2018-01-11 13:14:00 
+ Tagging Date:  2017-08-28 13:04:00 
+ Tagging Date:  2017-08-28 13:28:00 
+ Tagging Date:  2017-08-28 13:44:00 
+ Tagging Date:  2017-08-28 22:39:00 
+ Tagging Date:  2017-08-29 08:02:00 
+ Tagging Date:  2017-08-29 12:46:00 
+ Tagging Date:  2017-06-24 20:47:00 
+ Tagging Date:  2017-06-24 21:01:00 
+ Tagging Date:  2017-06-24 21:19:00 
+ Tagging Date:  2017-06-24 22:08:00 
+ Tagging Date:  2017-06-24 22:33:00 
+ Tagging Date:  2017-06-25 19:24:00 
+ Tagging Date:  2017-06-25 22:36:00 
+ Tagging Date:  2017-06-26 00:42:00 
+ Tagging Date:  2017-06-26 01:48:00 
+ Tagging Date:  2017-08-28 08:14:00 
+ Tagging Date:  2017-08-28 09:29:00 
+ Tagging Date:  2018-01-11 17:59:00 
+ Tagging Date:  2018-01-11 18:32:00 
+ Tagging Date:  2017-06-24 21:06:00 
+ Tagging Date:  2017-01-13 14:29:00 
+ Tagging Date:  2017-03-18 04:32:00 
+ Tagging Date:  2017-03-18 11:16:00 
+ Tagging Date:  2017-03-18 14:30:00 
+ Tagging Date:  2017-03-18 13:54:00 
+ Tagging Date:  2017-03-18 14:51:00 
+ Tagging Date:  2017-03-18 15:32:00 
+ Tagging Date:  2017-08-28 10:49:00 
+ Tagging Date:  2017-08-29 17:44:00 
+Tagging Location:  Makapuu 
+Day of First Detected:  2017-06-26 00:13:02 
+Day of Last Detection:  2018-04-14 
+Days at Liberty:  94 
+Track Length:  2018-04-14 
+Unique Days Detected:  94 
+Number of Detections (Total):  14584 
+Number of Detections / Day at Liberty:  155.148936170213 
+Number of Detections / Day Detected:  155.148936170213 
+Number of Receivers Detected (Total):  6 
+Number of receivers Detected / Days at Liberty:  0.0638297872340425 
+Movements from inside to outside BRFA (Total):  7 
+Movements from inside to outside BRFA / Day:  0.074468085106383 
+Movements from outside to inside BRFA (Total):  6 
+Movements from outside to inside BRFA / Day:  0.0638297872340425 
+Time in BRFA:  91.77 
+Time out of BRFA:  1.58 
+Approximate Distance Tracked (Total):  3195.74 km 
+Approximate Distance Tracked / Day:  33.9972340425532 km 
+Unique Stations_Detected 6 
+Area of detected homerange 28179 km^2
+
+Transmitter ID:  30717 
+Species:  Opakapaka 
+Fork Length:  53  cm 
+Tagging Date:  2018-01-09 12:24:00 
+ Tagging Date:  2018-01-09 12:54:00 
+ Tagging Date:  2018-01-09 13:18:00 
+ Tagging Date:  2018-01-09 13:25:00 
+ Tagging Date:  2018-01-09 13:59:00 
+ Tagging Date:  2018-01-09 14:31:00 
+ Tagging Date:  2018-01-10 14:58:00 
+ Tagging Date:  2018-01-11 14:35:00 
+ Tagging Date:  2018-01-11 14:10:00 
+ Tagging Date:  2018-01-11 14:18:00 
+ Tagging Date:  2018-01-11 11:01:00 
+ Tagging Date:  2018-01-11 13:14:00 
+ Tagging Date:  2017-08-28 13:04:00 
+ Tagging Date:  2017-08-28 13:28:00 
+ Tagging Date:  2017-08-28 13:44:00 
+ Tagging Date:  2017-08-28 22:39:00 
+ Tagging Date:  2017-08-29 08:02:00 
+ Tagging Date:  2017-08-29 12:46:00 
+ Tagging Date:  2017-06-24 20:47:00 
+ Tagging Date:  2017-06-24 21:01:00 
+ Tagging Date:  2017-06-24 21:19:00 
+ Tagging Date:  2017-06-24 22:08:00 
+ Tagging Date:  2017-06-24 22:33:00 
+ Tagging Date:  2017-06-25 19:24:00 
+ Tagging Date:  2017-06-25 22:36:00 
+ Tagging Date:  2017-06-26 00:42:00 
+ Tagging Date:  2017-06-26 01:48:00 
+ Tagging Date:  2017-08-28 08:14:00 
+ Tagging Date:  2017-08-28 09:29:00 
+ Tagging Date:  2018-01-11 17:59:00 
+ Tagging Date:  2018-01-11 18:32:00 
+ Tagging Date:  2017-06-24 21:06:00 
+ Tagging Date:  2017-01-13 14:29:00 
+ Tagging Date:  2017-03-18 04:32:00 
+ Tagging Date:  2017-03-18 11:16:00 
+ Tagging Date:  2017-03-18 14:30:00 
+ Tagging Date:  2017-03-18 13:54:00 
+ Tagging Date:  2017-03-18 14:51:00 
+ Tagging Date:  2017-03-18 15:32:00 
+ Tagging Date:  2017-08-28 10:49:00 
+ Tagging Date:  2017-08-29 17:44:00 
+Tagging Location:  Makapuu 
+Day of First Detected:  2017-06-26 02:55:10 
+Day of Last Detection:  2018-04-14 
+Days at Liberty:  94 
+Track Length:  2018-04-14 
+Unique Days Detected:  94 
+Number of Detections (Total):  7175 
+Number of Detections / Day at Liberty:  76.3297872340426 
+Number of Detections / Day Detected:  76.3297872340426 
+Number of Receivers Detected (Total):  1 
+Number of receivers Detected / Days at Liberty:  0.0106382978723404 
+Movements from inside to outside BRFA (Total):  0 
+Movements from inside to outside BRFA / Day:  0 
+Movements from outside to inside BRFA (Total):  0 
+Movements from outside to inside BRFA / Day:  0 
+Time in BRFA:  93.53 
+Time out of BRFA:  0 
+Approximate Distance Tracked (Total):  0.4 km 
+Approximate Distance Tracked / Day:  0.00425531914893617 km 
+Unique Stations_Detected 1 
+Area of detected homerange 28181 km^2
+
+Transmitter ID:  30721 
+Species:  Opakapaka 
+Fork Length:  34  cm 
+Tagging Date:  2018-01-09 12:24:00 
+ Tagging Date:  2018-01-09 12:54:00 
+ Tagging Date:  2018-01-09 13:18:00 
+ Tagging Date:  2018-01-09 13:25:00 
+ Tagging Date:  2018-01-09 13:59:00 
+ Tagging Date:  2018-01-09 14:31:00 
+ Tagging Date:  2018-01-10 14:58:00 
+ Tagging Date:  2018-01-11 14:35:00 
+ Tagging Date:  2018-01-11 14:10:00 
+ Tagging Date:  2018-01-11 14:18:00 
+ Tagging Date:  2018-01-11 11:01:00 
+ Tagging Date:  2018-01-11 13:14:00 
+ Tagging Date:  2017-08-28 13:04:00 
+ Tagging Date:  2017-08-28 13:28:00 
+ Tagging Date:  2017-08-28 13:44:00 
+ Tagging Date:  2017-08-28 22:39:00 
+ Tagging Date:  2017-08-29 08:02:00 
+ Tagging Date:  2017-08-29 12:46:00 
+ Tagging Date:  2017-06-24 20:47:00 
+ Tagging Date:  2017-06-24 21:01:00 
+ Tagging Date:  2017-06-24 21:19:00 
+ Tagging Date:  2017-06-24 22:08:00 
+ Tagging Date:  2017-06-24 22:33:00 
+ Tagging Date:  2017-06-25 19:24:00 
+ Tagging Date:  2017-06-25 22:36:00 
+ Tagging Date:  2017-06-26 00:42:00 
+ Tagging Date:  2017-06-26 01:48:00 
+ Tagging Date:  2017-08-28 08:14:00 
+ Tagging Date:  2017-08-28 09:29:00 
+ Tagging Date:  2018-01-11 17:59:00 
+ Tagging Date:  2018-01-11 18:32:00 
+ Tagging Date:  2017-06-24 21:06:00 
+ Tagging Date:  2017-01-13 14:29:00 
+ Tagging Date:  2017-03-18 04:32:00 
+ Tagging Date:  2017-03-18 11:16:00 
+ Tagging Date:  2017-03-18 14:30:00 
+ Tagging Date:  2017-03-18 13:54:00 
+ Tagging Date:  2017-03-18 14:51:00 
+ Tagging Date:  2017-03-18 15:32:00 
+ Tagging Date:  2017-08-28 10:49:00 
+ Tagging Date:  2017-08-29 17:44:00 
+Tagging Location:  Makapuu 
+Day of First Detected:  2017-06-26 00:03:08 
+Day of Last Detection:  2018-04-14 
+Days at Liberty:  94 
+Track Length:  2018-04-14 
+Unique Days Detected:  74 
+Number of Detections (Total):  347 
+Number of Detections / Day at Liberty:  3.69148936170213 
+Number of Detections / Day Detected:  4.68918918918919 
+Number of Receivers Detected (Total):  3 
+Number of receivers Detected / Days at Liberty:  0.0319148936170213 
+Movements from inside to outside BRFA (Total):  0 
+Movements from inside to outside BRFA / Day:  0 
+Movements from outside to inside BRFA (Total):  0 
+Movements from outside to inside BRFA / Day:  0 
+Time in BRFA:  0 
+Time out of BRFA:  93.43 
+Approximate Distance Tracked (Total):  13.05 km 
+Approximate Distance Tracked / Day:  0.138829787234043 km 
+Unique Stations_Detected 3 
+Area of detected homerange 28185 km^2
+
+Transmitter ID:  30722 
+Species:  Opakapaka 
+Fork Length:  41.5  cm 
+Tagging Date:  2018-01-09 12:24:00 
+ Tagging Date:  2018-01-09 12:54:00 
+ Tagging Date:  2018-01-09 13:18:00 
+ Tagging Date:  2018-01-09 13:25:00 
+ Tagging Date:  2018-01-09 13:59:00 
+ Tagging Date:  2018-01-09 14:31:00 
+ Tagging Date:  2018-01-10 14:58:00 
+ Tagging Date:  2018-01-11 14:35:00 
+ Tagging Date:  2018-01-11 14:10:00 
+ Tagging Date:  2018-01-11 14:18:00 
+ Tagging Date:  2018-01-11 11:01:00 
+ Tagging Date:  2018-01-11 13:14:00 
+ Tagging Date:  2017-08-28 13:04:00 
+ Tagging Date:  2017-08-28 13:28:00 
+ Tagging Date:  2017-08-28 13:44:00 
+ Tagging Date:  2017-08-28 22:39:00 
+ Tagging Date:  2017-08-29 08:02:00 
+ Tagging Date:  2017-08-29 12:46:00 
+ Tagging Date:  2017-06-24 20:47:00 
+ Tagging Date:  2017-06-24 21:01:00 
+ Tagging Date:  2017-06-24 21:19:00 
+ Tagging Date:  2017-06-24 22:08:00 
+ Tagging Date:  2017-06-24 22:33:00 
+ Tagging Date:  2017-06-25 19:24:00 
+ Tagging Date:  2017-06-25 22:36:00 
+ Tagging Date:  2017-06-26 00:42:00 
+ Tagging Date:  2017-06-26 01:48:00 
+ Tagging Date:  2017-08-28 08:14:00 
+ Tagging Date:  2017-08-28 09:29:00 
+ Tagging Date:  2018-01-11 17:59:00 
+ Tagging Date:  2018-01-11 18:32:00 
+ Tagging Date:  2017-06-24 21:06:00 
+ Tagging Date:  2017-01-13 14:29:00 
+ Tagging Date:  2017-03-18 04:32:00 
+ Tagging Date:  2017-03-18 11:16:00 
+ Tagging Date:  2017-03-18 14:30:00 
+ Tagging Date:  2017-03-18 13:54:00 
+ Tagging Date:  2017-03-18 14:51:00 
+ Tagging Date:  2017-03-18 15:32:00 
+ Tagging Date:  2017-08-28 10:49:00 
+ Tagging Date:  2017-08-29 17:44:00 
+Tagging Location:  Makapuu 
+Day of First Detected:  2017-06-26 00:12:37 
+Day of Last Detection:  2018-04-14 
+Days at Liberty:  230 
+Track Length:  2018-04-14 
+Unique Days Detected:  230 
+Number of Detections (Total):  14969 
+Number of Detections / Day at Liberty:  65.0826086956522 
+Number of Detections / Day Detected:  65.0826086956522 
+Number of Receivers Detected (Total):  2 
+Number of receivers Detected / Days at Liberty:  0.00869565217391304 
+Movements from inside to outside BRFA (Total):  0 
+Movements from inside to outside BRFA / Day:  0 
+Movements from outside to inside BRFA (Total):  0 
+Movements from outside to inside BRFA / Day:  0 
+Time in BRFA:  0 
+Time out of BRFA:  229.44 
+Approximate Distance Tracked (Total):  4127.55 km 
+Approximate Distance Tracked / Day:  17.9458695652174 km 
+Unique Stations_Detected 2 
+Area of detected homerange 30683 km^2
+
+Transmitter ID:  30729 
+Species:  Opakapaka 
+Fork Length:  43  cm 
+Tagging Date:  2018-01-09 12:24:00 
+ Tagging Date:  2018-01-09 12:54:00 
+ Tagging Date:  2018-01-09 13:18:00 
+ Tagging Date:  2018-01-09 13:25:00 
+ Tagging Date:  2018-01-09 13:59:00 
+ Tagging Date:  2018-01-09 14:31:00 
+ Tagging Date:  2018-01-10 14:58:00 
+ Tagging Date:  2018-01-11 14:35:00 
+ Tagging Date:  2018-01-11 14:10:00 
+ Tagging Date:  2018-01-11 14:18:00 
+ Tagging Date:  2018-01-11 11:01:00 
+ Tagging Date:  2018-01-11 13:14:00 
+ Tagging Date:  2017-08-28 13:04:00 
+ Tagging Date:  2017-08-28 13:28:00 
+ Tagging Date:  2017-08-28 13:44:00 
+ Tagging Date:  2017-08-28 22:39:00 
+ Tagging Date:  2017-08-29 08:02:00 
+ Tagging Date:  2017-08-29 12:46:00 
+ Tagging Date:  2017-06-24 20:47:00 
+ Tagging Date:  2017-06-24 21:01:00 
+ Tagging Date:  2017-06-24 21:19:00 
+ Tagging Date:  2017-06-24 22:08:00 
+ Tagging Date:  2017-06-24 22:33:00 
+ Tagging Date:  2017-06-25 19:24:00 
+ Tagging Date:  2017-06-25 22:36:00 
+ Tagging Date:  2017-06-26 00:42:00 
+ Tagging Date:  2017-06-26 01:48:00 
+ Tagging Date:  2017-08-28 08:14:00 
+ Tagging Date:  2017-08-28 09:29:00 
+ Tagging Date:  2018-01-11 17:59:00 
+ Tagging Date:  2018-01-11 18:32:00 
+ Tagging Date:  2017-06-24 21:06:00 
+ Tagging Date:  2017-01-13 14:29:00 
+ Tagging Date:  2017-03-18 04:32:00 
+ Tagging Date:  2017-03-18 11:16:00 
+ Tagging Date:  2017-03-18 14:30:00 
+ Tagging Date:  2017-03-18 13:54:00 
+ Tagging Date:  2017-03-18 14:51:00 
+ Tagging Date:  2017-03-18 15:32:00 
+ Tagging Date:  2017-08-28 10:49:00 
+ Tagging Date:  2017-08-29 17:44:00 
+Tagging Location:  Makapuu 
+Day of First Detected:  2017-06-26 00:27:49 
+Day of Last Detection:  2018-04-14 
+Days at Liberty:  230 
+Track Length:  2018-04-14 
+Unique Days Detected:  230 
+Number of Detections (Total):  57365 
+Number of Detections / Day at Liberty:  249.413043478261 
+Number of Detections / Day Detected:  249.413043478261 
+Number of Receivers Detected (Total):  6 
+Number of receivers Detected / Days at Liberty:  0.0260869565217391 
+Movements from inside to outside BRFA (Total):  7 
+Movements from inside to outside BRFA / Day:  0.0304347826086957 
+Movements from outside to inside BRFA (Total):  7 
+Movements from outside to inside BRFA / Day:  0.0304347826086957 
+Time in BRFA:  0.5 
+Time out of BRFA:  228.94 
+Approximate Distance Tracked (Total):  25164.09 km 
+Approximate Distance Tracked / Day:  109.409086956522 km 
+Unique Stations_Detected 6 
+Area of detected homerange 30684 km^2
+
+Transmitter ID:  30734 
+Species:  Opakapaka 
+Fork Length:  41  cm 
+Tagging Date:  2018-01-09 12:24:00 
+ Tagging Date:  2018-01-09 12:54:00 
+ Tagging Date:  2018-01-09 13:18:00 
+ Tagging Date:  2018-01-09 13:25:00 
+ Tagging Date:  2018-01-09 13:59:00 
+ Tagging Date:  2018-01-09 14:31:00 
+ Tagging Date:  2018-01-10 14:58:00 
+ Tagging Date:  2018-01-11 14:35:00 
+ Tagging Date:  2018-01-11 14:10:00 
+ Tagging Date:  2018-01-11 14:18:00 
+ Tagging Date:  2018-01-11 11:01:00 
+ Tagging Date:  2018-01-11 13:14:00 
+ Tagging Date:  2017-08-28 13:04:00 
+ Tagging Date:  2017-08-28 13:28:00 
+ Tagging Date:  2017-08-28 13:44:00 
+ Tagging Date:  2017-08-28 22:39:00 
+ Tagging Date:  2017-08-29 08:02:00 
+ Tagging Date:  2017-08-29 12:46:00 
+ Tagging Date:  2017-06-24 20:47:00 
+ Tagging Date:  2017-06-24 21:01:00 
+ Tagging Date:  2017-06-24 21:19:00 
+ Tagging Date:  2017-06-24 22:08:00 
+ Tagging Date:  2017-06-24 22:33:00 
+ Tagging Date:  2017-06-25 19:24:00 
+ Tagging Date:  2017-06-25 22:36:00 
+ Tagging Date:  2017-06-26 00:42:00 
+ Tagging Date:  2017-06-26 01:48:00 
+ Tagging Date:  2017-08-28 08:14:00 
+ Tagging Date:  2017-08-28 09:29:00 
+ Tagging Date:  2018-01-11 17:59:00 
+ Tagging Date:  2018-01-11 18:32:00 
+ Tagging Date:  2017-06-24 21:06:00 
+ Tagging Date:  2017-01-13 14:29:00 
+ Tagging Date:  2017-03-18 04:32:00 
+ Tagging Date:  2017-03-18 11:16:00 
+ Tagging Date:  2017-03-18 14:30:00 
+ Tagging Date:  2017-03-18 13:54:00 
+ Tagging Date:  2017-03-18 14:51:00 
+ Tagging Date:  2017-03-18 15:32:00 
+ Tagging Date:  2017-08-28 10:49:00 
+ Tagging Date:  2017-08-29 17:44:00 
+Tagging Location:  Makapuu 
+Day of First Detected:  2017-07-13 06:51:31 
+Day of Last Detection:  2018-04-14 
+Days at Liberty:  230 
+Track Length:  2018-04-14 
+Unique Days Detected:  225 
+Number of Detections (Total):  56541 
+Number of Detections / Day at Liberty:  245.830434782609 
+Number of Detections / Day Detected:  251.293333333333 
+Number of Receivers Detected (Total):  7 
+Number of receivers Detected / Days at Liberty:  0.0304347826086957 
+Movements from inside to outside BRFA (Total):  6 
+Movements from inside to outside BRFA / Day:  0.0260869565217391 
+Movements from outside to inside BRFA (Total):  7 
+Movements from outside to inside BRFA / Day:  0.0304347826086957 
+Time in BRFA:  214.64 
+Time out of BRFA:  14.79 
+Approximate Distance Tracked (Total):  108.94 km 
+Approximate Distance Tracked / Day:  0.473652173913043 km 
+Unique Stations_Detected 7 
+Area of detected homerange 30685 km^2
+
+Transmitter ID:  30739 
+Species:  Opakapaka 
+Fork Length:  54  cm 
+Tagging Date:  2018-01-09 12:24:00 
+ Tagging Date:  2018-01-09 12:54:00 
+ Tagging Date:  2018-01-09 13:18:00 
+ Tagging Date:  2018-01-09 13:25:00 
+ Tagging Date:  2018-01-09 13:59:00 
+ Tagging Date:  2018-01-09 14:31:00 
+ Tagging Date:  2018-01-10 14:58:00 
+ Tagging Date:  2018-01-11 14:35:00 
+ Tagging Date:  2018-01-11 14:10:00 
+ Tagging Date:  2018-01-11 14:18:00 
+ Tagging Date:  2018-01-11 11:01:00 
+ Tagging Date:  2018-01-11 13:14:00 
+ Tagging Date:  2017-08-28 13:04:00 
+ Tagging Date:  2017-08-28 13:28:00 
+ Tagging Date:  2017-08-28 13:44:00 
+ Tagging Date:  2017-08-28 22:39:00 
+ Tagging Date:  2017-08-29 08:02:00 
+ Tagging Date:  2017-08-29 12:46:00 
+ Tagging Date:  2017-06-24 20:47:00 
+ Tagging Date:  2017-06-24 21:01:00 
+ Tagging Date:  2017-06-24 21:19:00 
+ Tagging Date:  2017-06-24 22:08:00 
+ Tagging Date:  2017-06-24 22:33:00 
+ Tagging Date:  2017-06-25 19:24:00 
+ Tagging Date:  2017-06-25 22:36:00 
+ Tagging Date:  2017-06-26 00:42:00 
+ Tagging Date:  2017-06-26 01:48:00 
+ Tagging Date:  2017-08-28 08:14:00 
+ Tagging Date:  2017-08-28 09:29:00 
+ Tagging Date:  2018-01-11 17:59:00 
+ Tagging Date:  2018-01-11 18:32:00 
+ Tagging Date:  2017-06-24 21:06:00 
+ Tagging Date:  2017-01-13 14:29:00 
+ Tagging Date:  2017-03-18 04:32:00 
+ Tagging Date:  2017-03-18 11:16:00 
+ Tagging Date:  2017-03-18 14:30:00 
+ Tagging Date:  2017-03-18 13:54:00 
+ Tagging Date:  2017-03-18 14:51:00 
+ Tagging Date:  2017-03-18 15:32:00 
+ Tagging Date:  2017-08-28 10:49:00 
+ Tagging Date:  2017-08-29 17:44:00 
+Tagging Location:  Makapuu 
+Day of First Detected:  2017-06-26 16:27:23 
+Day of Last Detection:  2018-03-20 
+Days at Liberty:  205 
+Track Length:  2018-03-20 
+Unique Days Detected:  79 
+Number of Detections (Total):  550 
+Number of Detections / Day at Liberty:  2.68292682926829 
+Number of Detections / Day Detected:  6.9620253164557 
+Number of Receivers Detected (Total):  2 
+Number of receivers Detected / Days at Liberty:  0.00975609756097561 
+Movements from inside to outside BRFA (Total):  0 
+Movements from inside to outside BRFA / Day:  0 
+Movements from outside to inside BRFA (Total):  0 
+Movements from outside to inside BRFA / Day:  0 
+Time in BRFA:  203.94 
+Time out of BRFA:  0 
+Approximate Distance Tracked (Total):  62.28 km 
+Approximate Distance Tracked / Day:  0.30380487804878 km 
+Unique Stations_Detected 2 
+Area of detected homerange 30703 km^2
+
+Transmitter ID:  30742 
+Species:  Opakapaka 
+Fork Length:  40.5  cm 
+Tagging Date:  2018-01-09 12:24:00 
+ Tagging Date:  2018-01-09 12:54:00 
+ Tagging Date:  2018-01-09 13:18:00 
+ Tagging Date:  2018-01-09 13:25:00 
+ Tagging Date:  2018-01-09 13:59:00 
+ Tagging Date:  2018-01-09 14:31:00 
+ Tagging Date:  2018-01-10 14:58:00 
+ Tagging Date:  2018-01-11 14:35:00 
+ Tagging Date:  2018-01-11 14:10:00 
+ Tagging Date:  2018-01-11 14:18:00 
+ Tagging Date:  2018-01-11 11:01:00 
+ Tagging Date:  2018-01-11 13:14:00 
+ Tagging Date:  2017-08-28 13:04:00 
+ Tagging Date:  2017-08-28 13:28:00 
+ Tagging Date:  2017-08-28 13:44:00 
+ Tagging Date:  2017-08-28 22:39:00 
+ Tagging Date:  2017-08-29 08:02:00 
+ Tagging Date:  2017-08-29 12:46:00 
+ Tagging Date:  2017-06-24 20:47:00 
+ Tagging Date:  2017-06-24 21:01:00 
+ Tagging Date:  2017-06-24 21:19:00 
+ Tagging Date:  2017-06-24 22:08:00 
+ Tagging Date:  2017-06-24 22:33:00 
+ Tagging Date:  2017-06-25 19:24:00 
+ Tagging Date:  2017-06-25 22:36:00 
+ Tagging Date:  2017-06-26 00:42:00 
+ Tagging Date:  2017-06-26 01:48:00 
+ Tagging Date:  2017-08-28 08:14:00 
+ Tagging Date:  2017-08-28 09:29:00 
+ Tagging Date:  2018-01-11 17:59:00 
+ Tagging Date:  2018-01-11 18:32:00 
+ Tagging Date:  2017-06-24 21:06:00 
+ Tagging Date:  2017-01-13 14:29:00 
+ Tagging Date:  2017-03-18 04:32:00 
+ Tagging Date:  2017-03-18 11:16:00 
+ Tagging Date:  2017-03-18 14:30:00 
+ Tagging Date:  2017-03-18 13:54:00 
+ Tagging Date:  2017-03-18 14:51:00 
+ Tagging Date:  2017-03-18 15:32:00 
+ Tagging Date:  2017-08-28 10:49:00 
+ Tagging Date:  2017-08-29 17:44:00 
+Tagging Location:  Makapuu 
+Day of First Detected:  2017-07-27 18:09:28 
+Day of Last Detection:  2018-04-14 
+Days at Liberty:  229 
+Track Length:  2018-04-14 
+Unique Days Detected:  217 
+Number of Detections (Total):  4727 
+Number of Detections / Day at Liberty:  20.6419213973799 
+Number of Detections / Day Detected:  21.7834101382488 
+Number of Receivers Detected (Total):  7 
+Number of receivers Detected / Days at Liberty:  0.0305676855895196 
+Movements from inside to outside BRFA (Total):  6 
+Movements from inside to outside BRFA / Day:  0.0262008733624454 
+Movements from outside to inside BRFA (Total):  6 
+Movements from outside to inside BRFA / Day:  0.0262008733624454 
+Time in BRFA:  227.25 
+Time out of BRFA:  1.39 
+Approximate Distance Tracked (Total):  1584.08 km 
+Approximate Distance Tracked / Day:  6.91737991266375 km 
+Unique Stations_Detected 7 
+Area of detected homerange 30705 km^2
+
+Transmitter ID:  30743 
+Species:  Opakapaka 
+Fork Length:  53  cm 
+Tagging Date:  2018-01-09 12:24:00 
+ Tagging Date:  2018-01-09 12:54:00 
+ Tagging Date:  2018-01-09 13:18:00 
+ Tagging Date:  2018-01-09 13:25:00 
+ Tagging Date:  2018-01-09 13:59:00 
+ Tagging Date:  2018-01-09 14:31:00 
+ Tagging Date:  2018-01-10 14:58:00 
+ Tagging Date:  2018-01-11 14:35:00 
+ Tagging Date:  2018-01-11 14:10:00 
+ Tagging Date:  2018-01-11 14:18:00 
+ Tagging Date:  2018-01-11 11:01:00 
+ Tagging Date:  2018-01-11 13:14:00 
+ Tagging Date:  2017-08-28 13:04:00 
+ Tagging Date:  2017-08-28 13:28:00 
+ Tagging Date:  2017-08-28 13:44:00 
+ Tagging Date:  2017-08-28 22:39:00 
+ Tagging Date:  2017-08-29 08:02:00 
+ Tagging Date:  2017-08-29 12:46:00 
+ Tagging Date:  2017-06-24 20:47:00 
+ Tagging Date:  2017-06-24 21:01:00 
+ Tagging Date:  2017-06-24 21:19:00 
+ Tagging Date:  2017-06-24 22:08:00 
+ Tagging Date:  2017-06-24 22:33:00 
+ Tagging Date:  2017-06-25 19:24:00 
+ Tagging Date:  2017-06-25 22:36:00 
+ Tagging Date:  2017-06-26 00:42:00 
+ Tagging Date:  2017-06-26 01:48:00 
+ Tagging Date:  2017-08-28 08:14:00 
+ Tagging Date:  2017-08-28 09:29:00 
+ Tagging Date:  2018-01-11 17:59:00 
+ Tagging Date:  2018-01-11 18:32:00 
+ Tagging Date:  2017-06-24 21:06:00 
+ Tagging Date:  2017-01-13 14:29:00 
+ Tagging Date:  2017-03-18 04:32:00 
+ Tagging Date:  2017-03-18 11:16:00 
+ Tagging Date:  2017-03-18 14:30:00 
+ Tagging Date:  2017-03-18 13:54:00 
+ Tagging Date:  2017-03-18 14:51:00 
+ Tagging Date:  2017-03-18 15:32:00 
+ Tagging Date:  2017-08-28 10:49:00 
+ Tagging Date:  2017-08-29 17:44:00 
+Tagging Location:  Makapuu 
+Day of First Detected:  2017-08-28 08:47:37 
+Day of Last Detection:  2018-04-14 
+Days at Liberty:  229 
+Track Length:  2018-04-14 
+Unique Days Detected:  215 
+Number of Detections (Total):  20234 
+Number of Detections / Day at Liberty:  88.3580786026201 
+Number of Detections / Day Detected:  94.1116279069768 
+Number of Receivers Detected (Total):  1 
+Number of receivers Detected / Days at Liberty:  0.00436681222707424 
+Movements from inside to outside BRFA (Total):  0 
+Movements from inside to outside BRFA / Day:  0 
+Movements from outside to inside BRFA (Total):  0 
+Movements from outside to inside BRFA / Day:  0 
+Time in BRFA:  228.46 
+Time out of BRFA:  0 
+Approximate Distance Tracked (Total):  0.22 km 
+Approximate Distance Tracked / Day:  0.000960698689956332 km 
+Unique Stations_Detected 1 
+Area of detected homerange 30707 km^2
+
+Transmitter ID:  30747 
+Species:  Opakapaka 
+Fork Length:  47  cm 
+Tagging Date:  2018-01-09 12:24:00 
+ Tagging Date:  2018-01-09 12:54:00 
+ Tagging Date:  2018-01-09 13:18:00 
+ Tagging Date:  2018-01-09 13:25:00 
+ Tagging Date:  2018-01-09 13:59:00 
+ Tagging Date:  2018-01-09 14:31:00 
+ Tagging Date:  2018-01-10 14:58:00 
+ Tagging Date:  2018-01-11 14:35:00 
+ Tagging Date:  2018-01-11 14:10:00 
+ Tagging Date:  2018-01-11 14:18:00 
+ Tagging Date:  2018-01-11 11:01:00 
+ Tagging Date:  2018-01-11 13:14:00 
+ Tagging Date:  2017-08-28 13:04:00 
+ Tagging Date:  2017-08-28 13:28:00 
+ Tagging Date:  2017-08-28 13:44:00 
+ Tagging Date:  2017-08-28 22:39:00 
+ Tagging Date:  2017-08-29 08:02:00 
+ Tagging Date:  2017-08-29 12:46:00 
+ Tagging Date:  2017-06-24 20:47:00 
+ Tagging Date:  2017-06-24 21:01:00 
+ Tagging Date:  2017-06-24 21:19:00 
+ Tagging Date:  2017-06-24 22:08:00 
+ Tagging Date:  2017-06-24 22:33:00 
+ Tagging Date:  2017-06-25 19:24:00 
+ Tagging Date:  2017-06-25 22:36:00 
+ Tagging Date:  2017-06-26 00:42:00 
+ Tagging Date:  2017-06-26 01:48:00 
+ Tagging Date:  2017-08-28 08:14:00 
+ Tagging Date:  2017-08-28 09:29:00 
+ Tagging Date:  2018-01-11 17:59:00 
+ Tagging Date:  2018-01-11 18:32:00 
+ Tagging Date:  2017-06-24 21:06:00 
+ Tagging Date:  2017-01-13 14:29:00 
+ Tagging Date:  2017-03-18 04:32:00 
+ Tagging Date:  2017-03-18 11:16:00 
+ Tagging Date:  2017-03-18 14:30:00 
+ Tagging Date:  2017-03-18 13:54:00 
+ Tagging Date:  2017-03-18 14:51:00 
+ Tagging Date:  2017-03-18 15:32:00 
+ Tagging Date:  2017-08-28 10:49:00 
+ Tagging Date:  2017-08-29 17:44:00 
+Tagging Location:  Makapuu 
+Day of First Detected:  2017-08-28 21:41:15 
+Day of Last Detection:  2018-04-08 
+Days at Liberty:  289 
+Track Length:  2018-04-08 
+Unique Days Detected:  101 
+Number of Detections (Total):  1868 
+Number of Detections / Day at Liberty:  6.50871080139373 
+Number of Detections / Day Detected:  18.4950495049505 
+Number of Receivers Detected (Total):  1 
+Number of receivers Detected / Days at Liberty:  0.00346020761245675 
+Movements from inside to outside BRFA (Total):  0 
+Movements from inside to outside BRFA / Day:  0 
+Movements from outside to inside BRFA (Total):  0 
+Movements from outside to inside BRFA / Day:  0 
+Time in BRFA:  287.82 
+Time out of BRFA:  0 
+Approximate Distance Tracked (Total):  0.4 km 
+Approximate Distance Tracked / Day:  0.0013840830449827 km 
+Unique Stations_Detected 1 
+Area of detected homerange 30714 km^2
+
+Transmitter ID:  51596 
+Species:  Opakapaka 
+Fork Length:  38  cm 
+Tagging Date:  2018-01-09 12:24:00 
+ Tagging Date:  2018-01-09 12:54:00 
+ Tagging Date:  2018-01-09 13:18:00 
+ Tagging Date:  2018-01-09 13:25:00 
+ Tagging Date:  2018-01-09 13:59:00 
+ Tagging Date:  2018-01-09 14:31:00 
+ Tagging Date:  2018-01-10 14:58:00 
+ Tagging Date:  2018-01-11 14:35:00 
+ Tagging Date:  2018-01-11 14:10:00 
+ Tagging Date:  2018-01-11 14:18:00 
+ Tagging Date:  2018-01-11 11:01:00 
+ Tagging Date:  2018-01-11 13:14:00 
+ Tagging Date:  2017-08-28 13:04:00 
+ Tagging Date:  2017-08-28 13:28:00 
+ Tagging Date:  2017-08-28 13:44:00 
+ Tagging Date:  2017-08-28 22:39:00 
+ Tagging Date:  2017-08-29 08:02:00 
+ Tagging Date:  2017-08-29 12:46:00 
+ Tagging Date:  2017-06-24 20:47:00 
+ Tagging Date:  2017-06-24 21:01:00 
+ Tagging Date:  2017-06-24 21:19:00 
+ Tagging Date:  2017-06-24 22:08:00 
+ Tagging Date:  2017-06-24 22:33:00 
+ Tagging Date:  2017-06-25 19:24:00 
+ Tagging Date:  2017-06-25 22:36:00 
+ Tagging Date:  2017-06-26 00:42:00 
+ Tagging Date:  2017-06-26 01:48:00 
+ Tagging Date:  2017-08-28 08:14:00 
+ Tagging Date:  2017-08-28 09:29:00 
+ Tagging Date:  2018-01-11 17:59:00 
+ Tagging Date:  2018-01-11 18:32:00 
+ Tagging Date:  2017-06-24 21:06:00 
+ Tagging Date:  2017-01-13 14:29:00 
+ Tagging Date:  2017-03-18 04:32:00 
+ Tagging Date:  2017-03-18 11:16:00 
+ Tagging Date:  2017-03-18 14:30:00 
+ Tagging Date:  2017-03-18 13:54:00 
+ Tagging Date:  2017-03-18 14:51:00 
+ Tagging Date:  2017-03-18 15:32:00 
+ Tagging Date:  2017-08-28 10:49:00 
+ Tagging Date:  2017-08-29 17:44:00 
+Tagging Location:  Makapuu 
+Day of First Detected:  2017-08-28 11:24:03 
+Day of Last Detection:  2018-04-14 
+Days at Liberty:  295 
+Track Length:  2018-04-14 
+Unique Days Detected:  290 
+Number of Detections (Total):  20663 
+Number of Detections / Day at Liberty:  70.5221843003413 
+Number of Detections / Day Detected:  71.251724137931 
+Number of Receivers Detected (Total):  1 
+Number of receivers Detected / Days at Liberty:  0.00338983050847458 
+Movements from inside to outside BRFA (Total):  0 
+Movements from inside to outside BRFA / Day:  0 
+Movements from outside to inside BRFA (Total):  0 
+Movements from outside to inside BRFA / Day:  0 
+Time in BRFA:  293.99 
+Time out of BRFA:  0 
+Approximate Distance Tracked (Total):  0.4 km 
+Approximate Distance Tracked / Day:  0.00135593220338983 km 
+Unique Stations_Detected 1 
+Area of detected homerange 30715 km^2
+
+Transmitter ID:  30683 
+Species:  Opakapaka 
+Fork Length:  36.5  cm 
+Tagging Date:  2018-01-09 12:24:00 
+ Tagging Date:  2018-01-09 12:54:00 
+ Tagging Date:  2018-01-09 13:18:00 
+ Tagging Date:  2018-01-09 13:25:00 
+ Tagging Date:  2018-01-09 13:59:00 
+ Tagging Date:  2018-01-09 14:31:00 
+ Tagging Date:  2018-01-10 14:58:00 
+ Tagging Date:  2018-01-11 14:35:00 
+ Tagging Date:  2018-01-11 14:10:00 
+ Tagging Date:  2018-01-11 14:18:00 
+ Tagging Date:  2018-01-11 11:01:00 
+ Tagging Date:  2018-01-11 13:14:00 
+ Tagging Date:  2017-08-28 13:04:00 
+ Tagging Date:  2017-08-28 13:28:00 
+ Tagging Date:  2017-08-28 13:44:00 
+ Tagging Date:  2017-08-28 22:39:00 
+ Tagging Date:  2017-08-29 08:02:00 
+ Tagging Date:  2017-08-29 12:46:00 
+ Tagging Date:  2017-06-24 20:47:00 
+ Tagging Date:  2017-06-24 21:01:00 
+ Tagging Date:  2017-06-24 21:19:00 
+ Tagging Date:  2017-06-24 22:08:00 
+ Tagging Date:  2017-06-24 22:33:00 
+ Tagging Date:  2017-06-25 19:24:00 
+ Tagging Date:  2017-06-25 22:36:00 
+ Tagging Date:  2017-06-26 00:42:00 
+ Tagging Date:  2017-06-26 01:48:00 
+ Tagging Date:  2017-08-28 08:14:00 
+ Tagging Date:  2017-08-28 09:29:00 
+ Tagging Date:  2018-01-11 17:59:00 
+ Tagging Date:  2018-01-11 18:32:00 
+ Tagging Date:  2017-06-24 21:06:00 
+ Tagging Date:  2017-01-13 14:29:00 
+ Tagging Date:  2017-03-18 04:32:00 
+ Tagging Date:  2017-03-18 11:16:00 
+ Tagging Date:  2017-03-18 14:30:00 
+ Tagging Date:  2017-03-18 13:54:00 
+ Tagging Date:  2017-03-18 14:51:00 
+ Tagging Date:  2017-03-18 15:32:00 
+ Tagging Date:  2017-08-28 10:49:00 
+ Tagging Date:  2017-08-29 17:44:00 
+Tagging Location:  Makapuu 
+Day of First Detected:  2017-08-28 13:09:38 
+Day of Last Detection:  2017-09-04 
+Days at Liberty:  73 
+Track Length:  2017-09-04 
+Unique Days Detected:  7 
+Number of Detections (Total):  277 
+Number of Detections / Day at Liberty:  3.90140845070423 
+Number of Detections / Day Detected:  39.5714285714286 
+Number of Receivers Detected (Total):  1 
+Number of receivers Detected / Days at Liberty:  0.0136986301369863 
+Movements from inside to outside BRFA (Total):  0 
+Movements from inside to outside BRFA / Day:  0 
+Movements from outside to inside BRFA (Total):  0 
+Movements from outside to inside BRFA / Day:  0 
+Time in BRFA:  71.33 
+Time out of BRFA:  0 
+Approximate Distance Tracked (Total):  0.4 km 
+Approximate Distance Tracked / Day:  0.00547945205479452 km 
+Unique Stations_Detected 1 
+Area of detected homerange 30717 km^2
+
+Transmitter ID:  30684 
+Species:  Opakapaka 
+Fork Length:  45  cm 
+Tagging Date:  2018-01-09 12:24:00 
+ Tagging Date:  2018-01-09 12:54:00 
+ Tagging Date:  2018-01-09 13:18:00 
+ Tagging Date:  2018-01-09 13:25:00 
+ Tagging Date:  2018-01-09 13:59:00 
+ Tagging Date:  2018-01-09 14:31:00 
+ Tagging Date:  2018-01-10 14:58:00 
+ Tagging Date:  2018-01-11 14:35:00 
+ Tagging Date:  2018-01-11 14:10:00 
+ Tagging Date:  2018-01-11 14:18:00 
+ Tagging Date:  2018-01-11 11:01:00 
+ Tagging Date:  2018-01-11 13:14:00 
+ Tagging Date:  2017-08-28 13:04:00 
+ Tagging Date:  2017-08-28 13:28:00 
+ Tagging Date:  2017-08-28 13:44:00 
+ Tagging Date:  2017-08-28 22:39:00 
+ Tagging Date:  2017-08-29 08:02:00 
+ Tagging Date:  2017-08-29 12:46:00 
+ Tagging Date:  2017-06-24 20:47:00 
+ Tagging Date:  2017-06-24 21:01:00 
+ Tagging Date:  2017-06-24 21:19:00 
+ Tagging Date:  2017-06-24 22:08:00 
+ Tagging Date:  2017-06-24 22:33:00 
+ Tagging Date:  2017-06-25 19:24:00 
+ Tagging Date:  2017-06-25 22:36:00 
+ Tagging Date:  2017-06-26 00:42:00 
+ Tagging Date:  2017-06-26 01:48:00 
+ Tagging Date:  2017-08-28 08:14:00 
+ Tagging Date:  2017-08-28 09:29:00 
+ Tagging Date:  2018-01-11 17:59:00 
+ Tagging Date:  2018-01-11 18:32:00 
+ Tagging Date:  2017-06-24 21:06:00 
+ Tagging Date:  2017-01-13 14:29:00 
+ Tagging Date:  2017-03-18 04:32:00 
+ Tagging Date:  2017-03-18 11:16:00 
+ Tagging Date:  2017-03-18 14:30:00 
+ Tagging Date:  2017-03-18 13:54:00 
+ Tagging Date:  2017-03-18 14:51:00 
+ Tagging Date:  2017-03-18 15:32:00 
+ Tagging Date:  2017-08-28 10:49:00 
+ Tagging Date:  2017-08-29 17:44:00 
+Tagging Location:  Makapuu 
+Day of First Detected:  2017-08-28 13:36:17 
+Day of Last Detection:  2018-04-14 
+Days at Liberty:  295 
+Track Length:  2018-04-14 
+Unique Days Detected:  293 
+Number of Detections (Total):  30554 
+Number of Detections / Day at Liberty:  104.279863481229 
+Number of Detections / Day Detected:  104.279863481229 
+Number of Receivers Detected (Total):  2 
+Number of receivers Detected / Days at Liberty:  0.00677966101694915 
+Movements from inside to outside BRFA (Total):  0 
+Movements from inside to outside BRFA / Day:  0 
+Movements from outside to inside BRFA (Total):  0 
+Movements from outside to inside BRFA / Day:  0 
+Time in BRFA:  294.08 
+Time out of BRFA:  0 
+Approximate Distance Tracked (Total):  301.19 km 
+Approximate Distance Tracked / Day:  1.02098305084746 km 
+Unique Stations_Detected 2 
+Area of detected homerange 30721 km^2
+
+Transmitter ID:  30685 
+Species:  Opakapaka 
+Fork Length:  45  cm 
+Tagging Date:  2018-01-09 12:24:00 
+ Tagging Date:  2018-01-09 12:54:00 
+ Tagging Date:  2018-01-09 13:18:00 
+ Tagging Date:  2018-01-09 13:25:00 
+ Tagging Date:  2018-01-09 13:59:00 
+ Tagging Date:  2018-01-09 14:31:00 
+ Tagging Date:  2018-01-10 14:58:00 
+ Tagging Date:  2018-01-11 14:35:00 
+ Tagging Date:  2018-01-11 14:10:00 
+ Tagging Date:  2018-01-11 14:18:00 
+ Tagging Date:  2018-01-11 11:01:00 
+ Tagging Date:  2018-01-11 13:14:00 
+ Tagging Date:  2017-08-28 13:04:00 
+ Tagging Date:  2017-08-28 13:28:00 
+ Tagging Date:  2017-08-28 13:44:00 
+ Tagging Date:  2017-08-28 22:39:00 
+ Tagging Date:  2017-08-29 08:02:00 
+ Tagging Date:  2017-08-29 12:46:00 
+ Tagging Date:  2017-06-24 20:47:00 
+ Tagging Date:  2017-06-24 21:01:00 
+ Tagging Date:  2017-06-24 21:19:00 
+ Tagging Date:  2017-06-24 22:08:00 
+ Tagging Date:  2017-06-24 22:33:00 
+ Tagging Date:  2017-06-25 19:24:00 
+ Tagging Date:  2017-06-25 22:36:00 
+ Tagging Date:  2017-06-26 00:42:00 
+ Tagging Date:  2017-06-26 01:48:00 
+ Tagging Date:  2017-08-28 08:14:00 
+ Tagging Date:  2017-08-28 09:29:00 
+ Tagging Date:  2018-01-11 17:59:00 
+ Tagging Date:  2018-01-11 18:32:00 
+ Tagging Date:  2017-06-24 21:06:00 
+ Tagging Date:  2017-01-13 14:29:00 
+ Tagging Date:  2017-03-18 04:32:00 
+ Tagging Date:  2017-03-18 11:16:00 
+ Tagging Date:  2017-03-18 14:30:00 
+ Tagging Date:  2017-03-18 13:54:00 
+ Tagging Date:  2017-03-18 14:51:00 
+ Tagging Date:  2017-03-18 15:32:00 
+ Tagging Date:  2017-08-28 10:49:00 
+ Tagging Date:  2017-08-29 17:44:00 
+Tagging Location:  Makapuu 
+Day of First Detected:  2017-08-28 13:47:57 
+Day of Last Detection:  2018-04-14 
+Days at Liberty:  295 
+Track Length:  2018-04-14 
+Unique Days Detected:  277 
+Number of Detections (Total):  43845 
+Number of Detections / Day at Liberty:  149.641638225256 
+Number of Detections / Day Detected:  158.285198555957 
+Number of Receivers Detected (Total):  1 
+Number of receivers Detected / Days at Liberty:  0.00338983050847458 
+Movements from inside to outside BRFA (Total):  0 
+Movements from inside to outside BRFA / Day:  0 
+Movements from outside to inside BRFA (Total):  0 
+Movements from outside to inside BRFA / Day:  0 
+Time in BRFA:  293.84 
+Time out of BRFA:  0 
+Approximate Distance Tracked (Total):  0.36 km 
+Approximate Distance Tracked / Day:  0.00122033898305085 km 
+Unique Stations_Detected 1 
+Area of detected homerange 30722 km^2
+
+Transmitter ID:  30703 
+Species:  Opakapaka 
+Fork Length:  49.5  cm 
+Tagging Date:  2018-01-09 12:24:00 
+ Tagging Date:  2018-01-09 12:54:00 
+ Tagging Date:  2018-01-09 13:18:00 
+ Tagging Date:  2018-01-09 13:25:00 
+ Tagging Date:  2018-01-09 13:59:00 
+ Tagging Date:  2018-01-09 14:31:00 
+ Tagging Date:  2018-01-10 14:58:00 
+ Tagging Date:  2018-01-11 14:35:00 
+ Tagging Date:  2018-01-11 14:10:00 
+ Tagging Date:  2018-01-11 14:18:00 
+ Tagging Date:  2018-01-11 11:01:00 
+ Tagging Date:  2018-01-11 13:14:00 
+ Tagging Date:  2017-08-28 13:04:00 
+ Tagging Date:  2017-08-28 13:28:00 
+ Tagging Date:  2017-08-28 13:44:00 
+ Tagging Date:  2017-08-28 22:39:00 
+ Tagging Date:  2017-08-29 08:02:00 
+ Tagging Date:  2017-08-29 12:46:00 
+ Tagging Date:  2017-06-24 20:47:00 
+ Tagging Date:  2017-06-24 21:01:00 
+ Tagging Date:  2017-06-24 21:19:00 
+ Tagging Date:  2017-06-24 22:08:00 
+ Tagging Date:  2017-06-24 22:33:00 
+ Tagging Date:  2017-06-25 19:24:00 
+ Tagging Date:  2017-06-25 22:36:00 
+ Tagging Date:  2017-06-26 00:42:00 
+ Tagging Date:  2017-06-26 01:48:00 
+ Tagging Date:  2017-08-28 08:14:00 
+ Tagging Date:  2017-08-28 09:29:00 
+ Tagging Date:  2018-01-11 17:59:00 
+ Tagging Date:  2018-01-11 18:32:00 
+ Tagging Date:  2017-06-24 21:06:00 
+ Tagging Date:  2017-01-13 14:29:00 
+ Tagging Date:  2017-03-18 04:32:00 
+ Tagging Date:  2017-03-18 11:16:00 
+ Tagging Date:  2017-03-18 14:30:00 
+ Tagging Date:  2017-03-18 13:54:00 
+ Tagging Date:  2017-03-18 14:51:00 
+ Tagging Date:  2017-03-18 15:32:00 
+ Tagging Date:  2017-08-28 10:49:00 
+ Tagging Date:  2017-08-29 17:44:00 
+Tagging Location:  Makapuu 
+Day of First Detected:  2017-08-28 23:07:16 
+Day of Last Detection:  2017-12-28 
+Days at Liberty:  187 
+Track Length:  2017-12-28 
+Unique Days Detected:  60 
+Number of Detections (Total):  1175 
+Number of Detections / Day at Liberty:  6.31720430107527 
+Number of Detections / Day Detected:  19.5833333333333 
+Number of Receivers Detected (Total):  11 
+Number of receivers Detected / Days at Liberty:  0.0588235294117647 
+Movements from inside to outside BRFA (Total):  0 
+Movements from inside to outside BRFA / Day:  0 
+Movements from outside to inside BRFA (Total):  0 
+Movements from outside to inside BRFA / Day:  0 
+Time in BRFA:  185.66 
+Time out of BRFA:  0 
+Approximate Distance Tracked (Total):  237.44 km 
+Approximate Distance Tracked / Day:  1.26973262032086 km 
+Unique Stations_Detected 11 
+Area of detected homerange 30729 km^2
+
+Transmitter ID:  30705 
+Species:  Opakapaka 
+Fork Length:  55.5  cm 
+Tagging Date:  2018-01-09 12:24:00 
+ Tagging Date:  2018-01-09 12:54:00 
+ Tagging Date:  2018-01-09 13:18:00 
+ Tagging Date:  2018-01-09 13:25:00 
+ Tagging Date:  2018-01-09 13:59:00 
+ Tagging Date:  2018-01-09 14:31:00 
+ Tagging Date:  2018-01-10 14:58:00 
+ Tagging Date:  2018-01-11 14:35:00 
+ Tagging Date:  2018-01-11 14:10:00 
+ Tagging Date:  2018-01-11 14:18:00 
+ Tagging Date:  2018-01-11 11:01:00 
+ Tagging Date:  2018-01-11 13:14:00 
+ Tagging Date:  2017-08-28 13:04:00 
+ Tagging Date:  2017-08-28 13:28:00 
+ Tagging Date:  2017-08-28 13:44:00 
+ Tagging Date:  2017-08-28 22:39:00 
+ Tagging Date:  2017-08-29 08:02:00 
+ Tagging Date:  2017-08-29 12:46:00 
+ Tagging Date:  2017-06-24 20:47:00 
+ Tagging Date:  2017-06-24 21:01:00 
+ Tagging Date:  2017-06-24 21:19:00 
+ Tagging Date:  2017-06-24 22:08:00 
+ Tagging Date:  2017-06-24 22:33:00 
+ Tagging Date:  2017-06-25 19:24:00 
+ Tagging Date:  2017-06-25 22:36:00 
+ Tagging Date:  2017-06-26 00:42:00 
+ Tagging Date:  2017-06-26 01:48:00 
+ Tagging Date:  2017-08-28 08:14:00 
+ Tagging Date:  2017-08-28 09:29:00 
+ Tagging Date:  2018-01-11 17:59:00 
+ Tagging Date:  2018-01-11 18:32:00 
+ Tagging Date:  2017-06-24 21:06:00 
+ Tagging Date:  2017-01-13 14:29:00 
+ Tagging Date:  2017-03-18 04:32:00 
+ Tagging Date:  2017-03-18 11:16:00 
+ Tagging Date:  2017-03-18 14:30:00 
+ Tagging Date:  2017-03-18 13:54:00 
+ Tagging Date:  2017-03-18 14:51:00 
+ Tagging Date:  2017-03-18 15:32:00 
+ Tagging Date:  2017-08-28 10:49:00 
+ Tagging Date:  2017-08-29 17:44:00 
+Tagging Location:  Makapuu 
+Day of First Detected:  2017-08-29 14:10:25 
+Day of Last Detection:  2018-02-03 
+Days at Liberty:  224 
+Track Length:  2018-02-03 
+Unique Days Detected:  25 
+Number of Detections (Total):  66 
+Number of Detections / Day at Liberty:  0.320388349514563 
+Number of Detections / Day Detected:  2.64 
+Number of Receivers Detected (Total):  1 
+Number of receivers Detected / Days at Liberty:  0.00446428571428571 
+Movements from inside to outside BRFA (Total):  0 
+Movements from inside to outside BRFA / Day:  0 
+Movements from outside to inside BRFA (Total):  0 
+Movements from outside to inside BRFA / Day:  0 
+Time in BRFA:  222.69 
+Time out of BRFA:  0 
+Approximate Distance Tracked (Total):  0.67 km 
+Approximate Distance Tracked / Day:  0.00299107142857143 km 
+Unique Stations_Detected 1 
+Area of detected homerange 30734 km^2
+
+Transmitter ID:  30707 
+Species:  Opakapaka 
+Fork Length:  40  cm 
+Tagging Date:  2018-01-09 12:24:00 
+ Tagging Date:  2018-01-09 12:54:00 
+ Tagging Date:  2018-01-09 13:18:00 
+ Tagging Date:  2018-01-09 13:25:00 
+ Tagging Date:  2018-01-09 13:59:00 
+ Tagging Date:  2018-01-09 14:31:00 
+ Tagging Date:  2018-01-10 14:58:00 
+ Tagging Date:  2018-01-11 14:35:00 
+ Tagging Date:  2018-01-11 14:10:00 
+ Tagging Date:  2018-01-11 14:18:00 
+ Tagging Date:  2018-01-11 11:01:00 
+ Tagging Date:  2018-01-11 13:14:00 
+ Tagging Date:  2017-08-28 13:04:00 
+ Tagging Date:  2017-08-28 13:28:00 
+ Tagging Date:  2017-08-28 13:44:00 
+ Tagging Date:  2017-08-28 22:39:00 
+ Tagging Date:  2017-08-29 08:02:00 
+ Tagging Date:  2017-08-29 12:46:00 
+ Tagging Date:  2017-06-24 20:47:00 
+ Tagging Date:  2017-06-24 21:01:00 
+ Tagging Date:  2017-06-24 21:19:00 
+ Tagging Date:  2017-06-24 22:08:00 
+ Tagging Date:  2017-06-24 22:33:00 
+ Tagging Date:  2017-06-25 19:24:00 
+ Tagging Date:  2017-06-25 22:36:00 
+ Tagging Date:  2017-06-26 00:42:00 
+ Tagging Date:  2017-06-26 01:48:00 
+ Tagging Date:  2017-08-28 08:14:00 
+ Tagging Date:  2017-08-28 09:29:00 
+ Tagging Date:  2018-01-11 17:59:00 
+ Tagging Date:  2018-01-11 18:32:00 
+ Tagging Date:  2017-06-24 21:06:00 
+ Tagging Date:  2017-01-13 14:29:00 
+ Tagging Date:  2017-03-18 04:32:00 
+ Tagging Date:  2017-03-18 11:16:00 
+ Tagging Date:  2017-03-18 14:30:00 
+ Tagging Date:  2017-03-18 13:54:00 
+ Tagging Date:  2017-03-18 14:51:00 
+ Tagging Date:  2017-03-18 15:32:00 
+ Tagging Date:  2017-08-28 10:49:00 
+ Tagging Date:  2017-08-29 17:44:00 
+Tagging Location:  Makapuu 
+Day of First Detected:  2017-08-29 18:12:59 
+Day of Last Detection:  2017-10-24 
+Days at Liberty:  121 
+Track Length:  2017-10-24 
+Unique Days Detected:  24 
+Number of Detections (Total):  77 
+Number of Detections / Day at Liberty:  0.636363636363636 
+Number of Detections / Day Detected:  3.20833333333333 
+Number of Receivers Detected (Total):  1 
+Number of receivers Detected / Days at Liberty:  0.00826446280991736 
+Movements from inside to outside BRFA (Total):  0 
+Movements from inside to outside BRFA / Day:  0 
+Movements from outside to inside BRFA (Total):  0 
+Movements from outside to inside BRFA / Day:  0 
+Time in BRFA:  120.84 
+Time out of BRFA:  0 
+Approximate Distance Tracked (Total):  0.82 km 
+Approximate Distance Tracked / Day:  0.00677685950413223 km 
+Unique Stations_Detected 1 
+Area of detected homerange 30739 km^2
+
+Transmitter ID:  51598 
+Species:  Opakapaka 
+Fork Length:  47  cm 
+Tagging Date:  2018-01-09 12:24:00 
+ Tagging Date:  2018-01-09 12:54:00 
+ Tagging Date:  2018-01-09 13:18:00 
+ Tagging Date:  2018-01-09 13:25:00 
+ Tagging Date:  2018-01-09 13:59:00 
+ Tagging Date:  2018-01-09 14:31:00 
+ Tagging Date:  2018-01-10 14:58:00 
+ Tagging Date:  2018-01-11 14:35:00 
+ Tagging Date:  2018-01-11 14:10:00 
+ Tagging Date:  2018-01-11 14:18:00 
+ Tagging Date:  2018-01-11 11:01:00 
+ Tagging Date:  2018-01-11 13:14:00 
+ Tagging Date:  2017-08-28 13:04:00 
+ Tagging Date:  2017-08-28 13:28:00 
+ Tagging Date:  2017-08-28 13:44:00 
+ Tagging Date:  2017-08-28 22:39:00 
+ Tagging Date:  2017-08-29 08:02:00 
+ Tagging Date:  2017-08-29 12:46:00 
+ Tagging Date:  2017-06-24 20:47:00 
+ Tagging Date:  2017-06-24 21:01:00 
+ Tagging Date:  2017-06-24 21:19:00 
+ Tagging Date:  2017-06-24 22:08:00 
+ Tagging Date:  2017-06-24 22:33:00 
+ Tagging Date:  2017-06-25 19:24:00 
+ Tagging Date:  2017-06-25 22:36:00 
+ Tagging Date:  2017-06-26 00:42:00 
+ Tagging Date:  2017-06-26 01:48:00 
+ Tagging Date:  2017-08-28 08:14:00 
+ Tagging Date:  2017-08-28 09:29:00 
+ Tagging Date:  2018-01-11 17:59:00 
+ Tagging Date:  2018-01-11 18:32:00 
+ Tagging Date:  2017-06-24 21:06:00 
+ Tagging Date:  2017-01-13 14:29:00 
+ Tagging Date:  2017-03-18 04:32:00 
+ Tagging Date:  2017-03-18 11:16:00 
+ Tagging Date:  2017-03-18 14:30:00 
+ Tagging Date:  2017-03-18 13:54:00 
+ Tagging Date:  2017-03-18 14:51:00 
+ Tagging Date:  2017-03-18 15:32:00 
+ Tagging Date:  2017-08-28 10:49:00 
+ Tagging Date:  2017-08-29 17:44:00 
+Tagging Location:  Makapuu 
+Day of First Detected:  2017-09-03 09:41:08 
+Day of Last Detection:  2017-11-18 
+Days at Liberty:  146 
+Track Length:  2017-11-18 
+Unique Days Detected:  24 
+Number of Detections (Total):  198 
+Number of Detections / Day at Liberty:  1.72173913043478 
+Number of Detections / Day Detected:  8.25 
+Number of Receivers Detected (Total):  1 
+Number of receivers Detected / Days at Liberty:  0.00684931506849315 
+Movements from inside to outside BRFA (Total):  0 
+Movements from inside to outside BRFA / Day:  0 
+Movements from outside to inside BRFA (Total):  0 
+Movements from outside to inside BRFA / Day:  0 
+Time in BRFA:  145.54 
+Time out of BRFA:  0 
+Approximate Distance Tracked (Total):  0.73 km 
+Approximate Distance Tracked / Day:  0.005 km 
+Unique Stations_Detected 1 
+Area of detected homerange 30742 km^2
+
+Transmitter ID:  2122 
+Species:  Opakapaka 
+Fork Length:  43  cm 
+Tagging Date:  2018-01-09 12:24:00 
+ Tagging Date:  2018-01-09 12:54:00 
+ Tagging Date:  2018-01-09 13:18:00 
+ Tagging Date:  2018-01-09 13:25:00 
+ Tagging Date:  2018-01-09 13:59:00 
+ Tagging Date:  2018-01-09 14:31:00 
+ Tagging Date:  2018-01-10 14:58:00 
+ Tagging Date:  2018-01-11 14:35:00 
+ Tagging Date:  2018-01-11 14:10:00 
+ Tagging Date:  2018-01-11 14:18:00 
+ Tagging Date:  2018-01-11 11:01:00 
+ Tagging Date:  2018-01-11 13:14:00 
+ Tagging Date:  2017-08-28 13:04:00 
+ Tagging Date:  2017-08-28 13:28:00 
+ Tagging Date:  2017-08-28 13:44:00 
+ Tagging Date:  2017-08-28 22:39:00 
+ Tagging Date:  2017-08-29 08:02:00 
+ Tagging Date:  2017-08-29 12:46:00 
+ Tagging Date:  2017-06-24 20:47:00 
+ Tagging Date:  2017-06-24 21:01:00 
+ Tagging Date:  2017-06-24 21:19:00 
+ Tagging Date:  2017-06-24 22:08:00 
+ Tagging Date:  2017-06-24 22:33:00 
+ Tagging Date:  2017-06-25 19:24:00 
+ Tagging Date:  2017-06-25 22:36:00 
+ Tagging Date:  2017-06-26 00:42:00 
+ Tagging Date:  2017-06-26 01:48:00 
+ Tagging Date:  2017-08-28 08:14:00 
+ Tagging Date:  2017-08-28 09:29:00 
+ Tagging Date:  2018-01-11 17:59:00 
+ Tagging Date:  2018-01-11 18:32:00 
+ Tagging Date:  2017-06-24 21:06:00 
+ Tagging Date:  2017-01-13 14:29:00 
+ Tagging Date:  2017-03-18 04:32:00 
+ Tagging Date:  2017-03-18 11:16:00 
+ Tagging Date:  2017-03-18 14:30:00 
+ Tagging Date:  2017-03-18 13:54:00 
+ Tagging Date:  2017-03-18 14:51:00 
+ Tagging Date:  2017-03-18 15:32:00 
+ Tagging Date:  2017-08-28 10:49:00 
+ Tagging Date:  2017-08-29 17:44:00 
+Tagging Location:  Makapuu 
+Day of First Detected:  2018-01-09 12:57:45 
+Day of Last Detection:  2018-04-14 
+Days at Liberty:  230 
+Track Length:  2018-04-14 
+Unique Days Detected:  220 
+Number of Detections (Total):  20883 
+Number of Detections / Day at Liberty:  90.795652173913 
+Number of Detections / Day Detected:  94.9227272727273 
+Number of Receivers Detected (Total):  1 
+Number of receivers Detected / Days at Liberty:  0.00434782608695652 
+Movements from inside to outside BRFA (Total):  0 
+Movements from inside to outside BRFA / Day:  0 
+Movements from outside to inside BRFA (Total):  0 
+Movements from outside to inside BRFA / Day:  0 
+Time in BRFA:  229.57 
+Time out of BRFA:  0 
+Approximate Distance Tracked (Total):  0.28 km 
+Approximate Distance Tracked / Day:  0.00121739130434783 km 
+Unique Stations_Detected 1 
+Area of detected homerange 30743 km^2
+
+Transmitter ID:  2127 
+Species:  Opakapaka 
+Fork Length:  44  cm 
+Tagging Date:  2018-01-09 12:24:00 
+ Tagging Date:  2018-01-09 12:54:00 
+ Tagging Date:  2018-01-09 13:18:00 
+ Tagging Date:  2018-01-09 13:25:00 
+ Tagging Date:  2018-01-09 13:59:00 
+ Tagging Date:  2018-01-09 14:31:00 
+ Tagging Date:  2018-01-10 14:58:00 
+ Tagging Date:  2018-01-11 14:35:00 
+ Tagging Date:  2018-01-11 14:10:00 
+ Tagging Date:  2018-01-11 14:18:00 
+ Tagging Date:  2018-01-11 11:01:00 
+ Tagging Date:  2018-01-11 13:14:00 
+ Tagging Date:  2017-08-28 13:04:00 
+ Tagging Date:  2017-08-28 13:28:00 
+ Tagging Date:  2017-08-28 13:44:00 
+ Tagging Date:  2017-08-28 22:39:00 
+ Tagging Date:  2017-08-29 08:02:00 
+ Tagging Date:  2017-08-29 12:46:00 
+ Tagging Date:  2017-06-24 20:47:00 
+ Tagging Date:  2017-06-24 21:01:00 
+ Tagging Date:  2017-06-24 21:19:00 
+ Tagging Date:  2017-06-24 22:08:00 
+ Tagging Date:  2017-06-24 22:33:00 
+ Tagging Date:  2017-06-25 19:24:00 
+ Tagging Date:  2017-06-25 22:36:00 
+ Tagging Date:  2017-06-26 00:42:00 
+ Tagging Date:  2017-06-26 01:48:00 
+ Tagging Date:  2017-08-28 08:14:00 
+ Tagging Date:  2017-08-28 09:29:00 
+ Tagging Date:  2018-01-11 17:59:00 
+ Tagging Date:  2018-01-11 18:32:00 
+ Tagging Date:  2017-06-24 21:06:00 
+ Tagging Date:  2017-01-13 14:29:00 
+ Tagging Date:  2017-03-18 04:32:00 
+ Tagging Date:  2017-03-18 11:16:00 
+ Tagging Date:  2017-03-18 14:30:00 
+ Tagging Date:  2017-03-18 13:54:00 
+ Tagging Date:  2017-03-18 14:51:00 
+ Tagging Date:  2017-03-18 15:32:00 
+ Tagging Date:  2017-08-28 10:49:00 
+ Tagging Date:  2017-08-29 17:44:00 
+Tagging Location:  Makapuu 
+Day of First Detected:  2018-01-10 00:58:50 
+Day of Last Detection:  2018-02-19 
+Days at Liberty:  176 
+Track Length:  2018-02-19 
+Unique Days Detected:  172 
+Number of Detections (Total):  22474 
+Number of Detections / Day at Liberty:  127.693181818182 
+Number of Detections / Day Detected:  130.662790697674 
+Number of Receivers Detected (Total):  3 
+Number of receivers Detected / Days at Liberty:  0.0170454545454545 
+Movements from inside to outside BRFA (Total):  0 
+Movements from inside to outside BRFA / Day:  0 
+Movements from outside to inside BRFA (Total):  0 
+Movements from outside to inside BRFA / Day:  0 
+Time in BRFA:  175.26 
+Time out of BRFA:  0 
+Approximate Distance Tracked (Total):  312.93 km 
+Approximate Distance Tracked / Day:  1.77801136363636 km 
+Unique Stations_Detected 3 
+Area of detected homerange 30747 km^2
+
+Transmitter ID:  2133 
+Species:  Opakapaka 
+Fork Length:  61  cm 
+Tagging Date:  2018-01-09 12:24:00 
+ Tagging Date:  2018-01-09 12:54:00 
+ Tagging Date:  2018-01-09 13:18:00 
+ Tagging Date:  2018-01-09 13:25:00 
+ Tagging Date:  2018-01-09 13:59:00 
+ Tagging Date:  2018-01-09 14:31:00 
+ Tagging Date:  2018-01-10 14:58:00 
+ Tagging Date:  2018-01-11 14:35:00 
+ Tagging Date:  2018-01-11 14:10:00 
+ Tagging Date:  2018-01-11 14:18:00 
+ Tagging Date:  2018-01-11 11:01:00 
+ Tagging Date:  2018-01-11 13:14:00 
+ Tagging Date:  2017-08-28 13:04:00 
+ Tagging Date:  2017-08-28 13:28:00 
+ Tagging Date:  2017-08-28 13:44:00 
+ Tagging Date:  2017-08-28 22:39:00 
+ Tagging Date:  2017-08-29 08:02:00 
+ Tagging Date:  2017-08-29 12:46:00 
+ Tagging Date:  2017-06-24 20:47:00 
+ Tagging Date:  2017-06-24 21:01:00 
+ Tagging Date:  2017-06-24 21:19:00 
+ Tagging Date:  2017-06-24 22:08:00 
+ Tagging Date:  2017-06-24 22:33:00 
+ Tagging Date:  2017-06-25 19:24:00 
+ Tagging Date:  2017-06-25 22:36:00 
+ Tagging Date:  2017-06-26 00:42:00 
+ Tagging Date:  2017-06-26 01:48:00 
+ Tagging Date:  2017-08-28 08:14:00 
+ Tagging Date:  2017-08-28 09:29:00 
+ Tagging Date:  2018-01-11 17:59:00 
+ Tagging Date:  2018-01-11 18:32:00 
+ Tagging Date:  2017-06-24 21:06:00 
+ Tagging Date:  2017-01-13 14:29:00 
+ Tagging Date:  2017-03-18 04:32:00 
+ Tagging Date:  2017-03-18 11:16:00 
+ Tagging Date:  2017-03-18 14:30:00 
+ Tagging Date:  2017-03-18 13:54:00 
+ Tagging Date:  2017-03-18 14:51:00 
+ Tagging Date:  2017-03-18 15:32:00 
+ Tagging Date:  2017-08-28 10:49:00 
+ Tagging Date:  2017-08-29 17:44:00 
+Tagging Location:  Makapuu 
+Day of First Detected:  2018-01-10 00:04:08 
+Day of Last Detection:  2018-03-15 
+Days at Liberty:  64 
+Track Length:  2018-03-15 
+Unique Days Detected:  31 
+Number of Detections (Total):  98 
+Number of Detections / Day at Liberty:  1.55555555555556 
+Number of Detections / Day Detected:  3.16129032258065 
+Number of Receivers Detected (Total):  1 
+Number of receivers Detected / Days at Liberty:  0.015625 
+Movements from inside to outside BRFA (Total):  0 
+Movements from inside to outside BRFA / Day:  0 
+Movements from outside to inside BRFA (Total):  0 
+Movements from outside to inside BRFA / Day:  0 
+Time in BRFA:  63.06 
+Time out of BRFA:  0 
+Approximate Distance Tracked (Total):  0.96 km 
+Approximate Distance Tracked / Day:  0.015 km 
+Unique Stations_Detected 1 
+Area of detected homerange 30749 km^2
+
+Transmitter ID:  2136 
+Species:  Opakapaka 
+Fork Length:  70  cm 
+Tagging Date:  2018-01-09 12:24:00 
+ Tagging Date:  2018-01-09 12:54:00 
+ Tagging Date:  2018-01-09 13:18:00 
+ Tagging Date:  2018-01-09 13:25:00 
+ Tagging Date:  2018-01-09 13:59:00 
+ Tagging Date:  2018-01-09 14:31:00 
+ Tagging Date:  2018-01-10 14:58:00 
+ Tagging Date:  2018-01-11 14:35:00 
+ Tagging Date:  2018-01-11 14:10:00 
+ Tagging Date:  2018-01-11 14:18:00 
+ Tagging Date:  2018-01-11 11:01:00 
+ Tagging Date:  2018-01-11 13:14:00 
+ Tagging Date:  2017-08-28 13:04:00 
+ Tagging Date:  2017-08-28 13:28:00 
+ Tagging Date:  2017-08-28 13:44:00 
+ Tagging Date:  2017-08-28 22:39:00 
+ Tagging Date:  2017-08-29 08:02:00 
+ Tagging Date:  2017-08-29 12:46:00 
+ Tagging Date:  2017-06-24 20:47:00 
+ Tagging Date:  2017-06-24 21:01:00 
+ Tagging Date:  2017-06-24 21:19:00 
+ Tagging Date:  2017-06-24 22:08:00 
+ Tagging Date:  2017-06-24 22:33:00 
+ Tagging Date:  2017-06-25 19:24:00 
+ Tagging Date:  2017-06-25 22:36:00 
+ Tagging Date:  2017-06-26 00:42:00 
+ Tagging Date:  2017-06-26 01:48:00 
+ Tagging Date:  2017-08-28 08:14:00 
+ Tagging Date:  2017-08-28 09:29:00 
+ Tagging Date:  2018-01-11 17:59:00 
+ Tagging Date:  2018-01-11 18:32:00 
+ Tagging Date:  2017-06-24 21:06:00 
+ Tagging Date:  2017-01-13 14:29:00 
+ Tagging Date:  2017-03-18 04:32:00 
+ Tagging Date:  2017-03-18 11:16:00 
+ Tagging Date:  2017-03-18 14:30:00 
+ Tagging Date:  2017-03-18 13:54:00 
+ Tagging Date:  2017-03-18 14:51:00 
+ Tagging Date:  2017-03-18 15:32:00 
+ Tagging Date:  2017-08-28 10:49:00 
+ Tagging Date:  2017-08-29 17:44:00 
+Tagging Location:  Makapuu 
+Day of First Detected:  2018-01-09 20:13:23 
+Day of Last Detection:  2018-02-19 
+Days at Liberty:  40 
+Track Length:  2018-02-19 
+Unique Days Detected:  22 
+Number of Detections (Total):  302 
+Number of Detections / Day at Liberty:  7.55 
+Number of Detections / Day Detected:  13.7272727272727 
+Number of Receivers Detected (Total):  1 
+Number of receivers Detected / Days at Liberty:  0.025 
+Movements from inside to outside BRFA (Total):  0 
+Movements from inside to outside BRFA / Day:  0 
+Movements from outside to inside BRFA (Total):  0 
+Movements from outside to inside BRFA / Day:  0 
+Time in BRFA:  38.9 
+Time out of BRFA:  0 
+Approximate Distance Tracked (Total):  1.57 km 
+Approximate Distance Tracked / Day:  0.03925 km 
+Unique Stations_Detected 1 
+Area of detected homerange 30751 km^2
+
+Transmitter ID:  2139 
+Species:  Opakapaka 
+Fork Length:  44  cm 
+Tagging Date:  2018-01-09 12:24:00 
+ Tagging Date:  2018-01-09 12:54:00 
+ Tagging Date:  2018-01-09 13:18:00 
+ Tagging Date:  2018-01-09 13:25:00 
+ Tagging Date:  2018-01-09 13:59:00 
+ Tagging Date:  2018-01-09 14:31:00 
+ Tagging Date:  2018-01-10 14:58:00 
+ Tagging Date:  2018-01-11 14:35:00 
+ Tagging Date:  2018-01-11 14:10:00 
+ Tagging Date:  2018-01-11 14:18:00 
+ Tagging Date:  2018-01-11 11:01:00 
+ Tagging Date:  2018-01-11 13:14:00 
+ Tagging Date:  2017-08-28 13:04:00 
+ Tagging Date:  2017-08-28 13:28:00 
+ Tagging Date:  2017-08-28 13:44:00 
+ Tagging Date:  2017-08-28 22:39:00 
+ Tagging Date:  2017-08-29 08:02:00 
+ Tagging Date:  2017-08-29 12:46:00 
+ Tagging Date:  2017-06-24 20:47:00 
+ Tagging Date:  2017-06-24 21:01:00 
+ Tagging Date:  2017-06-24 21:19:00 
+ Tagging Date:  2017-06-24 22:08:00 
+ Tagging Date:  2017-06-24 22:33:00 
+ Tagging Date:  2017-06-25 19:24:00 
+ Tagging Date:  2017-06-25 22:36:00 
+ Tagging Date:  2017-06-26 00:42:00 
+ Tagging Date:  2017-06-26 01:48:00 
+ Tagging Date:  2017-08-28 08:14:00 
+ Tagging Date:  2017-08-28 09:29:00 
+ Tagging Date:  2018-01-11 17:59:00 
+ Tagging Date:  2018-01-11 18:32:00 
+ Tagging Date:  2017-06-24 21:06:00 
+ Tagging Date:  2017-01-13 14:29:00 
+ Tagging Date:  2017-03-18 04:32:00 
+ Tagging Date:  2017-03-18 11:16:00 
+ Tagging Date:  2017-03-18 14:30:00 
+ Tagging Date:  2017-03-18 13:54:00 
+ Tagging Date:  2017-03-18 14:51:00 
+ Tagging Date:  2017-03-18 15:32:00 
+ Tagging Date:  2017-08-28 10:49:00 
+ Tagging Date:  2017-08-29 17:44:00 
+Tagging Location:  Makapuu 
+Day of First Detected:  2018-01-09 14:19:06 
+Day of Last Detection:  2018-03-29 
+Days at Liberty:  279 
+Track Length:  2018-03-29 
+Unique Days Detected:  28 
+Number of Detections (Total):  853 
+Number of Detections / Day at Liberty:  3.07942238267148 
+Number of Detections / Day Detected:  30.4642857142857 
+Number of Receivers Detected (Total):  1 
+Number of receivers Detected / Days at Liberty:  0.003584229390681 
+Movements from inside to outside BRFA (Total):  0 
+Movements from inside to outside BRFA / Day:  0 
+Movements from outside to inside BRFA (Total):  0 
+Movements from outside to inside BRFA / Day:  0 
+Time in BRFA:  277.58 
+Time out of BRFA:  0 
+Approximate Distance Tracked (Total):  0.4 km 
+Approximate Distance Tracked / Day:  0.0014336917562724 km 
+Unique Stations_Detected 1 
+Area of detected homerange 36810 km^2
+
+Transmitter ID:  2140 
+Species:  Opakapaka 
+Fork Length:  61.5  cm 
+Tagging Date:  2018-01-09 12:24:00 
+ Tagging Date:  2018-01-09 12:54:00 
+ Tagging Date:  2018-01-09 13:18:00 
+ Tagging Date:  2018-01-09 13:25:00 
+ Tagging Date:  2018-01-09 13:59:00 
+ Tagging Date:  2018-01-09 14:31:00 
+ Tagging Date:  2018-01-10 14:58:00 
+ Tagging Date:  2018-01-11 14:35:00 
+ Tagging Date:  2018-01-11 14:10:00 
+ Tagging Date:  2018-01-11 14:18:00 
+ Tagging Date:  2018-01-11 11:01:00 
+ Tagging Date:  2018-01-11 13:14:00 
+ Tagging Date:  2017-08-28 13:04:00 
+ Tagging Date:  2017-08-28 13:28:00 
+ Tagging Date:  2017-08-28 13:44:00 
+ Tagging Date:  2017-08-28 22:39:00 
+ Tagging Date:  2017-08-29 08:02:00 
+ Tagging Date:  2017-08-29 12:46:00 
+ Tagging Date:  2017-06-24 20:47:00 
+ Tagging Date:  2017-06-24 21:01:00 
+ Tagging Date:  2017-06-24 21:19:00 
+ Tagging Date:  2017-06-24 22:08:00 
+ Tagging Date:  2017-06-24 22:33:00 
+ Tagging Date:  2017-06-25 19:24:00 
+ Tagging Date:  2017-06-25 22:36:00 
+ Tagging Date:  2017-06-26 00:42:00 
+ Tagging Date:  2017-06-26 01:48:00 
+ Tagging Date:  2017-08-28 08:14:00 
+ Tagging Date:  2017-08-28 09:29:00 
+ Tagging Date:  2018-01-11 17:59:00 
+ Tagging Date:  2018-01-11 18:32:00 
+ Tagging Date:  2017-06-24 21:06:00 
+ Tagging Date:  2017-01-13 14:29:00 
+ Tagging Date:  2017-03-18 04:32:00 
+ Tagging Date:  2017-03-18 11:16:00 
+ Tagging Date:  2017-03-18 14:30:00 
+ Tagging Date:  2017-03-18 13:54:00 
+ Tagging Date:  2017-03-18 14:51:00 
+ Tagging Date:  2017-03-18 15:32:00 
+ Tagging Date:  2017-08-28 10:49:00 
+ Tagging Date:  2017-08-29 17:44:00 
+Tagging Location:  Makapuu 
+Day of First Detected:  2018-01-09 14:37:24 
+Day of Last Detection:  2018-04-13 
+Days at Liberty:  456 
+Track Length:  2018-04-13 
+Unique Days Detected:  247 
+Number of Detections (Total):  21695 
+Number of Detections / Day at Liberty:  74.2979452054795 
+Number of Detections / Day Detected:  87.834008097166 
+Number of Receivers Detected (Total):  1 
+Number of receivers Detected / Days at Liberty:  0.00219298245614035 
+Movements from inside to outside BRFA (Total):  0 
+Movements from inside to outside BRFA / Day:  0 
+Movements from outside to inside BRFA (Total):  0 
+Movements from outside to inside BRFA / Day:  0 
+Time in BRFA:  455.16 
+Time out of BRFA:  0 
+Approximate Distance Tracked (Total):  0.58 km 
+Approximate Distance Tracked / Day:  0.0012719298245614 km 
+Unique Stations_Detected 1 
+Area of detected homerange 51581 km^2
+
+Transmitter ID:  2157 
+Species:  Opakapaka 
+Fork Length:  41  cm 
+Tagging Date:  2018-01-09 12:24:00 
+ Tagging Date:  2018-01-09 12:54:00 
+ Tagging Date:  2018-01-09 13:18:00 
+ Tagging Date:  2018-01-09 13:25:00 
+ Tagging Date:  2018-01-09 13:59:00 
+ Tagging Date:  2018-01-09 14:31:00 
+ Tagging Date:  2018-01-10 14:58:00 
+ Tagging Date:  2018-01-11 14:35:00 
+ Tagging Date:  2018-01-11 14:10:00 
+ Tagging Date:  2018-01-11 14:18:00 
+ Tagging Date:  2018-01-11 11:01:00 
+ Tagging Date:  2018-01-11 13:14:00 
+ Tagging Date:  2017-08-28 13:04:00 
+ Tagging Date:  2017-08-28 13:28:00 
+ Tagging Date:  2017-08-28 13:44:00 
+ Tagging Date:  2017-08-28 22:39:00 
+ Tagging Date:  2017-08-29 08:02:00 
+ Tagging Date:  2017-08-29 12:46:00 
+ Tagging Date:  2017-06-24 20:47:00 
+ Tagging Date:  2017-06-24 21:01:00 
+ Tagging Date:  2017-06-24 21:19:00 
+ Tagging Date:  2017-06-24 22:08:00 
+ Tagging Date:  2017-06-24 22:33:00 
+ Tagging Date:  2017-06-25 19:24:00 
+ Tagging Date:  2017-06-25 22:36:00 
+ Tagging Date:  2017-06-26 00:42:00 
+ Tagging Date:  2017-06-26 01:48:00 
+ Tagging Date:  2017-08-28 08:14:00 
+ Tagging Date:  2017-08-28 09:29:00 
+ Tagging Date:  2018-01-11 17:59:00 
+ Tagging Date:  2018-01-11 18:32:00 
+ Tagging Date:  2017-06-24 21:06:00 
+ Tagging Date:  2017-01-13 14:29:00 
+ Tagging Date:  2017-03-18 04:32:00 
+ Tagging Date:  2017-03-18 11:16:00 
+ Tagging Date:  2017-03-18 14:30:00 
+ Tagging Date:  2017-03-18 13:54:00 
+ Tagging Date:  2017-03-18 14:51:00 
+ Tagging Date:  2017-03-18 15:32:00 
+ Tagging Date:  2017-08-28 10:49:00 
+ Tagging Date:  2017-08-29 17:44:00 
+Tagging Location:  Makapuu 
+Day of First Detected:  2018-01-10 16:38:10 
+Day of Last Detection:  2018-04-01 
+Days at Liberty:  380 
+Track Length:  2018-04-01 
+Unique Days Detected:  222 
+Number of Detections (Total):  8109 
+Number of Detections / Day at Liberty:  28.9607142857143 
+Number of Detections / Day Detected:  36.527027027027 
+Number of Receivers Detected (Total):  3 
+Number of receivers Detected / Days at Liberty:  0.00789473684210526 
+Movements from inside to outside BRFA (Total):  0 
+Movements from inside to outside BRFA / Day:  0 
+Movements from outside to inside BRFA (Total):  0 
+Movements from outside to inside BRFA / Day:  0 
+Time in BRFA:  379.47 
+Time out of BRFA:  0 
+Approximate Distance Tracked (Total):  37.62 km 
+Approximate Distance Tracked / Day:  0.099 km 
+Unique Stations_Detected 3 
+Area of detected homerange 51582 km^2
+
+Transmitter ID:  28181 
+Species:  Opakapaka 
+Fork Length:  51  cm 
+Tagging Date:  2018-01-09 12:24:00 
+ Tagging Date:  2018-01-09 12:54:00 
+ Tagging Date:  2018-01-09 13:18:00 
+ Tagging Date:  2018-01-09 13:25:00 
+ Tagging Date:  2018-01-09 13:59:00 
+ Tagging Date:  2018-01-09 14:31:00 
+ Tagging Date:  2018-01-10 14:58:00 
+ Tagging Date:  2018-01-11 14:35:00 
+ Tagging Date:  2018-01-11 14:10:00 
+ Tagging Date:  2018-01-11 14:18:00 
+ Tagging Date:  2018-01-11 11:01:00 
+ Tagging Date:  2018-01-11 13:14:00 
+ Tagging Date:  2017-08-28 13:04:00 
+ Tagging Date:  2017-08-28 13:28:00 
+ Tagging Date:  2017-08-28 13:44:00 
+ Tagging Date:  2017-08-28 22:39:00 
+ Tagging Date:  2017-08-29 08:02:00 
+ Tagging Date:  2017-08-29 12:46:00 
+ Tagging Date:  2017-06-24 20:47:00 
+ Tagging Date:  2017-06-24 21:01:00 
+ Tagging Date:  2017-06-24 21:19:00 
+ Tagging Date:  2017-06-24 22:08:00 
+ Tagging Date:  2017-06-24 22:33:00 
+ Tagging Date:  2017-06-25 19:24:00 
+ Tagging Date:  2017-06-25 22:36:00 
+ Tagging Date:  2017-06-26 00:42:00 
+ Tagging Date:  2017-06-26 01:48:00 
+ Tagging Date:  2017-08-28 08:14:00 
+ Tagging Date:  2017-08-28 09:29:00 
+ Tagging Date:  2018-01-11 17:59:00 
+ Tagging Date:  2018-01-11 18:32:00 
+ Tagging Date:  2017-06-24 21:06:00 
+ Tagging Date:  2017-01-13 14:29:00 
+ Tagging Date:  2017-03-18 04:32:00 
+ Tagging Date:  2017-03-18 11:16:00 
+ Tagging Date:  2017-03-18 14:30:00 
+ Tagging Date:  2017-03-18 13:54:00 
+ Tagging Date:  2017-03-18 14:51:00 
+ Tagging Date:  2017-03-18 15:32:00 
+ Tagging Date:  2017-08-28 10:49:00 
+ Tagging Date:  2017-08-29 17:44:00 
+Tagging Location:  Makapuu 
+Day of First Detected:  2018-01-11 15:03:13 
+Day of Last Detection:  2018-04-08 
+Days at Liberty:  387 
+Track Length:  2018-04-08 
+Unique Days Detected:  223 
+Number of Detections (Total):  5240 
+Number of Detections / Day at Liberty:  18.2578397212544 
+Number of Detections / Day Detected:  23.4977578475336 
+Number of Receivers Detected (Total):  1 
+Number of receivers Detected / Days at Liberty:  0.00258397932816537 
+Movements from inside to outside BRFA (Total):  0 
+Movements from inside to outside BRFA / Day:  0 
+Movements from outside to inside BRFA (Total):  0 
+Movements from outside to inside BRFA / Day:  0 
+Time in BRFA:  385.96 
+Time out of BRFA:  0 
+Approximate Distance Tracked (Total):  0.6 km 
+Approximate Distance Tracked / Day:  0.00155038759689922 km 
+Unique Stations_Detected 1 
+Area of detected homerange 51584 km^2
+
+Transmitter ID:  28185 
+Species:  Opakapaka 
+Fork Length:  44  cm 
+Tagging Date:  2018-01-09 12:24:00 
+ Tagging Date:  2018-01-09 12:54:00 
+ Tagging Date:  2018-01-09 13:18:00 
+ Tagging Date:  2018-01-09 13:25:00 
+ Tagging Date:  2018-01-09 13:59:00 
+ Tagging Date:  2018-01-09 14:31:00 
+ Tagging Date:  2018-01-10 14:58:00 
+ Tagging Date:  2018-01-11 14:35:00 
+ Tagging Date:  2018-01-11 14:10:00 
+ Tagging Date:  2018-01-11 14:18:00 
+ Tagging Date:  2018-01-11 11:01:00 
+ Tagging Date:  2018-01-11 13:14:00 
+ Tagging Date:  2017-08-28 13:04:00 
+ Tagging Date:  2017-08-28 13:28:00 
+ Tagging Date:  2017-08-28 13:44:00 
+ Tagging Date:  2017-08-28 22:39:00 
+ Tagging Date:  2017-08-29 08:02:00 
+ Tagging Date:  2017-08-29 12:46:00 
+ Tagging Date:  2017-06-24 20:47:00 
+ Tagging Date:  2017-06-24 21:01:00 
+ Tagging Date:  2017-06-24 21:19:00 
+ Tagging Date:  2017-06-24 22:08:00 
+ Tagging Date:  2017-06-24 22:33:00 
+ Tagging Date:  2017-06-25 19:24:00 
+ Tagging Date:  2017-06-25 22:36:00 
+ Tagging Date:  2017-06-26 00:42:00 
+ Tagging Date:  2017-06-26 01:48:00 
+ Tagging Date:  2017-08-28 08:14:00 
+ Tagging Date:  2017-08-28 09:29:00 
+ Tagging Date:  2018-01-11 17:59:00 
+ Tagging Date:  2018-01-11 18:32:00 
+ Tagging Date:  2017-06-24 21:06:00 
+ Tagging Date:  2017-01-13 14:29:00 
+ Tagging Date:  2017-03-18 04:32:00 
+ Tagging Date:  2017-03-18 11:16:00 
+ Tagging Date:  2017-03-18 14:30:00 
+ Tagging Date:  2017-03-18 13:54:00 
+ Tagging Date:  2017-03-18 14:51:00 
+ Tagging Date:  2017-03-18 15:32:00 
+ Tagging Date:  2017-08-28 10:49:00 
+ Tagging Date:  2017-08-29 17:44:00 
+Tagging Location:  Makapuu 
+Day of First Detected:  2018-01-11 13:33:51 
+Day of Last Detection:  2017-12-16 
+Days at Liberty:  274 
+Track Length:  2017-12-16 
+Unique Days Detected:  43 
+Number of Detections (Total):  144 
+Number of Detections / Day at Liberty:  1.02127659574468 
+Number of Detections / Day Detected:  3.34883720930233 
+Number of Receivers Detected (Total):  1 
+Number of receivers Detected / Days at Liberty:  0.00364963503649635 
+Movements from inside to outside BRFA (Total):  0 
+Movements from inside to outside BRFA / Day:  0 
+Movements from outside to inside BRFA (Total):  0 
+Movements from outside to inside BRFA / Day:  0 
+Time in BRFA:  273.01 
+Time out of BRFA:  0 
+Approximate Distance Tracked (Total):  1.01 km 
+Approximate Distance Tracked / Day:  0.00368613138686131 km 
+Unique Stations_Detected 1 
+Area of detected homerange 51585 km^2
+
+Transmitter ID:  28178 
+Species:  Opakapaka 
+Fork Length:  46  cm 
+Tagging Date:  2018-01-09 12:24:00 
+ Tagging Date:  2018-01-09 12:54:00 
+ Tagging Date:  2018-01-09 13:18:00 
+ Tagging Date:  2018-01-09 13:25:00 
+ Tagging Date:  2018-01-09 13:59:00 
+ Tagging Date:  2018-01-09 14:31:00 
+ Tagging Date:  2018-01-10 14:58:00 
+ Tagging Date:  2018-01-11 14:35:00 
+ Tagging Date:  2018-01-11 14:10:00 
+ Tagging Date:  2018-01-11 14:18:00 
+ Tagging Date:  2018-01-11 11:01:00 
+ Tagging Date:  2018-01-11 13:14:00 
+ Tagging Date:  2017-08-28 13:04:00 
+ Tagging Date:  2017-08-28 13:28:00 
+ Tagging Date:  2017-08-28 13:44:00 
+ Tagging Date:  2017-08-28 22:39:00 
+ Tagging Date:  2017-08-29 08:02:00 
+ Tagging Date:  2017-08-29 12:46:00 
+ Tagging Date:  2017-06-24 20:47:00 
+ Tagging Date:  2017-06-24 21:01:00 
+ Tagging Date:  2017-06-24 21:19:00 
+ Tagging Date:  2017-06-24 22:08:00 
+ Tagging Date:  2017-06-24 22:33:00 
+ Tagging Date:  2017-06-25 19:24:00 
+ Tagging Date:  2017-06-25 22:36:00 
+ Tagging Date:  2017-06-26 00:42:00 
+ Tagging Date:  2017-06-26 01:48:00 
+ Tagging Date:  2017-08-28 08:14:00 
+ Tagging Date:  2017-08-28 09:29:00 
+ Tagging Date:  2018-01-11 17:59:00 
+ Tagging Date:  2018-01-11 18:32:00 
+ Tagging Date:  2017-06-24 21:06:00 
+ Tagging Date:  2017-01-13 14:29:00 
+ Tagging Date:  2017-03-18 04:32:00 
+ Tagging Date:  2017-03-18 11:16:00 
+ Tagging Date:  2017-03-18 14:30:00 
+ Tagging Date:  2017-03-18 13:54:00 
+ Tagging Date:  2017-03-18 14:51:00 
+ Tagging Date:  2017-03-18 15:32:00 
+ Tagging Date:  2017-08-28 10:49:00 
+ Tagging Date:  2017-08-29 17:44:00 
+Tagging Location:  Makapuu 
+Day of First Detected:  2018-01-13 05:03:18 
+Day of Last Detection:  2018-04-14 
+Days at Liberty:  393 
+Track Length:  2018-04-14 
+Unique Days Detected:  293 
+Number of Detections (Total):  27297 
+Number of Detections / Day at Liberty:  93.1638225255973 
+Number of Detections / Day Detected:  93.1638225255973 
+Number of Receivers Detected (Total):  2 
+Number of receivers Detected / Days at Liberty:  0.00508905852417303 
+Movements from inside to outside BRFA (Total):  0 
+Movements from inside to outside BRFA / Day:  0 
+Movements from outside to inside BRFA (Total):  0 
+Movements from outside to inside BRFA / Day:  0 
+Time in BRFA:  392.4 
+Time out of BRFA:  0 
+Approximate Distance Tracked (Total):  565.47 km 
+Approximate Distance Tracked / Day:  1.43885496183206 km 
+Unique Stations_Detected 2 
+Area of detected homerange 51586 km^2
+
+Transmitter ID:  28179 
+Species:  Opakapaka 
+Fork Length:  48  cm 
+Tagging Date:  2018-01-09 12:24:00 
+ Tagging Date:  2018-01-09 12:54:00 
+ Tagging Date:  2018-01-09 13:18:00 
+ Tagging Date:  2018-01-09 13:25:00 
+ Tagging Date:  2018-01-09 13:59:00 
+ Tagging Date:  2018-01-09 14:31:00 
+ Tagging Date:  2018-01-10 14:58:00 
+ Tagging Date:  2018-01-11 14:35:00 
+ Tagging Date:  2018-01-11 14:10:00 
+ Tagging Date:  2018-01-11 14:18:00 
+ Tagging Date:  2018-01-11 11:01:00 
+ Tagging Date:  2018-01-11 13:14:00 
+ Tagging Date:  2017-08-28 13:04:00 
+ Tagging Date:  2017-08-28 13:28:00 
+ Tagging Date:  2017-08-28 13:44:00 
+ Tagging Date:  2017-08-28 22:39:00 
+ Tagging Date:  2017-08-29 08:02:00 
+ Tagging Date:  2017-08-29 12:46:00 
+ Tagging Date:  2017-06-24 20:47:00 
+ Tagging Date:  2017-06-24 21:01:00 
+ Tagging Date:  2017-06-24 21:19:00 
+ Tagging Date:  2017-06-24 22:08:00 
+ Tagging Date:  2017-06-24 22:33:00 
+ Tagging Date:  2017-06-25 19:24:00 
+ Tagging Date:  2017-06-25 22:36:00 
+ Tagging Date:  2017-06-26 00:42:00 
+ Tagging Date:  2017-06-26 01:48:00 
+ Tagging Date:  2017-08-28 08:14:00 
+ Tagging Date:  2017-08-28 09:29:00 
+ Tagging Date:  2018-01-11 17:59:00 
+ Tagging Date:  2018-01-11 18:32:00 
+ Tagging Date:  2017-06-24 21:06:00 
+ Tagging Date:  2017-01-13 14:29:00 
+ Tagging Date:  2017-03-18 04:32:00 
+ Tagging Date:  2017-03-18 11:16:00 
+ Tagging Date:  2017-03-18 14:30:00 
+ Tagging Date:  2017-03-18 13:54:00 
+ Tagging Date:  2017-03-18 14:51:00 
+ Tagging Date:  2017-03-18 15:32:00 
+ Tagging Date:  2017-08-28 10:49:00 
+ Tagging Date:  2017-08-29 17:44:00 
+Tagging Location:  Makapuu 
+Day of First Detected:  2018-01-11 20:09:56 
+Day of Last Detection:  2018-02-03 
+Days at Liberty:  323 
+Track Length:  2018-02-03 
+Unique Days Detected:  67 
+Number of Detections (Total):  297 
+Number of Detections / Day at Liberty:  1.55497382198953 
+Number of Detections / Day Detected:  4.43283582089552 
+Number of Receivers Detected (Total):  1 
+Number of receivers Detected / Days at Liberty:  0.00309597523219814 
+Movements from inside to outside BRFA (Total):  0 
+Movements from inside to outside BRFA / Day:  0 
+Movements from outside to inside BRFA (Total):  0 
+Movements from outside to inside BRFA / Day:  0 
+Time in BRFA:  322.05 
+Time out of BRFA:  0 
+Approximate Distance Tracked (Total):  0.74 km 
+Approximate Distance Tracked / Day:  0.00229102167182663 km 
+Unique Stations_Detected 1 
+Area of detected homerange 51587 km^2
+
+Transmitter ID:  28171 
+Species:  Opakapaka 
+Fork Length:  44  cm 
+Tagging Date:  2018-01-09 12:24:00 
+ Tagging Date:  2018-01-09 12:54:00 
+ Tagging Date:  2018-01-09 13:18:00 
+ Tagging Date:  2018-01-09 13:25:00 
+ Tagging Date:  2018-01-09 13:59:00 
+ Tagging Date:  2018-01-09 14:31:00 
+ Tagging Date:  2018-01-10 14:58:00 
+ Tagging Date:  2018-01-11 14:35:00 
+ Tagging Date:  2018-01-11 14:10:00 
+ Tagging Date:  2018-01-11 14:18:00 
+ Tagging Date:  2018-01-11 11:01:00 
+ Tagging Date:  2018-01-11 13:14:00 
+ Tagging Date:  2017-08-28 13:04:00 
+ Tagging Date:  2017-08-28 13:28:00 
+ Tagging Date:  2017-08-28 13:44:00 
+ Tagging Date:  2017-08-28 22:39:00 
+ Tagging Date:  2017-08-29 08:02:00 
+ Tagging Date:  2017-08-29 12:46:00 
+ Tagging Date:  2017-06-24 20:47:00 
+ Tagging Date:  2017-06-24 21:01:00 
+ Tagging Date:  2017-06-24 21:19:00 
+ Tagging Date:  2017-06-24 22:08:00 
+ Tagging Date:  2017-06-24 22:33:00 
+ Tagging Date:  2017-06-25 19:24:00 
+ Tagging Date:  2017-06-25 22:36:00 
+ Tagging Date:  2017-06-26 00:42:00 
+ Tagging Date:  2017-06-26 01:48:00 
+ Tagging Date:  2017-08-28 08:14:00 
+ Tagging Date:  2017-08-28 09:29:00 
+ Tagging Date:  2018-01-11 17:59:00 
+ Tagging Date:  2018-01-11 18:32:00 
+ Tagging Date:  2017-06-24 21:06:00 
+ Tagging Date:  2017-01-13 14:29:00 
+ Tagging Date:  2017-03-18 04:32:00 
+ Tagging Date:  2017-03-18 11:16:00 
+ Tagging Date:  2017-03-18 14:30:00 
+ Tagging Date:  2017-03-18 13:54:00 
+ Tagging Date:  2017-03-18 14:51:00 
+ Tagging Date:  2017-03-18 15:32:00 
+ Tagging Date:  2017-08-28 10:49:00 
+ Tagging Date:  2017-08-29 17:44:00 
+Tagging Location:  Makapuu 
+Day of First Detected:  2018-01-11 22:40:24 
+Day of Last Detection:  2017-12-28 
+Days at Liberty:  286 
+Track Length:  2017-12-28 
+Unique Days Detected:  186 
+Number of Detections (Total):  16105 
+Number of Detections / Day at Liberty:  86.5860215053764 
+Number of Detections / Day Detected:  86.5860215053764 
+Number of Receivers Detected (Total):  9 
+Number of receivers Detected / Days at Liberty:  0.0314685314685315 
+Movements from inside to outside BRFA (Total):  3 
+Movements from inside to outside BRFA / Day:  0.0104895104895105 
+Movements from outside to inside BRFA (Total):  3 
+Movements from outside to inside BRFA / Day:  0.0104895104895105 
+Time in BRFA:  228.07 
+Time out of BRFA:  56.32 
+Approximate Distance Tracked (Total):  1007.16 km 
+Approximate Distance Tracked / Day:  3.52153846153846 km 
+Unique Stations_Detected 9 
+Area of detected homerange 51588 km^2
+
+Transmitter ID:  30749 
+Species:  Opakapaka 
+Fork Length:  42.5  cm 
+Tagging Date:  2018-01-09 12:24:00 
+ Tagging Date:  2018-01-09 12:54:00 
+ Tagging Date:  2018-01-09 13:18:00 
+ Tagging Date:  2018-01-09 13:25:00 
+ Tagging Date:  2018-01-09 13:59:00 
+ Tagging Date:  2018-01-09 14:31:00 
+ Tagging Date:  2018-01-10 14:58:00 
+ Tagging Date:  2018-01-11 14:35:00 
+ Tagging Date:  2018-01-11 14:10:00 
+ Tagging Date:  2018-01-11 14:18:00 
+ Tagging Date:  2018-01-11 11:01:00 
+ Tagging Date:  2018-01-11 13:14:00 
+ Tagging Date:  2017-08-28 13:04:00 
+ Tagging Date:  2017-08-28 13:28:00 
+ Tagging Date:  2017-08-28 13:44:00 
+ Tagging Date:  2017-08-28 22:39:00 
+ Tagging Date:  2017-08-29 08:02:00 
+ Tagging Date:  2017-08-29 12:46:00 
+ Tagging Date:  2017-06-24 20:47:00 
+ Tagging Date:  2017-06-24 21:01:00 
+ Tagging Date:  2017-06-24 21:19:00 
+ Tagging Date:  2017-06-24 22:08:00 
+ Tagging Date:  2017-06-24 22:33:00 
+ Tagging Date:  2017-06-25 19:24:00 
+ Tagging Date:  2017-06-25 22:36:00 
+ Tagging Date:  2017-06-26 00:42:00 
+ Tagging Date:  2017-06-26 01:48:00 
+ Tagging Date:  2017-08-28 08:14:00 
+ Tagging Date:  2017-08-28 09:29:00 
+ Tagging Date:  2018-01-11 17:59:00 
+ Tagging Date:  2018-01-11 18:32:00 
+ Tagging Date:  2017-06-24 21:06:00 
+ Tagging Date:  2017-01-13 14:29:00 
+ Tagging Date:  2017-03-18 04:32:00 
+ Tagging Date:  2017-03-18 11:16:00 
+ Tagging Date:  2017-03-18 14:30:00 
+ Tagging Date:  2017-03-18 13:54:00 
+ Tagging Date:  2017-03-18 14:51:00 
+ Tagging Date:  2017-03-18 15:32:00 
+ Tagging Date:  2017-08-28 10:49:00 
+ Tagging Date:  2017-08-29 17:44:00 
+Tagging Location:  Makapuu 
+Day of First Detected:  2018-01-12 04:30:44 
+Day of Last Detection:  2018-04-14 
+Days at Liberty:  230 
+Track Length:  2018-04-14 
+Unique Days Detected:  230 
+Number of Detections (Total):  17531 
+Number of Detections / Day at Liberty:  76.2217391304348 
+Number of Detections / Day Detected:  76.2217391304348 
+Number of Receivers Detected (Total):  2 
+Number of receivers Detected / Days at Liberty:  0.00869565217391304 
+Movements from inside to outside BRFA (Total):  0 
+Movements from inside to outside BRFA / Day:  0 
+Movements from outside to inside BRFA (Total):  0 
+Movements from outside to inside BRFA / Day:  0 
+Time in BRFA:  229.54 
+Time out of BRFA:  0 
+Approximate Distance Tracked (Total):  9.35 km 
+Approximate Distance Tracked / Day:  0.0406521739130435 km 
+Unique Stations_Detected 2 
+Area of detected homerange 51596 km^2
+
+Transmitter ID:  30751 
+Species:  Opakapaka 
+Fork Length:  44.5  cm 
+Tagging Date:  2018-01-09 12:24:00 
+ Tagging Date:  2018-01-09 12:54:00 
+ Tagging Date:  2018-01-09 13:18:00 
+ Tagging Date:  2018-01-09 13:25:00 
+ Tagging Date:  2018-01-09 13:59:00 
+ Tagging Date:  2018-01-09 14:31:00 
+ Tagging Date:  2018-01-10 14:58:00 
+ Tagging Date:  2018-01-11 14:35:00 
+ Tagging Date:  2018-01-11 14:10:00 
+ Tagging Date:  2018-01-11 14:18:00 
+ Tagging Date:  2018-01-11 11:01:00 
+ Tagging Date:  2018-01-11 13:14:00 
+ Tagging Date:  2017-08-28 13:04:00 
+ Tagging Date:  2017-08-28 13:28:00 
+ Tagging Date:  2017-08-28 13:44:00 
+ Tagging Date:  2017-08-28 22:39:00 
+ Tagging Date:  2017-08-29 08:02:00 
+ Tagging Date:  2017-08-29 12:46:00 
+ Tagging Date:  2017-06-24 20:47:00 
+ Tagging Date:  2017-06-24 21:01:00 
+ Tagging Date:  2017-06-24 21:19:00 
+ Tagging Date:  2017-06-24 22:08:00 
+ Tagging Date:  2017-06-24 22:33:00 
+ Tagging Date:  2017-06-25 19:24:00 
+ Tagging Date:  2017-06-25 22:36:00 
+ Tagging Date:  2017-06-26 00:42:00 
+ Tagging Date:  2017-06-26 01:48:00 
+ Tagging Date:  2017-08-28 08:14:00 
+ Tagging Date:  2017-08-28 09:29:00 
+ Tagging Date:  2018-01-11 17:59:00 
+ Tagging Date:  2018-01-11 18:32:00 
+ Tagging Date:  2017-06-24 21:06:00 
+ Tagging Date:  2017-01-13 14:29:00 
+ Tagging Date:  2017-03-18 04:32:00 
+ Tagging Date:  2017-03-18 11:16:00 
+ Tagging Date:  2017-03-18 14:30:00 
+ Tagging Date:  2017-03-18 13:54:00 
+ Tagging Date:  2017-03-18 14:51:00 
+ Tagging Date:  2017-03-18 15:32:00 
+ Tagging Date:  2017-08-28 10:49:00 
+ Tagging Date:  2017-08-29 17:44:00 
+Tagging Location:  Makapuu 
+Day of First Detected:  2018-01-11 19:38:02 
+Day of Last Detection:  2017-09-18 
+Days at Liberty:  21 
+Track Length:  2017-09-18 
+Unique Days Detected:  4 
+Number of Detections (Total):  7 
+Number of Detections / Day at Liberty:  0.4375 
+Number of Detections / Day Detected:  1.75 
+Number of Receivers Detected (Total):  1 
+Number of receivers Detected / Days at Liberty:  0.0476190476190476 
+Movements from inside to outside BRFA (Total):  0 
+Movements from inside to outside BRFA / Day:  0 
+Movements from outside to inside BRFA (Total):  0 
+Movements from outside to inside BRFA / Day:  0 
+Time in BRFA:  19.86 
+Time out of BRFA:  0 
+Approximate Distance Tracked (Total):  0.98 km 
+Approximate Distance Tracked / Day:  0.0466666666666667 km 
+Unique Stations_Detected 1 
+Area of detected homerange 51598 km^2
+

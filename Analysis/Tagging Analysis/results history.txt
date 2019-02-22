@@ -1,0 +1,512 @@
+rationalle = paste(rationalle, 'Depth range after 14 days less than 10 m', sep = ',')
+if (length(unique(indv_data$station[-after_index])) > 3 + ("Tagging Location" %in% indv_data$station)) {
+rationalle = paste(rationalle, 'Tag detected at 4 or more stations in first 14 days', sep = ',')
+} else {
+rationalle = paste(rationalle, 'Tag detected at < 4 stations in first 14 days', sep = ',')
+}
+}
+## If the tag does not have a depth transmitter
+### Is the tag detected at 4 or more stations in the first 14 days?
+} else if (length(unique(indv_data$station[-after_index])) > 3 + ("Tagging Location" %in% indv_data$station)) {
+status = 'Dead'
+rationalle = paste(rationalle, 'Tag detected at 4 or more stations in first 14 days', sep = ',')
+} else {
+status = 'Unknown'
+rationalle = paste(rationalle, 'Tag detected at < 4 stations in first 14 days', sep = ',')
+}
+}
+} else {
+status = 'Excluded From Analysis'
+rationalle = paste(rationalle, 'Tag Detected < 14 days', sep = ',')
+if (length(unique(indv_data$station)) > 3 + ("Tagging Location" %in% indv_data$station)) {
+rationalle = paste(rationalle, 'Tag detected at 4 or more stations in first 14 days', sep = ',')
+} else {
+rationalle = paste(rationalle, 'Tag detected at < 4 stations in first 14 days', sep = ',')
+}
+if (in_brfa_e(indv_data$lat[length(indv_data$lat)], indv_data$lon[length(indv_data$lon)])){
+rationalle = paste(rationalle, 'Tag last detected in BRFA E', sep = ',')
+} else {
+rationalle = paste(rationalle, 'Tag last detected outside BRFA E', sep = ',')
+}
+}
+write_df_line = data.frame('tag_id' = unique(vue_df$tag_id)[i], 'status' = status, 'rationalle' = rationalle )
+return(write_line)
+}
+mortality_status = mortality_status[order(mortality_status$tag_id), ]
+write.csv(mortality_status, file.path(results_dir, 'tag_mortality_status.csv'))
+track_status = list()
+track_status$status_df = mortality_status
+track_status$valid_tracks = mortality_status$tag_id[mortality_status$status == 'Alive']
+track_status$unknown_tracks = mortality_status$tag_id[mortality_status$status == 'Unknown']
+track_status$dead_tracks = mortality_status$tag_id[mortality_status$status == 'Dead']
+track_status$excluded_tracks = mortality_status$tag_id[mortality_status$status == 'Excluded From Analysis']
+return(track_status)
+}
+track_status_all = determine_track_status(vue_df = vue_data[vue_data$tag_id %in% tagging_data$vem_tag_id[tagging_data$species == 'Opakapaka'], ], bathymetry = get_bathymetry('mhi', 'low'))
+beep()
+track_status_all
+determine_track_status = function(vue_df, bathymetry = get_bathymetry('mhi', 'low')){
+## Loop
+mortality_status = foreach(i = 1:length(unique(vue_df$tag_id)), .combine = rbind) %dopar% {
+rationalle = 'No Tag Detections'
+indv_data = vue_df[vue_df$tag_id == unique(vue_df$tag_id)[i], ]
+## Is the tag detected after 14 days?
+after_index = difftime(indv_data$datetime, min(indv_data$datetime)) > (14*24*60*60)
+if(any(after_index == TRUE)){
+rationalle = paste(rationalle, 'Tag Detected after 14 days')
+## Is the tag detected moving a distance > 2 km after 14 days?
+locations = as.matrix(unique(indv_data[ after_index,c("lon", "lat")]))
+trans1 = trans.mat(bathymetry, min.depth = -1, max.depth = -10000)
+if(any(lc.dist(trans1, locations, res = "dist") > 2.2)){
+status = 'Alive'
+rationalle = paste(rationalle, 'Observed Movement More Than 2km')
+} else {
+rationalle = paste(rationalle, 'Observed Movement Less Than 2 km')
+### Does the tag have a depth transmitter?
+absolute_range = max(range(indv_data$depth[after_index])) - min(range(indv_data$depth[after_index]))
+if (!is.na(absolute_range)){ # If yes...
+## Does the absolute range after 14 days differ by more than 10 m?
+if(absolute_range > 10) {
+status = 'Alive'
+rationalle = paste(rationalle, 'Depth range after 14 days greater than 10 m')
+} else {
+status = 'Dead'
+rationalle = paste(rationalle, 'Depth range after 14 days less than 10 m', sep = ',')
+if (length(unique(indv_data$station[-after_index])) > 3 + ("Tagging Location" %in% indv_data$station)) {
+rationalle = paste(rationalle, 'Tag detected at 4 or more stations in first 14 days', sep = ',')
+} else {
+rationalle = paste(rationalle, 'Tag detected at < 4 stations in first 14 days', sep = ',')
+}
+}
+## If the tag does not have a depth transmitter
+### Is the tag detected at 4 or more stations in the first 14 days?
+} else if (length(unique(indv_data$station[-after_index])) > 3 + ("Tagging Location" %in% indv_data$station)) {
+status = 'Dead'
+rationalle = paste(rationalle, 'Tag detected at 4 or more stations in first 14 days', sep = ',')
+} else {
+status = 'Unknown'
+rationalle = paste(rationalle, 'Tag detected at < 4 stations in first 14 days', sep = ',')
+}
+}
+} else {
+status = 'Excluded From Analysis'
+rationalle = paste(rationalle, 'Tag Detected < 14 days', sep = ',')
+if (length(unique(indv_data$station)) > 3 + ("Tagging Location" %in% indv_data$station)) {
+rationalle = paste(rationalle, 'Tag detected at 4 or more stations in first 14 days', sep = ',')
+} else {
+rationalle = paste(rationalle, 'Tag detected at < 4 stations in first 14 days', sep = ',')
+}
+if (in_brfa_e(indv_data$lat[length(indv_data$lat)], indv_data$lon[length(indv_data$lon)])){
+rationalle = paste(rationalle, 'Tag last detected in BRFA E', sep = ',')
+} else {
+rationalle = paste(rationalle, 'Tag last detected outside BRFA E', sep = ',')
+}
+}
+write_df_line = data.frame('tag_id' = unique(vue_df$tag_id)[i], 'status' = status, 'rationalle' = rationalle )
+return(write_df_line)
+}
+mortality_status = mortality_status[order(mortality_status$tag_id), ]
+write.csv(mortality_status, file.path(results_dir, 'tag_mortality_status.csv'))
+track_status = list()
+track_status$status_df = mortality_status
+track_status$valid_tracks = mortality_status$tag_id[mortality_status$status == 'Alive']
+track_status$unknown_tracks = mortality_status$tag_id[mortality_status$status == 'Unknown']
+track_status$dead_tracks = mortality_status$tag_id[mortality_status$status == 'Dead']
+track_status$excluded_tracks = mortality_status$tag_id[mortality_status$status == 'Excluded From Analysis']
+return(track_status)
+}
+determine_track_status = function(vue_df, bathymetry = get_bathymetry('mhi', 'low')){
+## Loop
+mortality_status = foreach(i = 1:length(unique(vue_df$tag_id)), .combine = rbind) %dopar% {
+rationalle = 'No Tag Detections'
+indv_data = vue_df[vue_df$tag_id == unique(vue_df$tag_id)[i], ]
+## Is the tag detected after 14 days?
+after_index = difftime(indv_data$datetime, min(indv_data$datetime)) > (14*24*60*60)
+if(any(after_index == TRUE)){
+rationalle = paste(rationalle, 'Tag Detected after 14 days')
+## Is the tag detected moving a distance > 2 km after 14 days?
+locations = as.matrix(unique(indv_data[ after_index,c("lon", "lat")]))
+trans1 = trans.mat(bathymetry, min.depth = -1, max.depth = -10000)
+if(any(lc.dist(trans1, locations, res = "dist") > 2.2)){
+status = 'Alive'
+rationalle = paste(rationalle, 'Observed Movement More Than 2km')
+} else {
+rationalle = paste(rationalle, 'Observed Movement Less Than 2 km')
+### Does the tag have a depth transmitter?
+absolute_range = max(range(indv_data$depth[after_index])) - min(range(indv_data$depth[after_index]))
+if (!is.na(absolute_range)){ # If yes...
+## Does the absolute range after 14 days differ by more than 10 m?
+if(absolute_range > 10) {
+status = 'Alive'
+rationalle = paste(rationalle, 'Depth range after 14 days greater than 10 m')
+} else {
+status = 'Dead'
+rationalle = paste(rationalle, 'Depth range after 14 days less than 10 m', sep = ',')
+if (length(unique(indv_data$station[-after_index])) > 3 + ("Tagging Location" %in% indv_data$station)) {
+rationalle = paste(rationalle, 'Tag detected at 4 or more stations in first 14 days', sep = ',')
+} else {
+rationalle = paste(rationalle, 'Tag detected at < 4 stations in first 14 days', sep = ',')
+}
+}
+## If the tag does not have a depth transmitter
+### Is the tag detected at 4 or more stations in the first 14 days?
+} else if (length(unique(indv_data$station[-after_index])) > 3 + ("Tagging Location" %in% indv_data$station)) {
+status = 'Dead'
+rationalle = paste(rationalle, 'Tag detected at 4 or more stations in first 14 days', sep = ',')
+} else {
+status = 'Unknown'
+rationalle = paste(rationalle, 'Tag detected at < 4 stations in first 14 days', sep = ',')
+}
+}
+} else {
+status = 'Excluded From Analysis'
+rationalle = paste(rationalle, 'Tag Detected < 14 days', sep = ',')
+if (length(unique(indv_data$station)) > 3 + ("Tagging Location" %in% indv_data$station)) {
+rationalle = paste(rationalle, 'Tag detected at 4 or more stations in first 14 days', sep = ',')
+} else {
+rationalle = paste(rationalle, 'Tag detected at < 4 stations in first 14 days', sep = ',')
+}
+if (in_brfa_e(indv_data$lat[length(indv_data$lat)], indv_data$lon[length(indv_data$lon)])){
+rationalle = paste(rationalle, 'Tag last detected in BRFA E', sep = ',')
+} else {
+rationalle = paste(rationalle, 'Tag last detected outside BRFA E', sep = ',')
+}
+}
+write_df_line = data.frame('tag_id' = unique(vue_df$tag_id)[i], 'status' = status, 'rationalle' = rationalle )
+return(write_df_line)
+}
+mortality_status = mortality_status[order(mortality_status$tag_id), ]
+write.csv(mortality_status, file.path(results_dir, 'tag_mortality_status.csv'))
+track_status = list()
+track_status$status_df = mortality_status
+track_status$valid_tracks = mortality_status$tag_id[mortality_status$status == 'Alive']
+track_status$unknown_tracks = mortality_status$tag_id[mortality_status$status == 'Unknown']
+track_status$dead_tracks = mortality_status$tag_id[mortality_status$status == 'Dead']
+track_status$excluded_tracks = mortality_status$tag_id[mortality_status$status == 'Excluded From Analysis']
+return(track_status)
+}
+length(track_status$valid_tracks)
+length(which(track_status_all$status_df$status == 'Valid'))
+length(which(track_status_all$status_df$status == 'valid'))
+track_status_all$status_df$status
+length(which(track_status_all$status_df$status == 'Alive'))
+print(track_status$tag_id[track_status$status == 'Alive' & track_status$tag_id %in% unique(vue_data$tag_id[vue_data$datetime >= period_start])])
+track_status = track_status_all$status_df
+print(track_status$tag_id[track_status$status == 'Alive' & track_status$tag_id %in% unique(vue_data$tag_id[vue_data$datetime >= period_start])])
+unique(vue_data$tag_id[vue_data$datetime >= period_start])
+tagged_ids = unique(tagging_data$vem_tag_id[tagging_data$datetime >= as.POSIXct('2017-01-09') & tagging_data$species == "Opakapaka"])
+length(tagged_ids)
+tagged_ids
+length(track_status$tag_id)
+track_status_all = determine_track_status(vue_df = vue_data[vue_data$tag_id %in% tagged_ids, ], bathymetry = get_bathymetry('mhi', 'low'))
+dim(track_status_all$status_df)
+valid_tags = track_status$tag_id[track_status$status == 'Alive' & track_status$tag_id %in% tagging_data$vem_tag_id[tagging_data$species == 'Opakapaka']]
+valid_tags
+lenth(valid_tags)
+length(valid_tags)
+assigned_valid_but_questionable = c(
+2127, # Kevin thinks this behavior looks more like a sizgill shark. Time at liberty is 96 days.
+2157, # Kevin thinks this behavior looks more like a sizgill shark. Time at liberty is 66 days.
+2139, # this fish goes from a normal depth and then totally drops off, though movement is greater than 2km so…
+2140,  #	alive	questionable (dead?)	this fish goes from a normal depth and then totally drops off, though movement is greater than 2km so…
+30729, # rapid movement followed by sporadic appearance of fish at same station and one movement. could be real but seems more likely its dead and only movement is to an adjacent station.
+2122 # Has some early movement that looks diurnal and at the right depth ranges, then dissapears for ages before coming back one last time
+)
+assigned_questionable_but_valid = c(
+# Description
+)
+assigned_valid_but_dead = c(
+12, # Classified b/c of depth sensor but probably dead because only movement looks like faulty sensor
+6, # Classified b/c of depth sensor but probably dead because only movement looks like faulty sensor
+# 927, # Seems like a tag stuck in the middle of the fence
+30685 # rapid movements at first and then solid one station. looks like it just broke our 14 day threshold
+)
+assigned_questionable_but_dead = c(
+# 12, # Classified b/c of depth sensor but probably dead because only movement looks like faulty sensor
+# 6 # Classified b/c of depth sensor but probably dead because only movement looks like faulty sensor
+)
+assigned_dead_but_questionable = c(
+# Desc.
+)
+valid_tags = unique(c(track_status$tag_id[track_status$status == 'Alive' & !(track_status$tag_id %in% c(assigned_valid_but_questionable, assigned_valid_but_dead)) & track_status$tag_id %in% vue_data$tag_id[vue_data$datetime >= period_start]], assigned_questionable_but_valid))
+length(valid_tags)
+valid_tags
+valid_tags
+valid_tags_in_p10
+length(valid_tags)
+lengthvalid_tags_in_p10
+valid_tags = c(2133, 2136, 28179, 30684, 30705, 30721, 51582, 51586, 51588, 51596)
+vt = track_status$tag_id[track_status$status == 'Alive' & track_status$tag_id %in% tagging_data$vem_tag_id[tagging_data$species == 'Opakapaka']]
+vt[vt %in% valid_tags]
+vt[!vt %in% valid_tags]
+vt
+valid_tags
+assigned_valid_but_questionable = c(
+# 2122 # Has some early movement that looks diurnal and at the right depth ranges, then dissapears for ages before coming back one last time,
+2127, # Kevin thinks this behavior looks more like a sizgill shark. Time at liberty is 96 days.
+2139, # this fish goes from a normal depth and then totally drops off, though movement is greater than 2km so…
+2140,  #	alive	questionable (dead?)	this fish goes from a normal depth and then totally drops off, though movement is greater than 2km so…
+2157, # Kevin thinks this behavior looks more like a sizgill shark. Time at liberty is 66 days.
+30729 # rapid movement followed by sporadic appearance of fish at same station and one movement. could be real but seems more likely its dead and only movement is to an adjacent station.
+)
+assigned_questionable_but_valid = c(
+# Description
+)
+assigned_valid_but_dead = c(
+12, # Classified b/c of depth sensor but probably dead because only movement looks like faulty sensor
+6, # Classified b/c of depth sensor but probably dead because only movement looks like faulty sensor
+# 927, # Seems like a tag stuck in the middle of the fence
+30685 # rapid movements at first and then solid one station. looks like it just broke our 14 day threshold
+)
+assigned_questionable_but_dead = c(
+# 12, # Classified b/c of depth sensor but probably dead because only movement looks like faulty sensor
+# 6 # Classified b/c of depth sensor but probably dead because only movement looks like faulty sensor
+)
+assigned_dead_but_questionable = c(
+# Desc.
+)
+dim(track_status)
+# Remove statuses from fish we are not interested in
+track_status = track_status[track_status$tag_id %in% tagging_data$vem_tag_id[tagging_data$datetime >= '2017-01-09'] & track_status$tag_id %in% tagging_data$vem_tag_id[tagging_data$species == 'Opakapaka'] & track_status$tag_id %in% vue_data$tag_id[vue_data$datetime >= start_date], ]
+dim(track_status)
+vt = valid_tags
+valid_tags = unique(c(track_status$tag_id[track_status$status == 'Alive' & !(track_status$tag_id %in% c(assigned_valid_but_questionable, assigned_valid_but_dead)) & track_status$tag_id %in% vue_data$tag_id[vue_data$datetime >= period_start]], assigned_questionable_but_valid))
+length(valid_tags)
+questionable_tags = unique(c(track_status$tag_id[track_status$status == 'Unknown' & !track_status$tag_id %in% c(assigned_questionable_but_dead, assigned_questionable_but_valid) & track_status$tag_id %in% vue_data$tag_id[vue_data$datetime >= period_start]], assigned_valid_but_questionable, assigned_dead_but_questionable ))
+length(questionable_tags)
+dead_tags = unique(c(track_status$tag_id[track_status$status == 'Dead' & !track_status$tag_id %in% c(assigned_dead_but_questionable) & track_status$tag_id %in% vue_data$tag_id[vue_data$datetime >= period_start]], assigned_valid_but_dead, assigned_questionable_but_dead))
+length(dead_tags)
+excluded_tags = unique(c(track_status$tag_id[track_status$status == 'Excluded From Analysis' & track_status$tag_id %in% vue_data$tag_id[vue_data$datetime >= period_start]], tagged_ids[!tagged_ids %in% vue_data$tag_id]))
+length(excluded_tags)
+status_table = aggregate(track_status$tag_id, by = list(track_status$status), FUN = uniqueN)
+colnames(status_table) = c('Status', 'Assigned Algorthmically')
+status_table
+valid_and_tags
+valid_tags
+qt = c(valid_tags, 2122, 2127, 2139, 2140, 2157, 28171, 28178, 28181, 28185, 30683, 30703, 30707, 30714, 30715, 30717, 30722, 30729, 30734, 30739, 30742, 30743, 30747, 30749,30751, 36810, 51581, 51584, 51585, 51587, 51598)
+length(qt)
+questionable_tags
+questionable_tracks
+length(track_status$tag_id)
+# install.packages('marmap')
+library('marmap') # bathymetry()
+# install.packages('lubridate')
+library('lubridate') # floor_date(), ceil_date()
+# install.packages('doParallel')
+library('doParallel') # foreach()
+# install.packages('beepr')
+library('beepr') # beep
+# install.packages('dplyr')
+library('dplyr') # filter()
+# install.packages('useful')
+library('useful') # compare.list()
+# install.packages('RAtmosphere')
+library('RAtmosphere')
+# install.packages('geosphere')
+library('geosphere') # areaPolygon(), # distGeo() Note: wrapped in old lldist function
+# install.packages('igraph')
+library('igraph') # graph.adjacency()
+# install.packages('notifyR')
+library('notifyR') # send_push()
+# install.packages('png')
+library('png')
+# install.packages('lunar')
+library('lunar') # lunar.phase()
+# install.packages('suncalc')
+library('suncalc') # getSunlightTimes
+# install.packages('data.table')
+library('data.table') # uniqueN
+# install.packages('lattice')
+library('lattice')
+# install.packages('ncdf4')
+library('ncdf4') #nc_open()
+# install.packages('xts')
+library('xts')
+# install.packages('lme4')
+library('lme4')
+# install.packages('lmtest')
+library('lmtest')
+# install.packages('ggplot2')
+library('ggplot2')
+uniqueN(tagging_data$vem_tag_id[tagging_data$species == 'Opakapaka'])
+uniqueN(tagging_data$vem_tag_id[tagging_data$species == 'Opakapaka' & tagging_data$datetime >= as.POSIXct('2015-01-01') >])
+uniqueN(tagging_data$vem_tag_id[tagging_data$species == 'Opakapaka' & tagging_data$datetime >= as.POSIXct('2015-01-01')])
+# 240
+uniqueN(tagging_data$vem_tag_id[tagging_data$species == 'Opakapaka' & tagging_data$datetime >= as.POSIXct('2015-01-01') & tolower(tagging_data$vem_tag_type) == 'v13'])
+# 240
+uniqueN(tagging_data$vem_tag_id[tagging_data$species == 'Opakapaka' & tagging_data$datetime >= as.POSIXct('2015-01-01') & tolower(tagging_data$vem_tag_type) == 'v13p'])
+# 240
+uniqueN(tagging_data$vem_tag_id[tagging_data$species == 'Opakapaka' & tagging_data$datetime >= as.POSIXct('2017-01-01') & tolower(tagging_data$vem_tag_type) == 'v13p'])
+# 240
+uniqueN(tagging_data$vem_tag_id[tagging_data$species == 'Opakapaka' & tagging_data$datetime >= as.POSIXct('2017-01-01') & tolower(tagging_data$vem_tag_type) == 'v13'])
+valid_data$tag_ids
+analysis_summary = valid_data
+ggplot(data = analysis_summary$summary_df, aex(x = as.numeric(brfa_movements_standardized_by_track_length$total))) +
+geom_histogram(bins = 10)
+ggplot(data = analysis_summary$summary_df, aes(x = as.numeric(brfa_movements_standardized_by_track_length$total))) +
+geom_histogram(bins = 10)
+ggplot(data = analysis_summary, aes(x = as.numeric(brfa_movements_standardized_by_track_length$total))) +
+geom_histogram(bins = 10)
+as.numeric(mean_brfa_movements_per_day)
+analysis_summary$summary_df$as.numeric(mean_brfa_movements_per_day)
+analysis_summary$summary_df$mean_brfa_movements_per_day
+analysis_summary$brfa_movements_standardized_by_track_length$total
+calculate_brfa_movements_by_track_length(analysis_summary$brfa_stats, analysis_summary$track_length$days_tracked)
+hist(1/calculate_brfa_movements_by_track_length(analysis_summary$brfa_stats, analysis_summary$track_length$days_tracked)$total)
+ggplot(data = analysis_summary$summary_df, aes(x = 1/as.numeric(mean_brfa_movements_per_day))) +
+geom_histogram(bins = 10)
+analysis_summary$summary_df$total_brfa_crossings
+calculate_brfa_movements_by_track_length(analysis_summary$brfa_stats, analysis_summary$track_length$days_tracked)
+a = cbind(analysis_summary$tag_id, calculate_brfa_movements_by_track_length(analysis_summary$brfa_stats, analysis_summary$track_length$days_tracked)$total)
+a
+relative_crossing_rate = data.frame(cbind(analysis_summary$tag_id, calculate_brfa_movements_by_track_length(analysis_summary$brfa_stats, analysis_summary$track_length$days_tracked)$total), stringsAsFactors = FALSE)
+relative_crossing_rate
+relative_crossing_rate = data.frame(cbind(analysis_summary$tag_id, 1/calculate_brfa_movements_by_track_length(analysis_summary$brfa_stats, analysis_summary$track_length$days_tracked)$total), stringsAsFactors = FALSE)
+colnames(relative_crossing_rate) = c('tag_id', 'days_between_crossing')
+relative_crossing_rate
+crossings_per_day_hist = ggplot(data = relative_crossing_rate, aes(x = days_between_crossing)) +
+geom_histogram(bins = 10)
+crossings_per_day_hist = ggplot(data = relative_crossing_rate, aes(x = days_between_crossing)) +
+geom_histogram(bins = 40)
+crossings_per_day_hist = ggplot(data = relative_crossing_rate, aes(x = days_between_crossing)) +
+geom_histogram(bins = 40)
+crossings_per_day_hist = ggplot(data = relative_crossing_rate, aes(x = days_between_crossing)) +
+geom_histogram(bins = 100)
+plot(crossings_per_day_hist)
+crossings_per_day_hist = ggplot(data = relative_crossing_rate, aes(x = as.numeric(days_between_crossing)) +
+plot(crossings_per_day_hist)
+crossings_per_day_hist = ggplot(data = relative_crossing_rate, aes(x = as.numeric(days_between_crossing)) +
+crossings_per_day_hist = ggplot(data = relative_crossing_rate, aes(x = as.numeric(days_between_crossing)) +
+crossings_per_day_hist = ggplot(data = relative_crossing_rate, aes(x = as.numeric(days_between_crossing))) +
+geom_histogram(bins = 100)
+plot(crossings_per_day_hist)
+crossings_per_day_hist = ggplot(data = relative_crossing_rate, aes(x = as.numeric(days_between_crossing))) +
+geom_histogram(bins = 20)
+plot(crossings_per_day_hist)
+relative_crossing_rate$days_between_crossing
+crossings_per_day_hist = ggplot(data = relative_crossing_rate, aes(x = as.numeric(days_between_crossing))) +
+geom_histogram(bins = 5)
+plot(crossings_per_day_hist)
+plot(crossings_per_day_hist)
+crossings_per_day_hist = ggplot(data = relative_crossing_rate, aes(x = as.numeric(days_between_crossing))) +
+geom_histogram(bins = 10)
+plot(crossings_per_day_hist)
+crossings_per_day_hist = ggplot(data = relative_crossing_rate, aes(x = as.numeric(days_between_crossing))) +
+geom_histogram(bins = 10) +
+labs(x = 'Days Between Boundary Crossings', y = 'Count')
+crossings_per_day_hist = ggplot(data = relative_crossing_rate, aes(x = as.numeric(days_between_crossing))) +
+geom_histogram(bins = 10) +
+labs(x = 'Days Between Boundary Crossings', y = 'Count')
+plot(crossings_per_day_hist)
+raw_vue_data = load_vemco_data(filename = file.path(data_dir, 'VUE_Export_22_Jan_2019.csv'))
+### Cull depreciated functions
+### Debug n-stations detected
+### Fix depth sensor for tag 32
+### Do detections change with day night dusk dawn? - Individual and in total
+### Does depth of receivers detected change with day night dusk dawn? - Individual and in total
+### Do detections coorrelate wtih moonrise moonset?
+### Note: All analysis results should be ordered by tag ID number. always use sort(unique(vue_data$tag_id)) if indexing mannually.
+### Work to remove clean_vue() function as it's only used once
+#### Incorperate some other random analysis currently above run function.
+#### Incorperate changes in receiver placement to analysis plots.
+#### Sink Hypothesis reports
+#### Turned off "make_detection_plot()" in
+#### Turned off "movement_graph_standardized_by_distance calculations and output.
+#### Modified run_analysis() incorperates movement_graph and brfa_movements_by_track_length
+### Utility Functions Available
+# clean_vue_data()
+# clean_receiver_stations()
+# create_save_directory()
+# load_vemco()
+# load_receiver_data()
+# receiver_col_names()
+# load_tagging_data()
+# remove_location()
+# clean_vue()
+# convert_lat_lon
+# remove_detections_before_tagging()
+### Analysis Functions Available
+# cluster_receivers()
+# get_graph()
+# build_detection_matrix()
+# calculate_time_at_liberty()
+# calculate_track_length
+# calculate_days_before_detection()
+# calculate_days_detected()
+# generate_tagging_detection()
+# generate_study_date()
+# list_stations_detected()
+# remove_false_detections()
+# spatial_evenness()
+# days_present()
+# length_to_weight()
+# lldist()
+# distance_tracked()
+# in_brfa_e()
+# in_brfa_f()
+# brfa_movements()
+# brfa_movements_by_track_length()
+# n_movements()
+# max_movement()
+# get_fork_length()
+# get_tagging_date()
+# remove_only_tagging_date_entries()
+# run_analysis()
+# generate_analysis_report()
+# create_analysis_csv()
+# run()
+# distance_between_vue_receivers()
+# distance_between_receivers()
+# get_recovery_rates()
+# days_detected()
+# stations_detected()
+# brfa_size()
+### Plotting Functions
+# tag_detection_histogram()
+# plot_receiver_map()
+# plot_depths()
+# plot_movements()
+# plot_path_use()
+# plot_tag_detections()
+# tagging_histogram()
+# assign_color_palette()
+# generate_stripchart()
+# detection_stripchart()
+# indv_difftimes_hist
+# plot_receiver_maps()
+# create_day_night_plot()
+# plot_detections_by_receiver()
+# generate_gif_images()
+# make_detection_plot()
+# detection_stripcharts()
+# plot_receiver_histories()
+# make_detection_plot()
+# plot_station_map()
+# plot_clusters()
+#### TODO:
+####  plotting index as part of analysis (unfilled circles for uncertain detections etc...)
+####  plot receivers detected by # of detections
+####  % of days detected / days since tagging
+####  Total days detected /days at liberty = fidelity index
+####  Track length vs. Size? Good tracks vs. size
+####  Residence behavior vs. Size?
+####  Fix get_graph() function
+####  Plot histogram for how long tags were heard after tagging. Both if tagged then heard 1 week, assume detection for entire week, and only for intervals detected.
+####  Giant excel calendar of detections?
+####  Cluster analysis of receivers?
+#### Bottomfish Movement Analysis
+#### Written: January 2016 by Stephen R. Scherrer
+#### Code for the analysis of Acoustic Tags and VR2W
+#### Data applied to Opakapaka tagged in Oahu, Hawaii
+##### Clearning Workspace and Setting Directories #####
+rm(list=ls()) # Clear workspace
+gc()
+script_timer = proc.time()
+project_dir = getwd()
+data_dir = '/Volumes/GoogleDrive/My Drive/Weng Lab/Data/Bottomfish/Oahu Receiver Data Files'
+results_dir = paste(project_dir, '/results', sep = "")
+# fig.dir = paste(project_dir, '/figures', sep = "")
+src_dir = paste(project_dir, '/src', sep = "")
+bin_dir = paste(project_dir, '/bin', sep = "")
+setwd(project_dir)
+savehistory(file=paste(results_dir, 'history.txt'))

@@ -1,0 +1,512 @@
+load("/Users/stephenscherrer/Google Drive/Weng Lab/Personal_Folders/Steve/dissertation work/BACIP Analysis/results/results - 2016-11-23 09:12:47/run_workspace.R")
+## Clear workspace
+rm(list = ls())
+## Time the script's runtime
+script_timer = proc.time()
+## Set up directories
+project_dir = "/Users/stephenscherrer/Google Drive/Weng Lab/Personal_Folders/Steve/dissertation work/Acoustic Network Design/Groundtruthing Acoustic Web App"
+source_dir  = "/Users/stephenscherrer/Google Drive/Weng Lab/Personal_Folders/Steve/dissertation work/Acoustic Network Design/Groundtruthing Acoustic Web App/src"
+output_dir  = "/Users/stephenscherrer/Google Drive/Weng Lab/Personal_Folders/Steve/dissertation work/Acoustic Network Design/Groundtruthing Acoustic Web App/output"
+figure_dir  = "/Users/stephenscherrer/Google Drive/Weng Lab/Personal_Folders/Steve/dissertation work/Acoustic Network Design/Groundtruthing Acoustic Web App/figure"
+data_dir    = '/Users/stephenscherrer/Google Drive/Weng Lab/Data/Bottomfish/Oahu Receiver Data Files/'
+setwd(output_dir)
+### 2. Installing packages, sourcing vemco utility functions and the acoustic web app, and loading data ----
+## Installing packages
+# install.packages('dplyr')
+library('dplyr') # filter()
+## Sourcing previous R scripts
+## Vemco utility functions
+source('/Users/stephenscherrer/Google Drive/Weng Lab/Personal_Folders/Steve/dissertation work/Acoustic Network Design/Groundtruthing Acoustic Web App/src/vemcoUtilityFunctions.R')
+## Sourcing Local instance of the Acoustic Web App
+source('/Users/stephenscherrer/Google Drive/Weng Lab/Personal_Folders/Steve/dissertation work/Acoustic Network Design/Acoustic Web App/wrapper_function.R')
+## Loading Data
+vue_data = load_vemco(filename = 'VUE_Export_2016-May-29.csv', filepath = data_dir)
+receiver_data = load_receiver_data(filename = 'DEPLOYMENT_RECOVERY_LOG.csv', filepath = data_dir)
+tagging_data = load_tagging_data(filename = 'Bottomfish_Tag_Master.csv', filepath = data_dir)
+### 3. Building custom script functions ----
+subset_receivers_by_date = function(receiver_data, start_date = FALSE, end_date = FALSE){
+## Function to subset receiver data file returning only receivers that were present
+## during a period of time specified by the arguments start_date and end_date
+subsetted_receiver_data = receiver_data
+if(start_date != FALSE){
+subsetted_receiver_data = subsetted_receiver_data[subsetted_receiver_data$deploymentDate <= as.POSIXct(start_date), ]
+}
+if(end_date != FALSE){
+subsetted_receiver_data = subsetted_receiver_data[subsetted_receiver_data$recoveryDate > as.POSIXct(end_date), ]
+}
+return(subsetted_receiver_data)
+}
+subset_vue_by_date = function(vue_data, start_date = FALSE, end_date = FALSE){
+## Function to subset vue data file returning only detections that occurred
+## during a period of time specified by the arguments start_date and end_date
+subsetted_vue_data = vue_data
+if(start_date != FALSE){
+subsetted_vue_data = subsetted_vue_data[subsetted_vue_data$datetime >= as.POSIXct(start_date), ]
+}
+if(end_date != FALSE){
+subsetted_vue_data = subsetted_vue_data[subsetted_vue_data$datetime < as.POSIXct(end_date), ]
+}
+return(subsetted_vue_data)
+}
+days_to_seconds = function(days){
+## Function to transform a number of days to corrosponding seconds
+return(days*24*60*60)
+}
+#### Analysis ####
+#### NOTE: Run twice under conservative and less conservative scenarios
+### 1. Specify Run Variables ----
+### Run Name
+run_name = "MHI BF Test 1"
+### Analysis Variables
+## a. Start of analysis
+var_start_analysis = as.POSIXct("2012-04-13 14:09:00")
+## b. End of Analysis
+var_end_analysis = vue_data$datetime[vue_data$datetime < as.POSIXct("2015-01-01")][length(vue_data$datetime[vue_data$datetime < as.POSIXct("2015-01-01")])]
+## c. Date Bins
+var_date_bins = seq.POSIXt(from = var_start_analysis, to = var_end_analysis, by = days_to_seconds(14))
+## d. Specific tags to calculate recovery rates
+var_tag_ids = as.numeric(as.character(na.omit(tagging_data$vem_tag_id[tagging_data$species == "Opakapaka"])))
+## e. Receiver Stations to Keep in data
+## In This Case, removing anything that doesn't have the prefix "Oahu"
+keep_station_index = c()
+for(i in 1:length(receiver_data$station_name)){
+if(strsplit(as.character(receiver_data$station_name[i]), split = " - ")[[1]][1] == "Oahu"){
+keep_station_index = c(keep_station_index, i)
+}
+}
+receiver_data = receiver_data[keep_station_index, ]
+## As well as receivers not in the data set
+receiver_data = receiver_data[which(receiver_data$recovered == ""), ]
+## f. Acoustic Web App Variables
+var_bathymetry_dataset = 'MHI_1km' # options are 'MHI_1km', 'MHI_50m', and 'Palmyra'
+var_northern_grid_boundary = 22.208 # as decimal degrees
+var_southern_grid_boundary = 20.386 # as decimal degrees
+var_western_grid_boundary = -158.719 # as decimal degrees
+var_eastern_grid_boundary = -157.170 # as decimal degrees
+var_fish_model_algorithm = 'rw' # options are rw = random walk or ou = Ornstein-Uhlenbeck
+var_home_range_center_x = FALSE # as decimal degrees. Required for OU fish model.
+var_home_range_center_y = FALSE # as decimal degrees. Required for OU fish model
+var_home_range_extent_x = FALSE # in meters. Required for OU fish model. Standard deviation in meters of home range extent in the x direction. Controls home range width. A rule of thumb says that for each direction in isolation approximately 95% of the time is spent within plus minus two standard deviations. A non-negative real number.
+var_home_range_extent_y = FALSE # in meters. Required for OU fish model. Standard deviation in meters of home range extent in the y direction. Controls home range height. A rule of thumb says that for each direction in isolation approximately 95% of the time is spent within plus minus two standard deviations. A non-negative real number.
+var_directional_correlation_of_home_range = FALSE # Required for OU fish model. Correlation of spatial distribution between directions. Controls the tilt of the home range. This is useful if the home range shape is angled relative to the x,y coordinate system. The correlation must be between -1 and 1.
+var_restrict_vertical_habitat_range = TRUE # Options are TRUE or FALSE
+var_min_depth = -1 # units are in negative meters. Required if restrict_vertical_habitat_range == TRUE. [Optional] Specifies the shallowest depth in meters a fish will visit. Valid values are non-positive real numbers. Specifying a value for mindepth requires specifying a value for maxdepth.
+var_max_depth = -400 # units are in negative meters. [Optional] Specifies the deepest depth in meters a fish will visit. Valid values are non-positive real numbers. Specifying a value for maxdepth requires specifying a value for mindepth.
+var_use_depth_preference = TRUE # Options are TRUE or FALSE
+var_prefered_depth = 3 # [Optional] Depth preference of fish relative to bottom (in meters off the bottom). Valid values are non-negative real numbers. Specifying a value for depth_off_bottom requires specifying a value for depth_off_bottom_sd.
+var_sd_of_preferred_depth = 2 # Set to 2 by default# [Optional] Standard deviation of preferred depth (in meters). Animals spend 95% of their time within plus/minus 2 SD of their preferred depth.
+var_user_specified_sensors = NULL # List of already existing sensors. These sensors are placed and down-weighed before running the program. Useful for including already existing sensors, or forcing the placement of a few sensors. Do not include these sensors in the sensor count below. Provide sensor locations as a string in the format: <sensor1_Long>, <sensor1_Lat>, <sensor2_Long>, <sensor2_Lat>..." # If blank, leave as NULL
+var_number_of_sensors_to_use = 0 # Specifies how many sensors the program should place. Valid values are non-negative integers.
+var_number_of_sensors_to_project = 0 # Specifies how many sensors the program should provide projections for. Valid values are non-negative integers.
+var_goodness_algorthm = 3 # options are 1, 2, 3. Specifies how you want the system to determine the "goodness" of a cell. Valid values are 1, 2, or 3.
+# A value of '1' indicates that a "good" cell has a high number of animals within detection range (ignoring line of sight). This is useful for sensors not restricted to line-of-sight detection.
+# A value of '2' indicates that a "good" cell has the best visibility (taking into account bathymetry and shadowing, but completely ignoring fish density). This is useful for networks restricted to line-of-sight detection and having no prior knowledge of animal habitat.
+# A value of '3' indicates that a "good" cell has a high number of visible fish (incorporating both bathymetry and animal density). This is useful for networks restricted to line-of-sight detection, and having some idea of animal habitat.
+var_sensor_elevation = 30 # Specifies how far off the bottom a sensor should be placed in meters. Valid values are non-negative real numbers.
+var_sensor_shape_function = 'shape.gauss' # Determines which functional shape to represent horizontal acoustic attenuation in the water. The detection function specifies how the chance of signal detection declines as a function of distance to sensor. Ranging experiments should preferably be carried out locally at the study site to approximate this function. Currently, the only valid value is "shape.gauss".
+var_max_detection_value = .98 # The probability of detecting a fish located right next to the sensor. Specifies a maximum value for the shape function. Valid values should be a decimal in the range (0.05,1].
+var_detection_range = 1001 # in meters. The distance in meters from the sensor where the chance of detecting a signal is 0.05. Valid values are non-negative real numbers.
+var_supression_factor = 2 # Specifies the range of suppression in multiples of the detection range. For example, a suppression factor of 2 enforces a suppression range of two times the detection range. Cells within the suppression range of a sensor will be subject to the specified suppression function. To deter sensor overlap, a good value to use is twice the sensor detectionRange. Valid values are non-negative real numbers.
+var_supression_function = 'supression.scale' # Specifies which suppression function to use. Options are suppression.static, suppression.scale, detection.function, detection.function.shadow, or detection.function.exact.
+# suppression.static: Replaces all cells within range of a sensor with the value specified in minsuppressionValue.
+# suppression.scale: Multiplies the values of cells within range of a sensor by a scaling factor according to the cell's distance from the sensor. Nearby cells receive a higher scaling factor, and lower cells receive a lower scaling factor. The scaling factor is linearly related to the distance between the sensor and cell. Selecting this option requires specifyign values for minsuppressionValue and maxsuppressionValue
+# detection.function: Uses the inverse of the detection function to down scale goodness of grid cells near the sensor, but does not take objects that block signal into account. Grid cells' goodness will increase as a function of distance to the sensor.
+# detection.function.shadow: Uses the inverse of the shapeFcn to down scale goodness of grid cells near the sensor, and does take objects that block signal into account. This means that sensors on opposite sides of a blocking wall will not affect each other's goodness. Unblocked grid cells' goodness will increase as a function of distance to the sensor.
+# detection.function.exact:
+# The above suppression functions do not recalculate the goodness grid after placing a new sensor and therefore only provide an approximately optimal solution. This suppression function does recalculate the goodness iteratively, and is therefore slower by a factor equal to the number of sensors.
+var_max_supression_value = 1 # Specifies the minimum scaling factor to apply. Cells at the edge of the suppression Range will receive this as a scaling factor. Valid values are non negative real numbers in the range [0,1]
+var_min_supression_value = .5 # Specifies the maximum scaling factor to apply. Cells directly adjacent to a sensor will receive this as a scaling factor. Valid values are non negative real numbers in the range [0,1]
+var_input_file = FALSE  # Currently false because file is selected using bathymetry_dataset argument. # Specifies the file location of the Bathy File to use. For arcGIS filetypes, this is a path to the folder containing the data files. For netCDF filetypes, this is a path to the ncdf file itself. )
+var_input_file_type = FALSE # Specifies the file type of the Bathy file you provided. Valid values are "arcgis" or "netcdf".
+### 2. Program then runs as follows ----
+## a. Data Setup: Creating output destinations for results of each date_bin analysis----
+# output repository
+run_dir = paste(output_dir, "/", paste(run_name, "-", Sys.Date()), sep = "")
+if(file.exists(run_dir) == FALSE){
+dir.create(run_dir)
+}
+setwd(run_dir)
+# For modeled recovery rates from acoustic web app:
+# Create two matricies with columns corrosponding to date bins and rows corrosponding
+# Rows 1-4: Number of receivers in subset receivers data sets
+## Note: See Note above regarding adjusted rates row  5: Adjusted rate based on the time a receiver was out of the water
+# Matrix 1: Number of receivers present in the run
+receiver_prescence_matrix = matrix(ncol = length(var_date_bins) - 1, nrow = 4)
+colnames(receiver_prescence_matrix) = as.character(var_date_bins[-(length(var_date_bins))]); rownames(receiver_prescence_matrix) = c("n_receivers_any_point_of_bin", "n_receivers_present_during_begining_and_end_of_bin", "n_receivers_present_for_begining_of_bin", "n_receivers_present_for_end_of_bin")
+# Matrix 2: Recovery rates
+model_predicted_recovery_rates = matrix(ncol = length(var_date_bins) - 1, nrow = 4)
+colnames(model_predicted_recovery_rates) = as.character(var_date_bins[-(length(var_date_bins))]); rownames(model_predicted_recovery_rates) = c("n_receivers_any_point_of_bin", "n_receivers_present_during_begining_and_end_of_bin", "n_receivers_present_for_begining_of_bin", "n_receivers_present_for_end_of_bin")
+# For observed recovery rates from vue data:
+## b. Creating a record of relevent transmitter information for a given species ----
+# this includes: "tag_id", "tag_lon", "tag_lat", "tag_date","tag_death", "tag_interval", 'first_detection', 'last_detection'
+# Creating a data frame of tag IDs corrosoponding to tagging date and anticipated tag battery failure
+tagging_data_of_interest = tagging_data[as.numeric(as.character(tagging_data$vem_tag_id)) %in% var_tag_ids, ]
+tag_table                 = as.data.frame(cbind(as.character(tagging_data_of_interest$vem_tag_id), tagging_data_of_interest$lon, tagging_data_of_interest$lat, as.character(tagging_data_of_interest$datetime), as.character(tagging_data_of_interest$datetime), rep(NA, length(tagging_data_of_interest$vem_tag_id)), as.character(tagging_data_of_interest$datetime), as.character(tagging_data_of_interest$datetime)))
+colnames(tag_table)       = c("tag_id", "tag_lon", "tag_lat", "tag_date","tag_death", "tag_interval", 'first_detection', 'last_detection')
+tag_table$tag_id          = as.numeric(as.character(tag_table$tag_id))
+tag_table$tag_date        = as.POSIXct(tag_table$tag_date)
+tag_table$tag_death       = as.POSIXct(tag_table$tag_death)
+tag_table$first_detection = as.POSIXct(tag_table$first_detection)
+tag_table$last_detection  = as.POSIXct(tag_table$last_detection)
+tag_table$tag_interval    = as.numeric(tag_table$tag_interval)
+## Getting values for anticipated tag death from vemco data sheets, adding this to tagging date to get anticipated tag death, getting average transmitter interval buy taking average of min and max transmitter interval time
+for(i in 1:length(tag_table$tag_id)){
+if(any(tag_table$tag_id[i] %in% c(36799:36818))){
+tag_table$tag_death[i]    =  as.POSIXct(tag_table$tag_date[i] + days_to_seconds(365))
+tag_table$tag_interval[i] =  (30 + 90)/2
+}
+if(any(tag_table$tag_id[i] %in% c(37935:37985))){
+tag_table$tag_death[i]    =  as.POSIXct(tag_table$tag_date[i] + days_to_seconds(539))
+tag_table$tag_interval[i] =  (110 + 250)/2
+}
+if(any(tag_table$tag_id[i] %in% c(57371:57470))){
+tag_table$tag_death[i]    =  as.POSIXct(tag_table$tag_date[i] + days_to_seconds(450))
+tag_table$tag_interval[i] =  (100 + 200)/2
+}
+if(any(tag_table$tag_id[i] %in% c(18236:18275))){
+tag_table$tag_death[i]    =  as.POSIXct(tag_table$tag_date[i] + days_to_seconds(362))
+tag_table$tag_interval[i] =  (30 + 90)/2
+}
+if(any(tag_table$tag_id[i] %in% c(898:927))){
+tag_table$tag_death[i]    =  as.POSIXct(tag_table$tag_date[i] + days_to_seconds(257))
+tag_table$tag_interval[i] =  (30 + 90)/2
+}
+}
+## c. Removing any data captured before a fish was actually tagged from the data set - typically this if from range testing experiments ----
+data_prior_to_tagging_index = c()
+for(i in length(tag_table$tag_id)){
+data_prior_to_tagging_index = c(data_prior_to_tagging_index, which(vue_data$tag_id == tag_table$tag_id[i] & vue_data$datetime < tag_table$tag_date[i]))
+}
+if(is.null(dim(data_prior_to_tagging_index) == FALSE)){
+vue_data = vue_data[-(data_prior_to_tagging_index), ]
+}
+### Getting first and last detections for each fish on the receiver array
+for(i in 1:length(tag_table$tag_id)){
+indv_data = vue_data[which(vue_data$tag_id == tag_table$tag_id[i]), ]
+if(dim(indv_data)[1] != 0){
+tag_table$first_detection[i] = min(indv_data$datetime)
+tag_table$last_detection[i]  = max(indv_data$datetime)
+}else{
+tag_table$first_detection[i] = NA
+tag_table$last_detection[i]  = NA
+}
+}
+## d. Calculation of observed recovery rates ----
+# For each data/receiver scenario, create two table types and two vector types
+# Matrix Type 1: How many transmissions were detected during the current date bin?
+observed_transmissions_detected = list()
+observed_transmissions_detected$all_receivers_any_point_of_bin = matrix(nrow = length(var_tag_ids), ncol = (length(var_date_bins) - 1))
+colnames(observed_transmissions_detected$all_receivers_any_point_of_bin) = as.character(var_date_bins[-(length(var_date_bins))])
+rownames(observed_transmissions_detected$all_receivers_any_point_of_bin) = as.character(var_tag_ids)
+observed_transmissions_detected$receivers_present_during_begining_and_end_of_bin = matrix(nrow = length(var_tag_ids), ncol = (length(var_date_bins) - 1))
+colnames(observed_transmissions_detected$receivers_present_during_begining_and_end_of_bin) = as.character(var_date_bins[-(length(var_date_bins))])
+rownames(observed_transmissions_detected$receivers_present_during_begining_and_end_of_bin) = as.character(var_tag_ids)
+observed_transmissions_detected$receivers_present_at_begining_of_bin = matrix(nrow = length(var_tag_ids), ncol = (length(var_date_bins) - 1))
+colnames(observed_transmissions_detected$receivers_present_at_begining_of_bin) = as.character(var_date_bins[-(length(var_date_bins))])
+rownames(observed_transmissions_detected$receivers_present_at_begining_of_bin) = as.character(var_tag_ids)
+observed_transmissions_detected$receivers_present_at_end_of_bin = matrix(nrow = length(var_tag_ids), ncol = (length(var_date_bins) - 1))
+colnames(observed_transmissions_detected$receivers_present_at_end_of_bin) = as.character(var_date_bins[-(length(var_date_bins))])
+rownames(observed_transmissions_detected$receivers_present_at_end_of_bin) = as.character(var_tag_ids)
+# Matrix Type 2: What was the recovery rate for each fish during that date bin? (Divide total transmission detected by / the expected number of transmissions for that date bin)
+observed_recovery_rates = list()
+observed_recovery_rates$all_receivers_any_point_of_bin = matrix(nrow = length(var_tag_ids), ncol = (length(var_date_bins) - 1))
+colnames(observed_recovery_rates$all_receivers_any_point_of_bin) = as.character(var_date_bins[-(length(var_date_bins))])
+rownames(observed_recovery_rates$all_receivers_any_point_of_bin) = as.character(var_tag_ids)
+observed_recovery_rates$receivers_present_during_begining_and_end_of_bin = matrix(nrow = length(var_tag_ids), ncol = (length(var_date_bins) - 1))
+colnames(observed_recovery_rates$receivers_present_during_begining_and_end_of_bin) = as.character(var_date_bins[-(length(var_date_bins))])
+rownames(observed_recovery_rates$receivers_present_during_begining_and_end_of_bin) = as.character(var_tag_ids)
+observed_recovery_rates$receivers_present_at_begining_of_bin = matrix(nrow = length(var_tag_ids), ncol = (length(var_date_bins) - 1))
+colnames(observed_recovery_rates$receivers_present_at_begining_of_bin) = as.character(var_date_bins[-(length(var_date_bins))])
+rownames(observed_recovery_rates$receivers_present_at_begining_of_bin) = as.character(var_tag_ids)
+observed_recovery_rates$receivers_present_at_end_of_bin = matrix(nrow = length(var_tag_ids), ncol = (length(var_date_bins) - 1))
+colnames(observed_recovery_rates$receivers_present_at_end_of_bin) = as.character(var_date_bins[-(length(var_date_bins))])
+rownames(observed_recovery_rates$receivers_present_at_end_of_bin) = as.character(var_tag_ids)
+# Vector Type 1: Number of fish present during that date bin.
+n_tags_present = list()
+n_tags_present$all_receivers_any_point_of_bin = rep(x = NA, length.out = (length(var_date_bins) - 1))
+n_tags_present$receivers_present_during_begining_and_end_of_bin = rep(x = NA, length.out = (length(var_date_bins) - 1))
+n_tags_present$receivers_present_at_begining_of_bin = rep(x = NA, length.out = (length(var_date_bins) - 1))
+n_tags_present$receivers_present_at_end_of_bin = rep(x = NA, length.out = (length(var_date_bins) - 1))
+# Vector Type 2: Number of transmitters deployed that still have battery life
+n_tags_active = list()
+n_tags_active$all_receivers_any_point_of_bin = rep(x = NA, length.out = (length(var_date_bins) - 1))
+n_tags_active$receivers_present_during_begining_and_end_of_bin = rep(x = NA, length.out = (length(var_date_bins) - 1))
+n_tags_active$receivers_present_at_begining_of_bin = rep(x = NA, length.out = (length(var_date_bins) - 1))
+n_tags_active$receivers_present_at_end_of_bin = rep(x = NA, length.out = (length(var_date_bins) - 1))
+# Vector Type 3: Percentage of transmitters present during that date bin / number of valid tags at that point
+percent_fish_present = list()
+percent_fish_present$all_receivers_any_point_of_bin = rep(x = NA, length.out = (length(var_date_bins) - 1))
+percent_fish_present$receivers_present_during_begining_and_end_of_bin = rep(x = NA, length.out = (length(var_date_bins) - 1))
+percent_fish_present$receivers_present_at_begining_of_bin = rep(x = NA, length.out = (length(var_date_bins) - 1))
+percent_fish_present$receivers_present_at_end_of_bin = rep(x = NA, length.out = (length(var_date_bins) - 1))
+## e. Calculation of theoretical recovery rate for each date bin: -----
+# Subset receiver data for each bin
+# Looping through each date_bin to determine which receivers were present
+for(i in 1:(length(var_date_bins)-1)){
+subset_receiver_data = list()
+# Subset receiver data for all receivers in the water at any point during the date bin
+subset_receiver_data$all_receivers_any_point_of_bin = receiver_data[which((receiver_data$deployment_date <= var_date_bins[i] & receiver_data$recovery_date >= var_date_bins[i]) | (receiver_data$deployment_date <= var_date_bins[i+1] & receiver_data$recovery_date >= var_date_bins[i+1])), ]
+# Subset receiver data for only receivers that were present at begining and end of date bin
+subset_receiver_data$receivers_present_during_begining_and_end_of_bin = receiver_data[which(receiver_data$deployment_date <= var_date_bins[i] & receiver_data$recovery_date >= var_date_bins[i+1]), ]
+# Subset receiver data for receivers in the water at the begining of the date bin
+subset_receiver_data$receivers_present_for_begining_of_bin = receiver_data[which(receiver_data$deployment_date <= var_date_bins[i] & receiver_data$recovery_date >= var_date_bins[i]), ]
+# Subset receiver data for receivers in the water at the end of the date bin
+subset_receiver_data$receivers_present_for_end_of_bin = receiver_data[which(receiver_data$deployment_date <= var_date_bins[i+1] & receiver_data$recovery_date >= var_date_bins[i+1]), ]
+## Note: Adjusted Rates not Done. No longer seems necessary/missing data? # Calculate the relative time the receivers that were changed were in the water
+# Filling in corrosponding row of receiver_presence_matrix
+receiver_prescence_matrix[ ,i] = c(dim(subset_receiver_data$all_receivers_any_point_of_bin)[1], dim(subset_receiver_data$receivers_present_during_begining_and_end_of_bin)[1], dim(subset_receiver_data$receivers_present_for_begining_of_bin)[1], dim(subset_receiver_data$receivers_present_for_end_of_bin)[1])
+## Creating user_specified_sensor lists for running acoustic web app
+# Of the format: c(sensor1_Long, sensor1_Lat, sensor2_Long, sensor2_Lat...) # If blank, leave as NULL
+user_specified_sensor_list = list()
+user_specified_sensor_list$all_receivers_any_point_of_bin = c()
+# lat lon of all receivers in the water at any point during the date bin
+for(r in 1:length(subset_receiver_data$all_receivers_any_point_of_bin$lon)){
+user_specified_sensor_list$all_receivers_any_point_of_bin = c( user_specified_sensor_list$all_receivers_any_point_of_bin, c(subset_receiver_data$all_receivers_any_point_of_bin$lon[r], subset_receiver_data$all_receivers_any_point_of_bin$lat[r]))
+}
+# lon lat of only receivers that were present at begining and end of date bin
+user_specified_sensor_list$receivers_present_during_begining_and_end_of_bin = c()
+for(r in 1:length(subset_receiver_data$receivers_present_during_begining_and_end_of_bin$lon)){
+user_specified_sensor_list$receivers_present_during_begining_and_end_of_bin = c( user_specified_sensor_list$receivers_present_during_begining_and_end_of_bin, c(subset_receiver_data$receivers_present_during_begining_and_end_of_bin$lon[r], subset_receiver_data$receivers_present_during_begining_and_end_of_bin$lat[r]))
+}
+# lon lat of receivers in the water at the begining of the date bin
+user_specified_sensor_list$receivers_present_for_begining_of_bin = c()
+for(r in 1:length(subset_receiver_data$receivers_present_for_begining_of_bin$lon)){
+user_specified_sensor_list$receivers_present_for_begining_of_bin = c( user_specified_sensor_list$all_receivers_any_point_of_bin, c(subset_receiver_data$receivers_present_for_begining_of_bin$lon[r], subset_receiver_data$receivers_present_for_begining_of_bin$lat[r]))
+}
+# lon lat of receivers in the water at the end of the date bin
+user_specified_sensor_list$receivers_present_for_end_of_bin = c()
+for(r in 1:length(subset_receiver_data$receivers_present_for_end_of_bin$lon)){
+user_specified_sensor_list$receivers_present_for_end_of_bin = c(user_specified_sensor_list$all_receivers_any_point_of_bin, c(subset_receiver_data$receivers_present_for_end_of_bin$lon[r], subset_receiver_data$receivers_present_for_end_of_bin$lat[r]))
+}
+# Run Acoustic Web App over each receiver subset and populate matrix
+mat_row_counter = 0 # Establish looping counter
+for(specified_sensor_list in user_specified_sensor_list){
+mat_row_counter = mat_row_counter + 1 # incriment loop counter
+acoustic_run = run_web_app(
+bathymetry_dataset = var_bathymetry_dataset, # options are 'MHI_1km', 'MHI_50m', and 'Palmyra'
+northern_grid_boundary = var_northern_grid_boundary, # as decimal degrees
+southern_grid_boundary = var_southern_grid_boundary, # as decimal degrees
+western_grid_boundary = var_western_grid_boundary, # as decimal degrees
+eastern_grid_boundary = var_eastern_grid_boundary, # as decimal degrees
+fish_model_algorithm = var_fish_model_algorithm, # options are rw = random walk or ou = Ornstein-Uhlenbeck
+home_range_center_x = var_home_range_center_x, # as decimal degrees. Required for OU fish model.
+home_range_center_y = var_home_range_center_y, # as decimal degrees. Required for OU fish model
+home_range_extent_x = var_home_range_extent_x, # in meters. Required for OU fish model. Standard deviation in meters of home range extent in the x direction. Controls home range width. A rule of thumb says that for each direction in isolation approximately 95% of the time is spent within plus minus two standard deviations. A non-negative real number.
+home_range_extent_y = var_home_range_extent_y, # in meters. Required for OU fish model. Standard deviation in meters of home range extent in the y direction. Controls home range height. A rule of thumb says that for each direction in isolation approximately 95% of the time is spent within plus minus two standard deviations. A non-negative real number.
+directional_correlation_of_home_range = var_directional_correlation_of_home_range, # Required for OU fish model. Correlation of spatial distribution between directions. Controls the tilt of the home range. This is useful if the home range shape is angled relative to the x,y coordinate system. The correlation must be between -1 and 1.
+restrict_vertical_habitat_range = var_restrict_vertical_habitat_range, # Options are TRUE or FALSE
+min_depth = var_min_depth, # units are in negative meters. Required if restrict_vertical_habitat_range == TRUE. [Optional] Specifies the shallowest depth in meters a fish will visit. Valid values are non-positive real numbers. Specifying a value for mindepth requires specifying a value for maxdepth.
+max_depth = var_max_depth, # units are in negative meters. [Optional] Specifies the deepest depth in meters a fish will visit. Valid values are non-positive real numbers. Specifying a value for maxdepth requires specifying a value for mindepth.
+use_depth_preference = var_use_depth_preference, # Options are TRUE or FALSE
+prefered_depth = var_prefered_depth, # [Optional] Depth preference of fish relative to bottom (in meters off the bottom). Valid values are non-negative real numbers. Specifying a value for depth_off_bottom requires specifying a value for depth_off_bottom_sd.
+sd_of_preferred_depth = var_sd_of_preferred_depth, # Set to 2 by default# [Optional] Standard deviation of preferred depth (in meters). Animals spend 95% of their time within plus/minus 2 SD of their preferred depth.
+user_specified_sensors = specified_sensor_list, # List of already existing sensors. These sensors are placed and down-weighed before running the program. Useful for including already existing sensors, or forcing the placement of a few sensors. Do not include these sensors in the sensor count below. Provide sensor locations as a string in the format: <sensor1_Long>, <sensor1_Lat>, <sensor2_Long>, <sensor2_Lat>..." # If blank, leave as NULL
+number_of_sensors_to_use = var_number_of_sensors_to_use, # Specifies how many sensors the program should place. Valid values are non-negative integers.
+number_of_sensors_to_project = var_number_of_sensors_to_project, # Specifies how many sensors the program should provide projections for. Valid values are non-negative integers.
+goodness_algorthm = var_goodness_algorthm, # options are 1, 2, 3. Specifies how you want the system to determine the "goodness" of a cell. Valid values are 1, 2, or 3.
+# A value of '1' indicates that a "good" cell has a high number of animals within detection range (ignoring line of sight). This is useful for sensors not restricted to line-of-sight detection.
+# A value of '2' indicates that a "good" cell has the best visibility (taking into account bathymetry and shadowing, but completely ignoring fish density). This is useful for networks restricted to line-of-sight detection and having no prior knowledge of animal habitat.
+# A value of '3' indicates that a "good" cell has a high number of visible fish (incorporating both bathymetry and animal density). This is useful for networks restricted to line-of-sight detection, and having some idea of animal habitat.
+sensor_elevation = var_sensor_elevation, # Specifies how far off the bottom a sensor should be placed in meters. Valid values are non-negative real numbers.
+sensor_shape_function = var_sensor_shape_function, # Determines which functional shape to represent horizontal acoustic attenuation in the water. The detection function specifies how the chance of signal detection declines as a function of distance to sensor. Ranging experiments should preferably be carried out locally at the study site to approximate this function. Currently, the only valid value is "shape.gauss".
+max_detection_value = var_max_detection_value, # The probability of detecting a fish located right next to the sensor. Specifies a maximum value for the shape function. Valid values should be a decimal in the range (0.05,1].
+detection_range = var_detection_range, # in meters. The distance in meters from the sensor where the chance of detecting a signal is 0.05. Valid values are non-negative real numbers.
+supression_factor = var_supression_factor, # Specifies the range of suppression in multiples of the detection range. For example, a suppression factor of 2 enforces a suppression range of two times the detection range. Cells within the suppression range of a sensor will be subject to the specified suppression function. To deter sensor overlap, a good value to use is twice the sensor detectionRange. Valid values are non-negative real numbers.
+supression_function = var_supression_function, # Specifies which suppression function to use. Options are suppression.static, suppression.scale, detection.function, detection.function.shadow, or detection.function.exact.
+# suppression.static: Replaces all cells within range of a sensor with the value specified in minsuppressionValue.
+# suppression.scale: Multiplies the values of cells within range of a sensor by a scaling factor according to the cell's distance from the sensor. Nearby cells receive a higher scaling factor, and lower cells receive a lower scaling factor. The scaling factor is linearly related to the distance between the sensor and cell. Selecting this option requires specifyign values for minsuppressionValue and maxsuppressionValue
+# detection.function: Uses the inverse of the detection function to down scale goodness of grid cells near the sensor, but does not take objects that block signal into account. Grid cells' goodness will increase as a function of distance to the sensor.
+# detection.function.shadow: Uses the inverse of the shapeFcn to down scale goodness of grid cells near the sensor, and does take objects that block signal into account. This means that sensors on opposite sides of a blocking wall will not affect each other's goodness. Unblocked grid cells' goodness will increase as a function of distance to the sensor.
+# detection.function.exact:
+# The above suppression functions do not recalculate the goodness grid after placing a new sensor and therefore only provide an approximately optimal solution. This suppression function does recalculate the goodness iteratively, and is therefore slower by a factor equal to the number of sensors.
+max_supression_value = var_max_supression_value, # Specifies the minimum scaling factor to apply. Cells at the edge of the suppression Range will receive this as a scaling factor. Valid values are non negative real numbers in the range [0,1]
+min_supression_value = var_min_supression_value, # Specifies the maximum scaling factor to apply. Cells directly adjacent to a sensor will receive this as a scaling factor. Valid values are non negative real numbers in the range [0,1]
+input_file = var_input_file,  # Currently false because file is selected using bathymetry_dataset argument. # Specifies the file location of the Bathy File to use. For arcGIS filetypes, this is a path to the folder containing the data files. For netCDF filetypes, this is a path to the ncdf file itself. )
+input_file_type = var_input_file_type # Specifies the file type of the Bathy file you provided. Valid values are "arcgis" or "netcdf".
+)
+model_predicted_recovery_rates[mat_row_counter, i] = acoustic_run$stats$absRecoveryRate
+# Moving and renaming the zip file produced to the current run folder
+old_zip_name = acoustic_run$filenames$zip
+new_zip_name = paste(run_dir, "/awa run ", names(user_specified_sensor_list)[mat_row_counter]," ",strsplit(as.character(var_date_bins[i]), split = " ")[[1]][1], ".zip" , sep = "")
+file.rename(from = old_zip_name, to = new_zip_name)
+# Removing extra files created as these are duplicated in the zip folder
+file.remove(paste("/Users/stephenscherrer/Google Drive/Weng Lab/Personal_Folders/Steve/dissertation work/Acoustic Network Design/Acoustic Web App", "/", acoustic_run$filenames[which(names(acoustic_run$filenames) != "zip" & names(acoustic_run$filenames) != "jsonFile")], sep = ""))
+}
+# Resetting the working directory because running the acoustic web app changes the output location
+setwd(run_dir)
+################12 October 2016 - Start Debugging ####################
+# for(i in 1:(length(var_date_bins))){
+## f. Calculating observed recovery rates from vue_data ----
+# Removingd detections not associated with current date_bin
+current_bin_vue_data = vue_data[which(vue_data$datetime >= var_date_bins[i] & vue_data$datetime < var_date_bins[i+1]), ]
+# For each tag in the data set, was it deployed before the begining of the current date bin? If no, discard
+# If Yes, does its last detection occur after the end of the current date bin? If no, discard
+temp_tag_table = tag_table[na.omit(which(tag_table$tag_date < var_date_bins[i] & (tag_table$last_detection > var_date_bins[i+1]))), ]
+current_bin_vue_data = current_bin_vue_data[current_bin_vue_data$tag_id %in% temp_tag_table$tag_id, ]
+# Create vue data sets with removal of data from receivers corrosponding to the various receiver subsets during theoretical recovery rate calculation set
+subset_vue_data = list()
+subset_vue_data$all_receivers_any_point_of_bin = current_bin_vue_data
+############## TO DO: Come up with alogrthm for getting rid of detections from receivers that are repositioned/moved during a date_bin period
+# Subset receiver data for only receivers that were present at begining and end of date bin
+subset_vue_data$receivers_present_during_begining_and_end_of_bin = current_bin_vue_data[which(current_bin_vue_data$receiver %in% subset_receiver_data$receivers_present_during_begining_and_end_of_bin$vr2w_serial &
+current_bin_vue_data$station %in% subset_receiver_data$receivers_present_during_begining_and_end_of_bin$station_name), ]
+# Subset receiver data for receivers in the water at the begining of the date bin
+subset_vue_data$receivers_present_for_begining_of_bin = current_bin_vue_data[which(current_bin_vue_data$receiver %in% subset_receiver_data$receivers_present_for_begining_of_bin$vr2w_serial &
+current_bin_vue_data$station %in% subset_receiver_data$receivers_present_for_begining_of_bin$station_name), ]
+# Subset receiver data for receivers in the water at the end of the date bin
+subset_vue_data$receivers_present_for_end_of_bin = current_bin_vue_data[which(current_bin_vue_data$receiver %in% subset_receiver_data$receivers_present_for_end_of_bin$vr2w_serial &
+current_bin_vue_data$station %in% subset_receiver_data$receivers_present_for_end_of_bin$station_name), ]
+##############
+## g. Populating matricies and vectors ----
+for(s in 1:length(subset_vue_data)){
+subsetted_data = subset_vue_data[[s]]
+for(k in 1:length(var_tag_ids)){
+if(tag_table$tag_date[which(tag_table$tag_id == var_tag_ids[k])] <= var_date_bins[i]){
+indv_data = subsetted_data[subsetted_data$tag_id == var_tag_ids[k], ]
+# Matrix Type 1: How many transmissions were detected during the current date bin?
+observed_transmissions_detected[[s]][k,i] = dim(indv_data)[1]
+# Matrix Type 2: What was the recovery rate for each fish during that date bin? (Divide total transmission detected by / the expected number of transmissions for that date bin)
+observed_recovery_rates[[s]][k, i] = observed_transmissions_detected[[s]][k, i] / (as.numeric(difftime(var_date_bins[i+1], var_date_bins[i], units = "secs")) / tag_table$tag_interval[tag_table$tag_id == var_tag_ids[k]] )
+# Vector Type 1: Number of fish present during that date bin.
+n_tags_present[[s]][i] = length(which(observed_transmissions_detected[[s]][ ,i] > 0))
+# Vector Type 2: The number of fish with active tags during that bin
+n_tags_active[[s]][i] = length(which(tag_table$tag_date <= var_date_bins[i] & tag_table$tag_death > var_date_bins[i+1]))
+# Vector Type 3: Percentage of transmitters present during that date bin / number of valid tags at that point
+percent_fish_present[[s]] = n_tags_present[[s]] / n_tags_active[[s]]
+}
+}
+}
+}
+warnings()
+var_tag_ids
+k
+var_tag_idstag_table$tag_date[which(tag_table$tag_id == var_tag_ids[k])]
+tag_table$tag_date[which(tag_table$tag_id == var_tag_ids[k])]
+i
+var_date_bins[i]
+tag_table$tag_date[which(tag_table$tag_id == var_tag_ids[k])] <= var_date_bins[i]
+tag_specs = load('/Users/stephenscherrer/Google Drive/Weng Lab/Data/VEMCO/VEMCO Tag Specifications.csv')
+tag_specs = read.csv('/Users/stephenscherrer/Google Drive/Weng Lab/Data/VEMCO/VEMCO Tag Specifications.csv')
+tag_specs
+colnames(tag_specs)
+colnames(tag_specs) = c('tag_family', 'tag_serial', 'tag_id', "vue_tag_id", "freq_khz", "est_tag_life_days", "power", 'fixed_delay', 'min_interval_sec', 'max_interval_sec', 'type', 'sync', 'bin', 'sensor_type', 'range', 'units', 'slope', 'intercept', 'calibration', 'rec_blanking_interval')
+colnames(tag_specs)
+load_vemco = function(filename, filepath = FALSE, format = '%Y-%m-%d %H:%M:%S'){
+proj_dir = getwd()
+if (isTRUE(filepath != FALSE)) {setwd(filepath)}
+vue_data_raw = read.csv(filename)
+vue_data_cleaned = vue_col_names(vue_data_raw)
+vue_data_cleaned$datetime = strptime(vue_data_cleaned$datetime,
+format = format,
+tz = "GMT")
+vue_data_cleaned$datetime = convert_tz(vue_data_cleaned$datetime, new.tz = 'HST')
+vue_data_cleaned$full_tag_id = vue_data_cleaned$tag_id
+vue_data_cleaned$tag_id = clean_tag_id(vue_data_cleaned$tag_id)
+vue_data_cleaned$receiver = clean_receiver(vue_data_cleaned$receiver)
+setwd(proj_dir)
+return (vue_data_cleaned)
+}
+### Utility Functions Available
+# clean_vue_data()
+# clean_receiver_stations()
+# subset_time()
+# create_save_directory()
+# load_zissou_palette()
+# load_vemco()
+# convert_tz()
+# vue_col_names()
+# clean_tag_id()
+# clean_receiver()
+# load_receiver_data()
+# receiver_col_names()
+# load_tagging_data()
+# meta_data_col_names()
+# clean_vue_lat_lon()
+# remove_location()
+# clean_vue()
+# clean_tags()
+# convert_lat_lon
+# get_recovery_rate()
+# remove_detections_before_tagging()
+### Analysis Functions Available
+# cluster_receivers()
+# get_graph()
+# build_detection_matrix()
+# calculate_time_at_liberty()
+# calculate_days_before_detection()
+# calculate_days_detected()
+# generate_tagging_detection()
+# generate_study_date()
+# list_stations_detected()
+# remove_false_detections()
+# spatial_evenness()
+# days_present()
+# length_to_weight()
+# lldist()
+# distance_tracked()
+# in_brfa_e()
+# in_brfa_f()
+# brfa_movements()
+# brfa_movements_by_time_at_liberty()
+# n_movements()
+# max_movement()
+# get_fork_length()
+# get_tagging_date()
+# remove_only_tagging_date_entries()
+# run_analysis()
+# generate_analysis_report()
+# create_analysis_csv()
+# run()
+# distance_between_vue_receivers()
+# distance_between_receivers()
+# get_recovery_rates()
+# days_detected()
+# stations_detected()
+# brfa_size()
+### Plotting Functions
+# tag_detection_histogram()
+# plot_receiver_map()
+# plot_depths()
+# plot_movements()
+# plot_path_use()
+# plot_tag_detections()
+# tagging_histogram()
+# assign_color_palette()
+# generate_stripchart()
+# detection_stripchart()
+# plot_receiver_maps()
+# create_day_night_plot()
+# plot_detections_by_receiver()
+# generate_gif_images()
+# make_detection_plot()
+# detection_stripcharts()
+# plot_receiver_histories()
+# make_detection_plot()
+# plot_station_map()
+# plot_clusters()
+#### TODO:
+####  plotting index as part of analysis (unfilled circles for uncertain detections etc...)
+####  plot receivers detected by # of detections
+####  % of days detected / days since tagging
+####  Total days detected /days at liberty = fidelity index
+####  Track length vs. Size? Good tracks vs. size
+####  Residence behavior vs. Size?
+####  Fix get_graph() function
+####  Plot histogram for how long tags were heard after tagging. Both if tagged then heard 1 week, assume detection for entire week, and only for intervals detected.
+####  Giant excel calendar of detections?
+####  Cluster analysis of receivers?
+#### Bottomfish Movement Analysis
+#### Written: January 2016 by Stephen R. Scherrer
+#### Code for the analysis of Acoustic Tags and VR2W
+#### Data applied to Opakapaka tagged in Oahu, Hawaii
+##### Clearning Workspace and setting directories ------------------------------------
+rm(list=ls()) # Clear workspace
+script_timer = proc.time()
+project_dir = '/Users/stephenscherrer/Google Drive/Weng Lab/Personal_Folders/Steve/dissertation work/Opakapaka Tagging/Opakapaka Tagging Analysis'
+data_dir = paste('/Users/stephenscherrer/Google Drive/Weng Lab/Data/Bottomfish/Oahu Receiver Data Files/')
+results_dir = paste(project_dir, '/results/', sep = "")
+# figure_dir = paste(project_dir, '/figures/', sep = "")
+src_dir = paste(project_dir, '/src/', sep = "")
+bin_dir = paste(project_dir, '/bin/', sep = "")
+setwd(project_dir)
+savehistory(file=paste(results_dir, 'results.txt'))

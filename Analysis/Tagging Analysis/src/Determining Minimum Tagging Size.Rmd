@@ -1,0 +1,60 @@
+---
+title: "Determining minimum size of fish to tag through simulation"
+output: html_notebook
+---
+
+The purpose of this notebook is to determine the minimum acceptable size of opakapaka (Pristipomoides filamentosus) that can be tagged using V13 and V13P acoustic tags (Vemco LTD, Halifax Nova Scotia).
+
+We will do this using models relating size (cm-fork length) to weight (kg) for the species 
+
+It is generally accepted that teleost swimming performance is unaffected when tags weight does not exceed 2% of the organism’s body weight, though unaltered swimming performance has been reported for tags weighing up to 12% (Winter, 1983; Brown, Cook, Anderson et al. 1999). 
+
+To select the size range of fish suitable for tagging, V13 (non-depth recording) and a V13P (depth recording) are weighed. 
+
+```{r}
+  v13_weight = 10.2024 # grams
+  v13p_weight = 12.7698 # grams
+```
+
+The minimum weight of opakapaka eligible for tagging with each type of tag is determined using a conservative 2% threshold.
+
+First we simulate 100 fish, each 1 cm larger than the previous (1 - 100 cm)
+```{r}
+paka_lengths.cm = 1:100 ## hypothetical size distribution between 1cm and 100cm FL
+```
+
+We convert fork length (cm) to weight (kg) using an allometric relationship and species specific parameter estimates (Uchiyama and Kazama, 2003) and then to g using  metric unit conversions. 
+```{r}
+convert_length_to_weight = function(FL, a = 0.000381465, b = 2.79567){
+  #### Converting opakapaka FL to weight based on based allometric relationships by on McCleave and Stred, 1975, and Adams et al. 1998 and species specific parameters estimated by Uchiyama and Kazama 2003
+  # Based on the formula Weight = a*FL^b
+  # Default coefficients for pooled sex opakapaka data
+  weight = a * (FL^b)
+  return(weight)
+}
+
+paka_weights.kg = convert_length_to_weight(paka_lengths.cm) ## Convert sizes to KG
+paka_weights.g = paka_weights.kg*1000
+```
+
+We then calculate what 2% of these weights are
+```{r}
+  paka_weights_.02.g = paka_weights.g*.02
+```
+
+Finally, we can determine the smallest size fish we can tag by finding the 2% fish weight that is closest to to the weight of our tags. Because our weight indexes corrospond to the fork length they were derived from, we just need to find the index producing the smallest absolute nubmer once tag weight is subtracted from 2% body weight. We'll add an extra cm to this to account for the possibility that the smallest  value was negative.   
+```{r}
+
+  ## have to add 1 to each of these as they are under, not over estimates. 
+  ## figured this out by looking at values prior to absoluting them, but probably 
+  ## theres an automated way
+  which.min(abs(paka_weights_.02.g - v13_weight)) + 1
+  # minimum size of fish tagged with V13 = 14cm
+  which.min(abs(paka_weights_.02.g - v13p_weight)) + 1
+  # minimum size of fish tagged with V13p = 15cm
+
+```
+
+This corrosponds to fish with fork lengths of 14 and 15 cm for v13 and v13p tags respectively. 
+
+Conclusion: The smallest opakapaka that should be tagged with a v13 tag is 14-cm and the smallest with a v13p tag is 15-cm. 

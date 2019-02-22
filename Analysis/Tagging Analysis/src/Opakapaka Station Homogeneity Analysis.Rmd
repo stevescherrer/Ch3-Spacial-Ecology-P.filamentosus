@@ -1,0 +1,81 @@
+---
+title: "Diurnal Patterns in Space Use Behavior"
+output: html_notebook
+---
+
+The purpose of this notebook is to test if the stations at which tagged opkapaka are detected changes at different times of day.
+
+To accomplish this, we will construct a contingency table for each tagged fish. Rows will indicate each period of day and columns represent stations. Values will be the % of detections occurring at that station during that period.
+
+We will then use a chi-squared test wether station use was homogenious or hetrogenius for that individual. Final results will be be presented as the ratio beteen these groups.
+
+```{r}
+#### Testing if individuals spend equal time in equal places
+### This will be done with contingency tables and chi-squre tests
+chisq_df = data.frame('tag_id' = unique(analysis_summary$data$tag_id), 'significant' = FALSE, 'n_stations' = 0, 'n_time_periods' = 0, stringsAsFactors = FALSE)
+for(i in 1:length(unique(analysis_summary$data$tag_id))){
+  # Subset individual data
+  indv_data = analysis_summary$data[analysis_summary$data$tag_id == unique(analysis_summary$data$tag_id)[i] & analysis_summary$data$station != 'Tagging Location', ]
+  # Create a contingency table of detections between time of day and station
+  cont_table = table(indv_data$time_of_day, indv_data$station)
+  # Standardize that contingency table so values are % of all detections at each station
+  for(j in 1:nrow(cont_table)){
+    cont_table[j, ] = (cont_table[j, ] / rowSums(cont_table)[j]) * 100
+  }
+  # Perform chi square test
+  cont_chisq = chisq.test(cont_table)
+  # Update main dataframe
+  if(cont_chisq$p.value <= 0.05){
+    chisq_df$significant[i] = TRUE
+  }
+  chisq_df$n_stations[i] = ncol(cont_table)
+  chisq_df$n_time_periods[i] = nrow(cont_table)
+}
+print(paste('Of the', length(chisq_df$tag_id), 'tagged fish,', length(which(chisq_df$significant == TRUE)), 'had significant differences between the stations they visited during each period of the day.'))
+
+```
+
+How many of these fish made any movements?
+```{r}
+aggregate(analysis_summary$data$station[analysis_summary$data$station != 'Tagging Location'], by = list(analysis_summary$data$tag_id[analysis_summary$data$station != 'Tagging Location']), FUN = unique)
+```
+
+
+We'll now essentially cluster each fish's position during each period by finding the mean location in lat and lon space
+```{r}
+cluster_position = aggregate(analysis_summary$data$lon, by = list( analysis_summary$data$tag_id, analysis_summary$data$time_of_day), FUN = mean)
+
+cluster_position$lat = aggregate(analysis_summary$data$lat, by = list( analysis_summary$data$tag_id, analysis_summary$data$time_of_day), FUN = mean)[ncol(cluster_position)]
+colnames(cluster_position) = c('tag_id', 'time_of_day', 'mean_lon', 'mean_lat')
+
+## Remove fish that did not significantly redistribute
+cluster_position = cluster_position[cluster_position$tag_id %in% chisq_df$tag_id[chisq_df$significant == TRUE], ]
+```
+
+And now we can model this data to see if there are any changes
+```{r}
+lon_test = lmer(mean_lon ~ time_of_day + (1|tag_id), data = cluster_position)
+summary(lon_test)
+
+lat_test = lmer(mean_lon ~ time_of_day + (1|tag_id), data = cluster_position)
+summary(lat_test)
+```
+
+
+
+Lets make 4 plots of the receiver network so we can compare the primary location of individuals across periods
+```{r}
+## Plot mean position by time of day
+time_of_day_plot = autoplot(analysis_summary$bathymetry, geom = "contour") + 
+  geom_point(data = analysis_summary$receiver_df[analysis_summary$receiver_df$recovered == "", ], aes(x = lon, y = lat), shape = 21, col = 'red', size = 8) +
+  geom_jitter(data = cluster_position, aes(x = mean_lon, y = mean_lat, col = time_of_day), size = 5, shape = 19, width = .005, height = .005) + 
+  geom_line(data = brfa_e[1:2, ], aes(x = lon, y = lat), col = 'purple') + 
+  geom_line(data = brfa_e[2:3, ], aes(x = lon, y = lat), col = 'purple') + 
+  geom_line(data = brfa_e[3:4, ], aes(x = lon, y = lat), col = 'purple') + 
+  labs(color = 'Time of Day', x = 'lon', y = 'lat') + theme_classic()
+
+
+pdf('Mode Locations by Diurnal Period.pdf')
+  print(time_of_day_plot)
+dev.off()
+```

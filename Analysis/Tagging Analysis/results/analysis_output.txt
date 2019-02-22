@@ -1,0 +1,900 @@
+Transmitter ID:  18249 
+Species:  Opakapaka 
+Fork Length:  45  cm 
+Tagging Date:  2015-03-17 19:29:00 
+Tagging Location:  Makapuu 
+Day of First Detected:  2015-03-17 19:39:22 
+Day of Last Detection:  2016-03-05 04:55:38 
+Days at Liberty:  356 
+Unique Days Detected:  237 
+Number of Detections (Total):  9896 
+Number of Detections / Day at Liberty:  27.8368495077356 
+Number of Detections / Day Detected:  41.7552742616034 
+Number of Receivers Detected (Total):  2 
+Number of receivers Detected / Days at Liberty:  0.00562587904360056 
+Movements from inside to outside BRFA (Total):  0 
+Movements from inside to outside BRFA / Day:  0 
+Movements from outside to inside BRFA (Total):  0 
+Movements from outside to inside BRFA / Day:  0 
+Time in BRFA:  355.5 
+Time out of BRFA:  0 
+Approximate Distance Tracked (Total):  3 km 
+Approximate Distance Tracked / Day:  0.00843881856540084 km 
+  c("Tagging Location", "Oahu - Makapuu BRFA 15 (\"Makapuu In BRFA\")", "BRFA E 15") 
+Area of detected homerange 0.5 km^2
+
+Transmitter ID:  18250 
+Species:  Opakapaka 
+Fork Length:  37  cm 
+Tagging Date:  2015-03-17 19:46:00 
+Tagging Location:  Makapuu 
+Day of First Detected:  2015-03-17 19:55:22 
+Day of Last Detection:  2015-03-21 00:30:25 
+Days at Liberty:  4 
+Unique Days Detected:  5 
+Number of Detections (Total):  322 
+Number of Detections / Day at Liberty:  100.625 
+Number of Detections / Day Detected:  64.4 
+Number of Receivers Detected (Total):  3 
+Number of receivers Detected / Days at Liberty:  0.9375 
+Movements from inside to outside BRFA (Total):  0 
+Movements from inside to outside BRFA / Day:  0 
+Movements from outside to inside BRFA (Total):  0 
+Movements from outside to inside BRFA / Day:  0 
+Time in BRFA:  3.2 
+Time out of BRFA:  0 
+Approximate Distance Tracked (Total):  31 km 
+Approximate Distance Tracked / Day:  9.6875 km 
+  c("Tagging Location", "Oahu - Makapuu BRFA 15 (\"Makapuu In BRFA\")", "Oahu - Makapuu BRFA 14", "Oahu - Makapuu BRFA 12") 
+Area of detected homerange 2.89 km^2
+
+Transmitter ID:  18251 
+Species:  Opakapaka 
+Fork Length:  41.5  cm 
+Tagging Date:  2015-03-17 20:53:00 
+Tagging Location:  Makapuu 
+Day of First Detected:  2015-03-18 05:26:24 
+Day of Last Detection:  2015-08-27 17:50:39 
+Days at Liberty:  164 
+Unique Days Detected:  3 
+Number of Detections (Total):  53 
+Number of Detections / Day at Liberty:  1.38558261612647 
+Number of Detections / Day Detected:  75.6666666666667 
+Number of Receivers Detected (Total):  2 
+Number of receivers Detected / Days at Liberty:  0.0122077763535372 
+Movements from inside to outside BRFA (Total):  1 
+Movements from inside to outside BRFA / Day:  0.0061038881767686 
+Movements from outside to inside BRFA (Total):  1 
+Movements from outside to inside BRFA / Day:  0.0061038881767686 
+Time in BRFA:  161.73 
+Time out of BRFA:  2.11 
+Approximate Distance Tracked (Total):  29 km 
+Approximate Distance Tracked / Day:  0.177012757126289 km 
+  c("Tagging Location", "Oahu - Makapuu BRFA 18", "Oahu - Makapuu BRFA 15 (\"Makapuu In BRFA\")") 
+Area of detected homerange 8.38 km^2
+
+Transmitter ID:  18252 
+Species:  Opakapaka 
+Fork Length:  30  cm 
+Tagging Date:  2015-03-17 22:42:00 
+Tagging Location:  Makapuu 
+Day of First Detected:  2015-03-18 07:26:36 
+Day of Last Detection:  2015-06-20 02:14:26 
+Days at Liberty:  95 
+Unique Days Detected:  6 
+Number of Detections (Total):  86 
+Number of Detections / Day at Liberty:  0.562931492299522 
+Number of Detections / Day Detected:  8.83333333333333 
+Number of Receivers Detected (Total):  2 
+Number of receivers Detected / Days at Liberty:  0.0212426978226235 
+Movements from inside to outside BRFA (Total):  1 
+Movements from inside to outside BRFA / Day:  0.0106213489113117 
+Movements from outside to inside BRFA (Total):  1 
+Movements from outside to inside BRFA / Day:  0.0106213489113117 
+Time in BRFA:  93.78 
+Time out of BRFA:  0.37 
+Approximate Distance Tracked (Total):  11 km 
+Approximate Distance Tracked / Day:  0.116834838024429 km 
+  c("Tagging Location", "Oahu - Makapuu BRFA 15 (\"Makapuu In BRFA\")", "Oahu - Makapuu BRFA 14", "Oahu - Makapuu BRFA 27") 
+Area of detected homerange 2.8 km^2
+
+Transmitter ID:  18253 
+Species:  Opakapaka 
+Fork Length:  40  cm 
+Tagging Date:  2015-03-17 23:02:00 
+Tagging Location:  Makapuu 
+Day of First Detected:  2015-05-26 01:02:10 
+Day of Last Detection:  2015-12-14 04:23:08 
+Days at Liberty:  351 
+Unique Days Detected:  4 
+Number of Detections (Total):  871 
+Number of Detections / Day at Liberty:  0.934152263962291 
+Number of Detections / Day Detected:  81.75 
+Number of Receivers Detected (Total):  4 
+Number of receivers Detected / Days at Liberty:  0.011426939008713 
+Movements from inside to outside BRFA (Total):  0 
+Movements from inside to outside BRFA / Day:  0 
+Movements from outside to inside BRFA (Total):  0 
+Movements from outside to inside BRFA / Day:  0 
+Time in BRFA:  0 
+Time out of BRFA:  350.05 
+Approximate Distance Tracked (Total):  14 km 
+Approximate Distance Tracked / Day:  0.0399942865304956 km 
+  c("Tagging Location", "Oahu - Makapuu BRFA 26", "Oahu - Makapuu BRFA 27", "Makapuu BRFA 26") 
+Area of detected homerange 0.11 km^2
+
+Transmitter ID:  18254 
+Species:  Opakapaka 
+Fork Length:  44  cm 
+Tagging Date:  2015-03-17 23:35:00 
+Tagging Location:  Makapuu 
+Day of First Detected:  2015-03-18 04:11:48 
+Day of Last Detection:  2015-03-20 05:42:30 
+Days at Liberty:  3 
+Unique Days Detected:  3 
+Number of Detections (Total):  227 
+Number of Detections / Day at Liberty:  38.4955752212389 
+Number of Detections / Day Detected:  29 
+Number of Receivers Detected (Total):  3 
+Number of receivers Detected / Days at Liberty:  1.32743362831858 
+Movements from inside to outside BRFA (Total):  1 
+Movements from inside to outside BRFA / Day:  0.442477876106195 
+Movements from outside to inside BRFA (Total):  0 
+Movements from outside to inside BRFA / Day:  0 
+Time in BRFA:  2.06 
+Time out of BRFA:  0.19 
+Approximate Distance Tracked (Total):  10 km 
+Approximate Distance Tracked / Day:  4.42477876106195 km 
+  c("Tagging Location", "Oahu - Makapuu BRFA 14", "Oahu - Makapuu BRFA 15 (\"Makapuu In BRFA\")") 
+Area of detected homerange 2.21 km^2
+
+Transmitter ID:  18255 
+Species:  Opakapaka 
+Fork Length:  37  cm 
+Tagging Date:  2015-03-17 23:49:00 
+Tagging Location:  Makapuu 
+Day of First Detected:  2015-03-18 06:40:48 
+Day of Last Detection:  2015-03-21 20:47:13 
+Days at Liberty:  4 
+Unique Days Detected:  3 
+Number of Detections (Total):  327 
+Number of Detections / Day at Liberty:  22.1649484536082 
+Number of Detections / Day Detected:  28.6666666666667 
+Number of Receivers Detected (Total):  3 
+Number of receivers Detected / Days at Liberty:  0.77319587628866 
+Movements from inside to outside BRFA (Total):  1 
+Movements from inside to outside BRFA / Day:  0.257731958762887 
+Movements from outside to inside BRFA (Total):  1 
+Movements from outside to inside BRFA / Day:  0.257731958762887 
+Time in BRFA:  2.89 
+Time out of BRFA:  0.99 
+Approximate Distance Tracked (Total):  23 km 
+Approximate Distance Tracked / Day:  5.92783505154639 km 
+  c("Tagging Location", "Oahu - Makapuu BRFA 15 (\"Makapuu In BRFA\")", "Oahu - Makapuu BRFA 14", "Oahu - Makapuu BRFA 12", "Oahu - Makapuu BRFA 18") 
+Area of detected homerange 19.6 km^2
+
+Transmitter ID:  18256 
+Species:  Opakapaka 
+Fork Length:  39.5  cm 
+Tagging Date:  2015-03-18 00:22:00 
+Tagging Location:  Makapuu 
+Day of First Detected:  2015-03-18 07:23:43 
+Day of Last Detection:  2015-06-20 02:19:22 
+Days at Liberty:  95 
+Unique Days Detected:  4 
+Number of Detections (Total):  87 
+Number of Detections / Day at Liberty:  5.61224489795918 
+Number of Detections / Day Detected:  132 
+Number of Receivers Detected (Total):  4 
+Number of receivers Detected / Days at Liberty:  0.0425170068027211 
+Movements from inside to outside BRFA (Total):  1 
+Movements from inside to outside BRFA / Day:  0.0106292517006803 
+Movements from outside to inside BRFA (Total):  1 
+Movements from outside to inside BRFA / Day:  0.0106292517006803 
+Time in BRFA:  93.79 
+Time out of BRFA:  0.3 
+Approximate Distance Tracked (Total):  11 km 
+Approximate Distance Tracked / Day:  0.116921768707483 km 
+  c("Tagging Location", "Oahu - Makapuu BRFA 15 (\"Makapuu In BRFA\")", "Oahu - Makapuu BRFA 14", "Oahu - Makapuu BRFA 27") 
+Area of detected homerange 2.8 km^2
+
+Transmitter ID:  18257 
+Species:  Opakapaka 
+Fork Length:  34  cm 
+Tagging Date:  2015-05-25 21:21:00 
+Tagging Location:  Makapuu 
+Day of First Detected:  2015-05-25 21:57:26 
+Day of Last Detection:  2015-05-28 22:16:31 
+Days at Liberty:  4 
+Unique Days Detected:  77 
+Number of Detections (Total):  528 
+Number of Detections / Day at Liberty:  285.573770491803 
+Number of Detections / Day Detected:  11.3116883116883 
+Number of Receivers Detected (Total):  3 
+Number of receivers Detected / Days at Liberty:  0.983606557377049 
+Movements from inside to outside BRFA (Total):  1 
+Movements from inside to outside BRFA / Day:  0.327868852459016 
+Movements from outside to inside BRFA (Total):  1 
+Movements from outside to inside BRFA / Day:  0.327868852459016 
+Time in BRFA:  1.59 
+Time out of BRFA:  1.46 
+Approximate Distance Tracked (Total):  14 km 
+Approximate Distance Tracked / Day:  4.59016393442623 km 
+  c("Tagging Location", "Oahu - Makapuu BRFA 26", "Oahu - Makapuu BRFA 15 (\"Makapuu In BRFA\")", "Oahu - Makapuu BRFA 14", "Oahu - Makapuu BRFA 27") 
+Area of detected homerange 4 km^2
+
+Transmitter ID:  18259 
+Species:  Opakapaka 
+Fork Length:  38  cm 
+Tagging Date:  2015-05-26 00:33:00 
+Tagging Location:  Makapuu 
+Day of First Detected:  2015-05-26 14:34:50 
+Day of Last Detection:  2016-03-05 06:19:03 
+Days at Liberty:  285 
+Unique Days Detected:  224 
+Number of Detections (Total):  10154 
+Number of Detections / Day at Liberty:  35.723332395159 
+Number of Detections / Day Detected:  45.3303571428571 
+Number of Receivers Detected (Total):  2 
+Number of receivers Detected / Days at Liberty:  0.00703630734590487 
+Movements from inside to outside BRFA (Total):  0 
+Movements from inside to outside BRFA / Day:  0 
+Movements from outside to inside BRFA (Total):  0 
+Movements from outside to inside BRFA / Day:  0 
+Time in BRFA:  284.24 
+Time out of BRFA:  0 
+Approximate Distance Tracked (Total):  4 km 
+Approximate Distance Tracked / Day:  0.0140726146918097 km 
+  c("Tagging Location", "Oahu - Makapuu BRFA 15 (\"Makapuu In BRFA\")", "BRFA E 15") 
+Area of detected homerange 1.76 km^2
+
+Transmitter ID:  18260 
+Species:  Opakapaka 
+Fork Length:  51  cm 
+Tagging Date:  2015-05-26 02:23:00 
+Tagging Location:  Makapuu 
+Day of First Detected:  2015-07-02 13:37:43 
+Day of Last Detection:  2015-11-26 03:39:31 
+Days at Liberty:  200 
+Unique Days Detected:  6 
+Number of Detections (Total):  7 
+Number of Detections / Day at Liberty:  0.0351476200040169 
+Number of Detections / Day Detected:  1.16666666666667 
+Number of Receivers Detected (Total):  1 
+Number of receivers Detected / Days at Liberty:  0.00502108857200241 
+Movements from inside to outside BRFA (Total):  0 
+Movements from inside to outside BRFA / Day:  0 
+Movements from outside to inside BRFA (Total):  0 
+Movements from outside to inside BRFA / Day:  0 
+Time in BRFA:  199.16 
+Time out of BRFA:  0 
+Approximate Distance Tracked (Total):  1 km 
+Approximate Distance Tracked / Day:  0.00502108857200241 km 
+  c("Tagging Location", "Oahu - Makapuu BRFA 15 (\"Makapuu In BRFA\")") 
+Maximum linear Distance 0.61 km
+
+Transmitter ID:  918 
+Species:  Opakapaka 
+Fork Length:  44  cm 
+Tagging Date:  2015-08-18 19:18:00 
+Tagging Location:  Makapuu 
+Day of First Detected:  2015-08-18 19:28:07 
+Day of Last Detection:  2015-08-24 23:53:07 
+Days at Liberty:  7 
+Unique Days Detected:  5 
+Number of Detections (Total):  185 
+Number of Detections / Day at Liberty:  29.8869143780291 
+Number of Detections / Day Detected:  37 
+Number of Receivers Detected (Total):  4 
+Number of receivers Detected / Days at Liberty:  0.646203554119548 
+Movements from inside to outside BRFA (Total):  1 
+Movements from inside to outside BRFA / Day:  0.161550888529887 
+Movements from outside to inside BRFA (Total):  1 
+Movements from outside to inside BRFA / Day:  0.161550888529887 
+Time in BRFA:  6.08 
+Time out of BRFA:  0.12 
+Approximate Distance Tracked (Total):  17 km 
+Approximate Distance Tracked / Day:  2.74636510500808 km 
+  c("Tagging Location", "Oahu - Makapuu BRFA 15 (\"Makapuu In BRFA\")", "Oahu - Makapuu BRFA 24", "Oahu - Makapuu BRFA 28", "Oahu - Makapuu BRFA 14") 
+Area of detected homerange 6.26 km^2
+
+Transmitter ID:  919 
+Species:  Opakapaka 
+Fork Length:  46.5  cm 
+Tagging Date:  2015-08-18 19:59:00 
+Tagging Location:  Makapuu 
+Day of First Detected:  2015-08-18 20:31:26 
+Day of Last Detection:  2015-08-20 23:58:13 
+Days at Liberty:  3 
+Unique Days Detected:  3 
+Number of Detections (Total):  10 
+Number of Detections / Day at Liberty:  4.60829493087558 
+Number of Detections / Day Detected:  3.33333333333333 
+Number of Receivers Detected (Total):  2 
+Number of receivers Detected / Days at Liberty:  0.921658986175115 
+Movements from inside to outside BRFA (Total):  0 
+Movements from inside to outside BRFA / Day:  0 
+Movements from outside to inside BRFA (Total):  0 
+Movements from outside to inside BRFA / Day:  0 
+Time in BRFA:  2.17 
+Time out of BRFA:  0 
+Approximate Distance Tracked (Total):  5 km 
+Approximate Distance Tracked / Day:  2.30414746543779 km 
+  c("Tagging Location", "Oahu - Makapuu BRFA 15 (\"Makapuu In BRFA\")", "Oahu - Makapuu BRFA 12") 
+Maximum linear Distance 4.86 km
+
+Transmitter ID:  920 
+Species:  Opakapaka 
+Fork Length:  51  cm 
+Tagging Date:  2015-09-06 19:31:00 
+Tagging Location:  Makapuu 
+Day of First Detected:  2015-09-09 01:48:23 
+Day of Last Detection:  2016-03-07 16:14:36 
+Days at Liberty:  183 
+Unique Days Detected:  181 
+Number of Detections (Total):  226334 
+Number of Detections / Day at Liberty:  1237.74472273871 
+Number of Detections / Day Detected:  1250.46408839779 
+Number of Receivers Detected (Total):  4 
+Number of receivers Detected / Days at Liberty:  0.0218746582084655 
+Movements from inside to outside BRFA (Total):  0 
+Movements from inside to outside BRFA / Day:  0 
+Movements from outside to inside BRFA (Total):  0 
+Movements from outside to inside BRFA / Day:  0 
+Time in BRFA:  182.86 
+Time out of BRFA:  0 
+Approximate Distance Tracked (Total):  30 km 
+Approximate Distance Tracked / Day:  0.164059936563491 km 
+  c("Tagging Location", "Oahu - Makapuu BRFA 6", "Oahu - Makapuu BRFA 15 (\"Makapuu In BRFA\")", "Oahu - Makapuu BRFA 14", "BRFA E 15") 
+Area of detected homerange 10.63 km^2
+
+Transmitter ID:  921 
+Species:  Opakapaka 
+Fork Length:  47  cm 
+Tagging Date:  2015-09-06 19:42:00 
+Tagging Location:  Makapuu 
+Day of First Detected:  2016-03-06 23:58:06 
+Day of Last Detection:  2015-09-06 19:42:00 
+Days at Liberty:  183 
+Unique Days Detected:  7 
+Number of Detections (Total):  1 
+Number of Detections / Day at Liberty:  0.86727412449226 
+Number of Detections / Day Detected:  22.5714285714286 
+Number of Receivers Detected (Total):  6 
+Number of receivers Detected / Days at Liberty:  0.0329344604237567 
+Movements from inside to outside BRFA (Total):  0 
+Movements from inside to outside BRFA / Day:  0 
+Movements from outside to inside BRFA (Total):  1 
+Movements from outside to inside BRFA / Day:  0.00548907673729279 
+Time in BRFA:  182.18 
+Time out of BRFA:  0 
+Approximate Distance Tracked (Total):  NA km 
+Approximate Distance Tracked / Day:  NA km 
+  c("Tagging Location", "Steve and Brendan's Doughnut test") 
+
+
+Transmitter ID:  913 
+Species:  Opakapaka 
+Fork Length:  47  cm 
+Tagging Date:  2015-12-12 18:55:00 
+Tagging Location:  Makapuu 
+Day of First Detected:  2015-12-12 21:49:11 
+Day of Last Detection:  2016-01-14 02:39:26 
+Days at Liberty:  33 
+Unique Days Detected:  80 
+Number of Detections (Total):  4175 
+Number of Detections / Day at Liberty:  1620.14232673267 
+Number of Detections / Day Detected:  654.5375 
+Number of Receivers Detected (Total):  5 
+Number of receivers Detected / Days at Liberty:  0.15470297029703 
+Movements from inside to outside BRFA (Total):  3 
+Movements from inside to outside BRFA / Day:  0.0928217821782178 
+Movements from outside to inside BRFA (Total):  3 
+Movements from outside to inside BRFA / Day:  0.0928217821782178 
+Time in BRFA:  1.72 
+Time out of BRFA:  30.6 
+Approximate Distance Tracked (Total):  47 km 
+Approximate Distance Tracked / Day:  1.45420792079208 km 
+  c("Tagging Location", "Oahu - Makapuu BRFA 26", "Oahu - Makapuu BRFA 28", "Oahu - Makapuu BRFA 29", "Oahu - Makapuu BRFA 14") 
+Area of detected homerange 3.52 km^2
+
+Transmitter ID:  914 
+Species:  Opakapaka 
+Fork Length:  46  cm 
+Tagging Date:  2015-12-12 19:10:00 
+Tagging Location:  Makapuu 
+Day of First Detected:  2015-12-13 00:38:25 
+Day of Last Detection:  2016-01-08 10:45:54 
+Days at Liberty:  28 
+Unique Days Detected:  23 
+Number of Detections (Total):  6718 
+Number of Detections / Day at Liberty:  152.03932993445 
+Number of Detections / Day Detected:  181.521739130435 
+Number of Receivers Detected (Total):  4 
+Number of receivers Detected / Days at Liberty:  0.145666423889294 
+Movements from inside to outside BRFA (Total):  6 
+Movements from inside to outside BRFA / Day:  0.21849963583394 
+Movements from outside to inside BRFA (Total):  6 
+Movements from outside to inside BRFA / Day:  0.21849963583394 
+Time in BRFA:  0.76 
+Time out of BRFA:  26.7 
+Approximate Distance Tracked (Total):  282 km 
+Approximate Distance Tracked / Day:  10.2694828841952 km 
+  c("Tagging Location", "Oahu - Makapuu BRFA 26", "Oahu - Makapuu BRFA 28", "Oahu - Makapuu BRFA 29", "Oahu - Makapuu BRFA 24", "Oahu - Makapuu BRFA 14", "Oahu - Makapuu BRFA 30", "Oahu - Makapuu BRFA 31", "Oahu - Makapuu BRFA 32", "Oahu - Makapuu BRFA 15 (\"Makapuu In BRFA\")") 
+Area of detected homerange 12.53 km^2
+
+Transmitter ID:  915 
+Species:  Opakapaka 
+Fork Length:  ?  cm 
+Tagging Date:  2015-12-12 19:52:00 
+Tagging Location:  Makapuu 
+Day of First Detected:  2016-01-25 05:09:27 
+Day of Last Detection:  2016-02-01 10:58:56 
+Days at Liberty:  63 
+Unique Days Detected:  28 
+Number of Detections (Total):  6 
+Number of Detections / Day at Liberty:  108.162936725165 
+Number of Detections / Day Detected:  239.928571428571 
+Number of Receivers Detected (Total):  9 
+Number of receivers Detected / Days at Liberty:  0.144904202221864 
+Movements from inside to outside BRFA (Total):  0 
+Movements from inside to outside BRFA / Day:  0 
+Movements from outside to inside BRFA (Total):  0 
+Movements from outside to inside BRFA / Day:  0 
+Time in BRFA:  0 
+Time out of BRFA:  62.11 
+Approximate Distance Tracked (Total):  1 km 
+Approximate Distance Tracked / Day:  0.0161004669135405 km 
+  c("Tagging Location", "Makapuu BRFA 26") 
+Maximum linear Distance 0.76 km
+
+Transmitter ID:  916 
+Species:  Opakapaka 
+Fork Length:  52  cm 
+Tagging Date:  2015-12-12 20:19:00 
+Tagging Location:  Makapuu 
+Day of First Detected:  2015-12-20 12:29:52 
+Day of Last Detection:  2016-03-07 07:56:47 
+Days at Liberty:  86 
+Unique Days Detected:  6 
+Number of Detections (Total):  1376 
+Number of Detections / Day at Liberty:  1.57876271781078 
+Number of Detections / Day Detected:  22.5 
+Number of Receivers Detected (Total):  6 
+Number of receivers Detected / Days at Liberty:  0.0701672319027014 
+Movements from inside to outside BRFA (Total):  0 
+Movements from inside to outside BRFA / Day:  0 
+Movements from outside to inside BRFA (Total):  0 
+Movements from outside to inside BRFA / Day:  0 
+Time in BRFA:  0 
+Time out of BRFA:  85.51 
+Approximate Distance Tracked (Total):  23 km 
+Approximate Distance Tracked / Day:  0.268974388960355 km 
+  c("Tagging Location", "Oahu - Makapuu BRFA 26", "Makapuu BRFA 26", "Oahu - Makapuu BRFA 25") 
+Area of detected homerange 0.3 km^2
+
+Transmitter ID:  917 
+Species:  Opakapaka 
+Fork Length:  35  cm 
+Tagging Date:  2015-12-12 20:25:00 
+Tagging Location:  Makapuu 
+Day of First Detected:  2015-12-13 00:56:52 
+Day of Last Detection:  2015-12-18 20:10:42 
+Days at Liberty:  6 
+Unique Days Detected:  6 
+Number of Detections (Total):  135 
+Number of Detections / Day at Liberty:  1.33333333333333 
+Number of Detections / Day Detected:  1.33333333333333 
+Number of Receivers Detected (Total):  2 
+Number of receivers Detected / Days at Liberty:  0.333333333333333 
+Movements from inside to outside BRFA (Total):  2 
+Movements from inside to outside BRFA / Day:  0.333333333333333 
+Movements from outside to inside BRFA (Total):  1 
+Movements from outside to inside BRFA / Day:  0.166666666666667 
+Time in BRFA:  4.84 
+Time out of BRFA:  1.16 
+Approximate Distance Tracked (Total):  48 km 
+Approximate Distance Tracked / Day:  8 km 
+  c("Tagging Location", "Oahu - Makapuu BRFA 15 (\"Makapuu In BRFA\")", "Oahu - Makapuu BRFA 38", "Oahu - Makapuu BRFA 12", "Oahu - Makapuu BRFA 14", "Oahu - Makapuu BRFA 26", "Oahu - Makapuu BRFA 28") 
+Area of detected homerange 20.51 km^2
+
+Transmitter ID:  908 
+Species:  Opakapaka 
+Fork Length:  37  cm 
+Tagging Date:  2015-12-12 20:35:00 
+Tagging Location:  Makapuu 
+Day of First Detected:  2015-12-12 21:11:48 
+Day of Last Detection:  2015-12-18 20:10:10 
+Days at Liberty:  6 
+Unique Days Detected:  50 
+Number of Detections (Total):  158 
+Number of Detections / Day at Liberty:  229.716193656093 
+Number of Detections / Day Detected:  27.52 
+Number of Receivers Detected (Total):  3 
+Number of receivers Detected / Days at Liberty:  0.500834724540901 
+Movements from inside to outside BRFA (Total):  2 
+Movements from inside to outside BRFA / Day:  0.333889816360601 
+Movements from outside to inside BRFA (Total):  1 
+Movements from outside to inside BRFA / Day:  0.1669449081803 
+Time in BRFA:  4.97 
+Time out of BRFA:  1.01 
+Approximate Distance Tracked (Total):  50 km 
+Approximate Distance Tracked / Day:  8.34724540901503 km 
+  c("Tagging Location", "Oahu - Makapuu BRFA 26", "Oahu - Makapuu BRFA 15 (\"Makapuu In BRFA\")", "Oahu - Makapuu BRFA 38", "Oahu - Makapuu BRFA 12", "Oahu - Makapuu BRFA 14", "Oahu - Makapuu BRFA 28") 
+Area of detected homerange 20.51 km^2
+
+Transmitter ID:  909 
+Species:  Opakapaka 
+Fork Length:  37  cm 
+Tagging Date:  2015-12-12 20:43:00 
+Tagging Location:  Makapuu 
+Day of First Detected:  2015-12-12 21:30:11 
+Day of Last Detection:  2016-03-06 06:45:19 
+Days at Liberty:  86 
+Unique Days Detected:  58 
+Number of Detections (Total):  52363 
+Number of Detections / Day at Liberty:  140.755070934459 
+Number of Detections / Day Detected:  206.98275862069 
+Number of Receivers Detected (Total):  4 
+Number of receivers Detected / Days at Liberty:  0.0468988158049009 
+Movements from inside to outside BRFA (Total):  1 
+Movements from inside to outside BRFA / Day:  0.0117247039512252 
+Movements from outside to inside BRFA (Total):  0 
+Movements from outside to inside BRFA / Day:  0 
+Time in BRFA:  85.01 
+Time out of BRFA:  0.28 
+Approximate Distance Tracked (Total):  19 km 
+Approximate Distance Tracked / Day:  0.222769375073279 km 
+  c("Tagging Location", "Oahu - Makapuu BRFA 26", "Oahu - Makapuu BRFA 14", "Oahu - Makapuu BRFA 12", "Oahu - Makapuu BRFA 15 (\"Makapuu In BRFA\")", "BRFA E 14") 
+Area of detected homerange 8.35 km^2
+
+Transmitter ID:  910 
+Species:  Opakapaka 
+Fork Length:  42  cm 
+Tagging Date:  2015-12-12 20:49:00 
+Tagging Location:  Makapuu 
+Day of First Detected:  2015-12-19 13:14:06 
+Day of Last Detection:  2016-01-30 09:02:55 
+Days at Liberty:  67 
+Unique Days Detected:  43 
+Number of Detections (Total):  8 
+Number of Detections / Day at Liberty:  5.4986441699307 
+Number of Detections / Day Detected:  8.48837209302326 
+Number of Receivers Detected (Total):  1 
+Number of receivers Detected / Days at Liberty:  0.0150647785477553 
+Movements from inside to outside BRFA (Total):  0 
+Movements from inside to outside BRFA / Day:  0 
+Movements from outside to inside BRFA (Total):  0 
+Movements from outside to inside BRFA / Day:  0 
+Time in BRFA:  0 
+Time out of BRFA:  66.38 
+Approximate Distance Tracked (Total):  1 km 
+Approximate Distance Tracked / Day:  0.0150647785477553 km 
+  c("Tagging Location", "Oahu - Makapuu BRFA 26", "Makapuu BRFA 26") 
+Area of detected homerange 0 km^2
+
+Transmitter ID:  911 
+Species:  Opakapaka 
+Fork Length:  42  cm 
+Tagging Date:  2016-01-10 19:24:00 
+Tagging Location:  Makapuu 
+Day of First Detected:  2016-01-11 21:27:25 
+Day of Last Detection:  2016-03-07 03:33:29 
+Days at Liberty:  57 
+Unique Days Detected:  2 
+Number of Detections (Total):  1417 
+Number of Detections / Day at Liberty:  0.459201695513953 
+Number of Detections / Day Detected:  13 
+Number of Receivers Detected (Total):  2 
+Number of receivers Detected / Days at Liberty:  0.0353232073472271 
+Movements from inside to outside BRFA (Total):  3 
+Movements from inside to outside BRFA / Day:  0.0529848110208407 
+Movements from outside to inside BRFA (Total):  3 
+Movements from outside to inside BRFA / Day:  0.0529848110208407 
+Time in BRFA:  0.53 
+Time out of BRFA:  56.09 
+Approximate Distance Tracked (Total):  28 km 
+Approximate Distance Tracked / Day:  0.49452490286118 km 
+  c("Tagging Location", "BRFA E 14", "Oahu - Makapuu BRFA 29", "Makapuu BRFA 26") 
+Area of detected homerange 3.52 km^2
+
+Transmitter ID:  912 
+Species:  Opakapaka 
+Fork Length:  39  cm 
+Tagging Date:  2016-01-10 19:28:00 
+Tagging Location:  Makapuu 
+Day of First Detected:  2016-01-10 21:57:59 
+Day of Last Detection:  2016-01-13 19:02:43 
+Days at Liberty:  3 
+Unique Days Detected:  58 
+Number of Detections (Total):  26 
+Number of Detections / Day at Liberty:  19056.0402684564 
+Number of Detections / Day Detected:  979.086206896552 
+Number of Receivers Detected (Total):  5 
+Number of receivers Detected / Days at Liberty:  1.67785234899329 
+Movements from inside to outside BRFA (Total):  1 
+Movements from inside to outside BRFA / Day:  0.335570469798658 
+Movements from outside to inside BRFA (Total):  0 
+Movements from outside to inside BRFA / Day:  0 
+Time in BRFA:  2.88 
+Time out of BRFA:  0.1 
+Approximate Distance Tracked (Total):  15 km 
+Approximate Distance Tracked / Day:  5.03355704697987 km 
+  c("Tagging Location", "BRFA E 15", "Oahu - Makapuu BRFA 38") 
+Maximum linear Distance 14.93 km
+
+Transmitter ID:  900 
+Species:  Opakapaka 
+Fork Length:  43  cm 
+Tagging Date:  2016-01-10 19:46:00 
+Tagging Location:  Makapuu 
+Day of First Detected:  2016-01-10 21:03:29 
+Day of Last Detection:  2016-03-07 17:04:28 
+Days at Liberty:  57 
+Unique Days Detected:  1 
+Number of Detections (Total):  12005 
+Number of Detections / Day at Liberty:  0.070298769771529 
+Number of Detections / Day Detected:  4 
+Number of Receivers Detected (Total):  2 
+Number of receivers Detected / Days at Liberty:  0.0351493848857645 
+Movements from inside to outside BRFA (Total):  1 
+Movements from inside to outside BRFA / Day:  0.0175746924428823 
+Movements from outside to inside BRFA (Total):  1 
+Movements from outside to inside BRFA / Day:  0.0175746924428823 
+Time in BRFA:  0.12 
+Time out of BRFA:  56.78 
+Approximate Distance Tracked (Total):  52 km 
+Approximate Distance Tracked / Day:  0.913884007029877 km 
+  c("Tagging Location", "Makapuu BRFA 26", "BRFA E 15", "Oahu - Makapuu BRFA 29", "Oahu - Makapuu BRFA 25") 
+Area of detected homerange 4.72 km^2
+
+Transmitter ID:  901 
+Species:  Opakapaka 
+Fork Length:  46  cm 
+Tagging Date:  2016-01-10 19:50:00 
+Tagging Location:  Makapuu 
+Day of First Detected:  2016-01-10 23:13:56 
+Day of Last Detection:  2016-03-07 17:15:16 
+Days at Liberty:  57 
+Unique Days Detected:  2 
+Number of Detections (Total):  56787 
+Number of Detections / Day at Liberty:  1.58200035155563 
+Number of Detections / Day Detected:  45 
+Number of Receivers Detected (Total):  1 
+Number of receivers Detected / Days at Liberty:  0.0175777816839515 
+Movements from inside to outside BRFA (Total):  4 
+Movements from inside to outside BRFA / Day:  0.0703111267358059 
+Movements from outside to inside BRFA (Total):  4 
+Movements from outside to inside BRFA / Day:  0.0703111267358059 
+Time in BRFA:  0.71 
+Time out of BRFA:  56.19 
+Approximate Distance Tracked (Total):  7734 km 
+Approximate Distance Tracked / Day:  135.946563543681 km 
+  c("Tagging Location", "BRFA E 15", "Makapuu BRFA 26", "Oahu - Makapuu BRFA 25", "Oahu - Makapuu BRFA 29", "BRFA E 14") 
+Area of detected homerange 4.72 km^2
+
+Transmitter ID:  902 
+Species:  Opakapaka 
+Fork Length:  71  cm 
+Tagging Date:  2016-01-10 20:14:00 
+Tagging Location:  Makapuu 
+Day of First Detected:  2016-01-10 21:22:55 
+Day of Last Detection:  2016-03-05 09:07:44 
+Days at Liberty:  57 
+Unique Days Detected:  49 
+Number of Detections (Total):  365 
+Number of Detections / Day at Liberty:  25.0974140984768 
+Number of Detections / Day Detected:  28.9183673469388 
+Number of Receivers Detected (Total):  3 
+Number of receivers Detected / Days at Liberty:  0.053134962805526 
+Movements from inside to outside BRFA (Total):  0 
+Movements from inside to outside BRFA / Day:  0 
+Movements from outside to inside BRFA (Total):  0 
+Movements from outside to inside BRFA / Day:  0 
+Time in BRFA:  0 
+Time out of BRFA:  56.46 
+Approximate Distance Tracked (Total):  1 km 
+Approximate Distance Tracked / Day:  0.0177116542685087 km 
+  c("Tagging Location", "Makapuu BRFA 26") 
+Maximum linear Distance 0.92 km
+
+Transmitter ID:  903 
+Species:  Opakapaka 
+Fork Length:  53  cm 
+Tagging Date:  2016-01-10 21:58:00 
+Tagging Location:  Makapuu 
+Day of First Detected:  2016-03-06 23:54:21 
+Day of Last Detection:  2016-01-10 21:58:00 
+Days at Liberty:  57 
+Unique Days Detected:  7 
+Number of Detections (Total):  1 
+Number of Detections / Day at Liberty:  3.90513552068474 
+Number of Detections / Day Detected:  31.2857142857143 
+Number of Receivers Detected (Total):  3 
+Number of receivers Detected / Days at Liberty:  0.0534950071326676 
+Movements from inside to outside BRFA (Total):  0 
+Movements from inside to outside BRFA / Day:  0 
+Movements from outside to inside BRFA (Total):  1 
+Movements from outside to inside BRFA / Day:  0.0178316690442225 
+Time in BRFA:  56.08 
+Time out of BRFA:  0 
+Approximate Distance Tracked (Total):  NA km 
+Approximate Distance Tracked / Day:  NA km 
+  c("Tagging Location", "Steve and Brendan's Doughnut test") 
+
+
+Transmitter ID:  905 
+Species:  Opakapaka 
+Fork Length:  44  cm 
+Tagging Date:  2016-01-10 22:19:00 
+Tagging Location:  Makapuu 
+Day of First Detected:  2016-01-11 09:45:38 
+Day of Last Detection:  2016-02-24 13:11:25 
+Days at Liberty:  45 
+Unique Days Detected:  5 
+Number of Detections (Total):  90 
+Number of Detections / Day at Liberty:  0.134438718350885 
+Number of Detections / Day Detected:  1.2 
+Number of Receivers Detected (Total):  1 
+Number of receivers Detected / Days at Liberty:  0.0224064530584808 
+Movements from inside to outside BRFA (Total):  0 
+Movements from inside to outside BRFA / Day:  0 
+Movements from outside to inside BRFA (Total):  0 
+Movements from outside to inside BRFA / Day:  0 
+Time in BRFA:  44.63 
+Time out of BRFA:  0 
+Approximate Distance Tracked (Total):  7 km 
+Approximate Distance Tracked / Day:  0.156845171409366 km 
+  c("Tagging Location", "Oahu - Makapuu BRFA 38") 
+Maximum linear Distance 6.92 km
+
+Transmitter ID:  906 
+Species:  Opakapaka 
+Fork Length:  66  cm 
+Tagging Date:  2016-01-10 22:40:00 
+Tagging Location:  Makapuu 
+Day of First Detected:  2016-03-06 23:49:37 
+Day of Last Detection:  2016-03-06 23:49:37 
+Days at Liberty:  57 
+Unique Days Detected:  1 
+Number of Detections (Total):  2 
+Number of Detections / Day at Liberty:  0.0356824264049955 
+Number of Detections / Day Detected:  2 
+Number of Receivers Detected (Total):  1 
+Number of receivers Detected / Days at Liberty:  0.0178412132024978 
+Movements from inside to outside BRFA (Total):  0 
+Movements from inside to outside BRFA / Day:  0 
+Movements from outside to inside BRFA (Total):  1 
+Movements from outside to inside BRFA / Day:  0.0178412132024978 
+Time in BRFA:  56.05 
+Time out of BRFA:  0 
+Approximate Distance Tracked (Total):  NA km 
+Approximate Distance Tracked / Day:  NA km 
+  c("Tagging Location", "Steve and Brendan's Doughnut test") 
+
+
+Transmitter ID:  898 
+Species:  Opakapaka 
+Fork Length:  66?  cm 
+Tagging Date:  2016-01-10 22:58:00 
+Tagging Location:  Makapuu 
+Day of First Detected:  2016-03-06 23:47:54 
+Day of Last Detection:  2016-03-06 23:47:54 
+Days at Liberty:  57 
+Unique Days Detected:  1 
+Number of Detections (Total):  2 
+Number of Detections / Day at Liberty:  0.0356887937187723 
+Number of Detections / Day Detected:  2 
+Number of Receivers Detected (Total):  1 
+Number of receivers Detected / Days at Liberty:  0.0178443968593862 
+Movements from inside to outside BRFA (Total):  0 
+Movements from inside to outside BRFA / Day:  0 
+Movements from outside to inside BRFA (Total):  1 
+Movements from outside to inside BRFA / Day:  0.0178443968593862 
+Time in BRFA:  56.03 
+Time out of BRFA:  0 
+Approximate Distance Tracked (Total):  NA km 
+Approximate Distance Tracked / Day:  NA km 
+  c("Tagging Location", "Steve and Brendan's Doughnut test") 
+
+
+Transmitter ID:  18262 
+Species:  Opakapaka 
+Fork Length:  42  cm 
+Tagging Date:  2016-01-10 23:32:00 
+Tagging Location:  Makapuu 
+Day of First Detected:  2016-01-11 08:04:11 
+Day of Last Detection:  2016-01-11 09:14:09 
+Days at Liberty:  1 
+Unique Days Detected:  1 
+Number of Detections (Total):  4 
+Number of Detections / Day at Liberty:  4.8780487804878 
+Number of Detections / Day Detected:  2 
+Number of Receivers Detected (Total):  1 
+Number of receivers Detected / Days at Liberty:  2.4390243902439 
+Movements from inside to outside BRFA (Total):  0 
+Movements from inside to outside BRFA / Day:  0 
+Movements from outside to inside BRFA (Total):  0 
+Movements from outside to inside BRFA / Day:  0 
+Time in BRFA:  0.41 
+Time out of BRFA:  0 
+Approximate Distance Tracked (Total):  6 km 
+Approximate Distance Tracked / Day:  14.6341463414634 km 
+  c("Tagging Location", "BRFA E 15", "BRFA E 14") 
+Maximum linear Distance 5.85 km
+
+Transmitter ID:  18263 
+Species:  Opakapaka 
+Fork Length:  65  cm 
+Tagging Date:  2016-01-10 23:39:00 
+Tagging Location:  Makapuu 
+Day of First Detected:  2016-03-06 23:48:38 
+Day of Last Detection:  2016-03-06 23:48:38 
+Days at Liberty:  57 
+Unique Days Detected:  1 
+Number of Detections (Total):  2 
+Number of Detections / Day at Liberty:  0.0714158186038207 
+Number of Detections / Day Detected:  4 
+Number of Receivers Detected (Total):  1 
+Number of receivers Detected / Days at Liberty:  0.0178539546509552 
+Movements from inside to outside BRFA (Total):  0 
+Movements from inside to outside BRFA / Day:  0 
+Movements from outside to inside BRFA (Total):  1 
+Movements from outside to inside BRFA / Day:  0.0178539546509552 
+Time in BRFA:  56.01 
+Time out of BRFA:  0 
+Approximate Distance Tracked (Total):  NA km 
+Approximate Distance Tracked / Day:  NA km 
+  c("Tagging Location", "Steve and Brendan's Doughnut test") 
+
+
+Transmitter ID:  18265 
+Species:  Opakapaka 
+Fork Length:  72  cm 
+Tagging Date:  2016-01-10 23:53:00 
+Tagging Location:  Makapuu 
+Day of First Detected:  2016-03-06 23:50:26 
+Day of Last Detection:  2016-03-06 23:55:14 
+Days at Liberty:  56 
+Unique Days Detected:  1 
+Number of Detections (Total):  4 
+Number of Detections / Day at Liberty:  0.0178571428571429 
+Number of Detections / Day Detected:  1 
+Number of Receivers Detected (Total):  1 
+Number of receivers Detected / Days at Liberty:  0.0178571428571429 
+Movements from inside to outside BRFA (Total):  0 
+Movements from inside to outside BRFA / Day:  0 
+Movements from outside to inside BRFA (Total):  1 
+Movements from outside to inside BRFA / Day:  0.0178571428571429 
+Time in BRFA:  56 
+Time out of BRFA:  0 
+Approximate Distance Tracked (Total):  NA km 
+Approximate Distance Tracked / Day:  NA km 
+  c("Tagging Location", "Steve and Brendan's Doughnut test") 
+
+
+Transmitter ID:  18266 
+Species:  Opakapaka 
+Fork Length:  68  cm 
+Tagging Date:  2016-01-11 12:12:00 
+Tagging Location:  Makapuu 
+Day of First Detected:  2016-01-12 12:34:03 
+Day of Last Detection:  2016-01-17 12:46:19 
+Days at Liberty:  7 
+Unique Days Detected:  1 
+Number of Detections (Total):  219 
+Number of Detections / Day at Liberty:  0.14903129657228 
+Number of Detections / Day Detected:  1 
+Number of Receivers Detected (Total):  1 
+Number of receivers Detected / Days at Liberty:  0.14903129657228 
+Movements from inside to outside BRFA (Total):  2 
+Movements from inside to outside BRFA / Day:  0.29806259314456 
+Movements from outside to inside BRFA (Total):  2 
+Movements from outside to inside BRFA / Day:  0.29806259314456 
+Time in BRFA:  5.26 
+Time out of BRFA:  1.45 
+Approximate Distance Tracked (Total):  21 km 
+Approximate Distance Tracked / Day:  3.12965722801788 km 
+  c("Tagging Location", "BRFA E 14", "Oahu - Makapuu BRFA 29", "Makapuu BRFA 26") 
+Area of detected homerange 8.12 km^2
+
