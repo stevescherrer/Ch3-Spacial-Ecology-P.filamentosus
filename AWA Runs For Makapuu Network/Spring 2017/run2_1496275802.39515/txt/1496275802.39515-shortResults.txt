@@ -1,0 +1,59 @@
+- Acoustic network design results, generated: 2017-05-31 15:54:24 
+
+ Number of sensors placed: 4 
+ Detection range: 847 meters
+ Using line of sight?: TRUE 
+ Using fish behavior?: TRUE 
+ Number of grid cells (row,col): 153560 (349,440)
+ Suppression function: suppression.scale 
+ Run time: 104.31 mins
+                   loc_row loc_col glob_row glob_col Uniq_RR d_Uniq_RR
+ Sensor_1 predef      303      44     8848     8604 0.00573   0.00573
+ Sensor_2 predef      155     162     8700     8722 0.01758   0.01185
+ Sensor_3 predef      305      79     8850     8639 0.02825   0.01067
+ Sensor_4 predef      124     220     8669     8780 0.03955   0.01131
+ Sensor_5 predef       97     266     8642     8826 0.05126   0.01171
+ Sensor_6 predef      172     143     8717     8703 0.06285   0.01159
+ Sensor_7 predef       87     219     8632     8779 0.06585   0.00300
+ Sensor_8 predef      136     255     8681     8815 0.07735   0.01150
+ Sensor_9 predef      209     140     8754     8700 0.08997   0.01263
+ Sensor_10 predef     255      89     8800     8649 0.09829   0.00832
+ Sensor_11 predef     219     103     8764     8663 0.10711   0.00881
+ Sensor_12 predef     333       9     8878     8569 0.10779   0.00069
+ Sensor_13 predef     338      23     8883     8583 0.11290   0.00511
+ Sensor_14 predef     343      37     8888     8597 0.11958   0.00668
+ Sensor_15 predef     347      50     8892     8610 0.12452   0.00494
+ Sensor_16 predef      78     182     8623     8742 0.12452   0.00000
+ Sensor_17 predef      50     165     8595     8725 0.12452   0.00000
+ Sensor_18 predef       2     348     8547     8908 0.13129   0.00676
+ Sensor_19 predef       2     327     8547     8887 0.13758   0.00629
+ Sensor_20 predef       2     310     8547     8870 0.14333   0.00575
+ Sensor_21 predef       2     290     8547     8850 0.14877   0.00544
+ Sensor_22 predef       2     270     8547     8830 0.15525   0.00648
+ Sensor_23 predef       2     252     8547     8812 0.16122   0.00596
+ Sensor_24 predef       1     232     8546     8792 0.16690   0.00568
+ Sensor_25 predef       2     211     8547     8771 0.17310   0.00620
+ Sensor_26 predef       2     194     8547     8754 0.17665   0.00355
+ Sensor_27 predef       2     174     8547     8734 0.17680   0.00015
+ Sensor_28 predef     120     180     8665     8740 0.18431   0.00751
+ Sensor_29 predef      51     269     8596     8829 0.19703   0.01272
+ Sensor_30 predef      69     301     8614     8861 0.20937   0.01234
+ Sensor_31 predef     270      87     8815     8647 0.21581   0.00644
+ Sensor_32 predef     270      95     8815     8655 0.22166   0.00584
+ Sensor_33 predef     270     103     8815     8663 0.22711   0.00545
+ Sensor_34 predef      38     239     8583     8799 0.23793   0.01082
+ Sensor_35 predef      38     259     8583     8819 0.24642   0.00849
+ Sensor_36 predef      38     277     8583     8837 0.25464   0.00822
+ Sensor_37 predef      38     297     8583     8857 0.26518   0.01054
+ Sensor_38 predef      38     315     8583     8875 0.27545   0.01027
+ Sensor_39 predef      38     335     8583     8895 0.28620   0.01076
+ Sensor_40 predef      38     353     8583     8913 0.29664   0.01044
+ Sensor_41 predef      38     371     8583     8931 0.30571   0.00907
+ Sensor_42             73     342     8618     8902 0.31802   0.01231
+ Sensor_43            244     147     8789     8707 0.32984   0.01183
+ Sensor_44            105     301     8650     8861 0.34122   0.01137
+ Sensor_45            190     179     8735     8739 0.35079   0.00958 
+ Network sparsity (delta): 0.59 
+ Absolute recovery rate: 0.396 
+ Unique recovery rate: 0.351 
+ 

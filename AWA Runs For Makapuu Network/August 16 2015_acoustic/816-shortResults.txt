@@ -1,0 +1,18 @@
+- Acoustic network design results, generated: 2015-08-16 19:25:44 
+
+ Number of sensors placed: 4 
+ Detection range: 882 meters
+ Using line of sight?: TRUE 
+ Using fish behavior?: TRUE 
+ Number of grid cells (row,col): 23100 (77,300)
+ Suppression function: suppression.scale 
+ Run time:  mins
+           loc_row loc_col glob_row glob_col Uniq_RR d_Uniq_RR
+ Sensor_1      21      74     8654     8830 0.08964   0.08964
+ Sensor_2      47      18     8680     8774 0.17678   0.08714
+ Sensor_3      11      31     8644     8787 0.25554   0.07877
+ Sensor_4      44      86     8677     8842 0.31230   0.05675 
+ Network sparsity (delta): 0.91 
+ Absolute recovery rate: 0.318 
+ Unique recovery rate: 0.312 
+ 

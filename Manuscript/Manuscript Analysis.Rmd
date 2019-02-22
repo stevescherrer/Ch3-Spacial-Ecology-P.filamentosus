@@ -1,0 +1,533 @@
+---
+title: "Paka Tagging Paper"
+output: html_notebook
+---
+
+#### Loading in all libraries.
+
+###### Importing principle dependencies #####
+```{r}
+# install.packages('marmap')
+library('marmap') # bathymetry()
+# install.packages('lubridate')
+library('lubridate') # floor_date(), ceil_date()
+# install.packages('doParallel')
+library('doParallel') # foreach()
+# install.packages('beepr')
+library('beepr') # beep
+# install.packages('dplyr')
+library('dplyr') # filter()
+# install.packages('useful')
+library('useful') # compare.list()
+# install.packages('RAtmosphere')
+library('RAtmosphere')
+# install.packages('geosphere')
+library('geosphere') # areaPolygon(), # distGeo() Note: wrapped in old lldist function
+# install.packages('igraph')
+library('igraph') # graph.adjacency()
+# install.packages('notifyR')
+library('notifyR') # send_push()
+# install.packages('png')
+library('png')
+# install.packages('lunar')
+library('lunar') # lunar.phase()
+# install.packages('suncalc')
+library('suncalc') # getSunlightTimes
+# install.packages('data.table')
+library('data.table') # uniqueN
+# install.packages('lattice')
+library('lattice')
+# install.packages('ncdf4')
+library('ncdf4') #nc_open()
+# install.packages('xts')
+library('xts')
+
+registerDoParallel(cores = 7)
+```
+
+Loading in our data
+```{r}
+load(file.path(project_dir, "workspace_image_updated"))
+```
+
+#### Super basic abstract stuff
+How many fish were tagged?
+How many fish were detected on the array?
+
+
+
+
+#### Calculating Time at Liberty for Ziemann and Kelly's 12 fish ####
+In 2004 and 2007, Ziemann and Kelly documented spillover from tracks of 12 opakapaka. In their report, they list time at liberty for each fish in hours. We want summary statistics in days.
+
+```{r}
+## z&k report tagging 18 paka. 12 opakapaka detected on receiver array
+zk_hours_at_liberty_04 = c(0, 280.8, 0.1, 106.5, 37.3, 8.0, 348.8, 139.2, 277.4, 1475.3, 54.2, 1475.7, 1375.4)
+zk_days_at_liberty_04 = zk_hours_at_liberty_04 / 24
+fivenum(zk_days_at_liberty_04)
+hist(zk_days_at_liberty_04)
+
+## z&k report tagging 16 paka. 5 opakapaka detected on receiver array
+## Note report is from 2007
+zk_hours_at_liberty_06 = c(21, 5, 18, 5, 1)
+zk_days_at_liberty_06 = zk_hours_at_liberty_06 / 24
+fivenum(zk_days_at_liberty_06)
+hist(zk_days_at_liberty_06)
+
+## z&k report tagging 14 paka. 10 opakapaka detected on receiver array
+  ## Note report is from 2008
+zk_hours_at_liberty_07 = c(5.2, 150, 205, .3, 2140, 26, 95, 101, 2182, 2186)
+zk_days_at_liberty_07 = zk_hours_at_liberty_07 / 24
+fivenum(zk_days_at_liberty_07)
+hist(zk_days_at_liberty_07)
+
+## How do these rates compare versus our 14 day criterion?
+length(which(zk_days_at_liberty_04 > 14)) / length(zk_days_at_liberty_04)
+length(which(zk_days_at_liberty_06 > 14)) / length(zk_days_at_liberty_06)
+length(which(zk_days_at_liberty_07 > 14)) / length(zk_days_at_liberty_07)
+
+
+```
+
+#### How many receiver stations were recovered?
+How many receiver stations did we recover in the last analysis period of the project
+```{r}
+dim(receiver_data[receiver_data$deployment_date >= as.POSIXct('2017-04-01') & receiver_data$recovery_date >= as.POSIXct('2018-04-01') & !is.na(receiver_data$recovery_date) & receiver_data$recovered == '', ])[1]
+```
+
+
+#### Calculating Habitat Size ####
+Adult bottomfish habitat is defined as waters with depths between 100 and 400 m. We want to know how much habitat area is available in BRFA E.
+
+```{r}
+brfa_e_bathy = get_bathymetry(region = 'Makapuu', resolution = "medium")
+
+brfa_e_bathy = subsetBathy(brfa_e_bathy, x = c(convert_lat_lon(-157, 41), convert_lat_lon(-157, 32)), y = c( convert_lat_lon(21, 25), convert_lat_lon(21, 17)), locator = FALSE)
+
+area_sq_km = get.area(brfa_e_bathy, level.inf = -400, level.sup = -100)$Square.Km
+```
+
+
+#### Getting Period of Analysis ####
+We need to decide what our analysis period is. To make comparisons between fish, we need to limit our analysis to a specific period. We will use the period of maximum receivers. This period began sometime in June 2017.
+
+```{r}
+period_start = max(receiver_data$deployment_date[receiver_data$deployment_date <= as.POSIXct('2017-07-01')])
+print(period_start)
+```
+
+Similarly we know that we want to end the analysis period when the first receiver was pulled from the water (or in this case, when 338 broke it's mooring.) This occurred sometime in spring 2018.
+```{r}
+period_end = min(receiver_data$recovery_date[receiver_data$recovery_date >= as.POSIXct('2018-01-01')], na.rm = TRUE)
+print(period_end)
+```
+
+We can go ahead and limit our data to just this period. While we're at it, lets also eliminate any detections that have been flagged as potentially false
+```{r}
+vue_data = vue_data[vue_data$datetime >= start_date & vue_data$datetime < end_date, ]
+vue_data = vue_data[vue_data$detection_status == TRUE, ]
+```
+
+#### Running Analysis ####
+How many valid fish were detected on the array?
+```{r}
+track_status_all = determine_track_status(vue_df = vue_data[vue_df$tag_id %in% unique(vue_df$tag_id[vue_df$datetime >= as.POSIXct('2017-06-26')], tagging_data$vem_tag_id[tagging_data$datetime >= as.POSIXct('2017-01-01')]), ], bathymetry = get_bathymetry('mhi', 'low'))
+track_status = track_status_all$status_df[track_status$status_df$tag_id %in% tagging_data$vem_tag_id[tagging_data$species == 'Opakapaka'], ]
+
+track_status = track_status[track_status$tag_id %in% vue_data$tag_id[vue_data$datetime >= as.POSIXct('2017-06-26 HST')], ]
+
+track_status = track_status[track_status$tag_id %in% tagging_data$vem_tag_id[tagging_data$species == 'Opakapaka'], ]
+
+start_tagging_date = floor_date(min(tagging_data$datetime[tagging_data$vem_tag_id %in% vue_data$tag_id[vue_data$datetime >= start_date]]), unit = 'days')
+
+fish_tagged = tagging_data[tagging_data$datetime >= start_tagging_date & !is.na(tagging_data$vem_tag_id) & tagging_data$species == 'Opakapaka', ]
+
+## How many fish were tagged
+dim(fish_tagged)[1]
+
+## How many fish were detected
+fish_detected = fish_tagged[fish_tagged$vem_tag_id %in% vue_data$tag_id[vue_data$datetime >= p10[1]], ]
+  dim(fish_detected)[1]
+
+## How many fish detected were tagged with V13P tags?
+length(which(fish_detected$vem_tag_type == 'V13P'))
+
+## How many fish had insufficent track lengths?
+length(which(track_status$status == 'Excluded From Analysis'))
+
+
+valid_tracks = track_status$tag_id[track_status$status == 'Alive']
+print(valid_tracks)
+```
+
+#### Calculating tagging date range for fish
+```{r}
+range(phase_10_valid$tagging_date$tagging_date)
+
+## Subset tagging data
+subset_tagging_data = tagging_data[which(tagging_data$datetime >= as.POSIXct('2017-01-01') & tagging_data$species == "Opakapaka" & !is.na(tagging_data$vem_tag_id)), ]
+
+## How many individuals tagged?
+length(subset_tagging_data$vem_tag_id) -1 # Note on tag 925 indicates individual was dead.
+
+## How many individuals tagged with pressure tags?
+length(which(tolower(subset_tagging_data$vem_tag_type) == 'v13p')) - 13
+              
+## How were these fish tagged?
+aggregate(subset_tagging_data$vem_tag_id, by = list(subset_tagging_data$release_method), FUN = length)
+
+## How many of these fish ended up super dead?
+track_status = determine_track_status(vue_df = vue_data[vue_data$tag_id %in% subset_tagging_data$vem_tag_id, ])
+
+## How many fish showed up on the array?
+length(which(subset_tagging_data$vem_tag_id %in% vue_data$tag_id))
+
+## How many Pressure tags showed up on the array?
+length(which(subset_tagging_data$vem_tag_id[tolower(subset_tagging_data$vem_tag_type) == 'v13p'] %in% vue_data$tag_id))
+
+## What was transmission interval of tags?
+unique(tag_specs$min_interval_sec[tag_specs$tag_id %in% subset_tagging_data$vem_tag_id])
+
+unique(tag_specs$max_interval_sec[tag_specs$tag_id %in% subset_tagging_data$vem_tag_id])
+```
+
+#### Estimating CPDI Extent for our receivers ####
+Using our predictive model for CPDI, lets estimate the maximum distance that we would expect CPDI to occur for each receiver based on it's depth.
+
+```{r}
+receiver_data = receiver_data[receiver_data$deployment_date <= start_date & receiver_data$recovery_date >= end_date, ]
+predicted_cpdi = c()
+for(i in 1:length(receiver_data$depth)){
+  ## First assume tha fish can swim 20m above the seafloor
+  ith_receiver_cpdi = predict_cpdi_interference(bottom_depth = as.numeric(receiver_data$depth[i]),
+                                                ave_max_detection_radius = 847, 
+                                                receiver_depth = as.numeric(receiver_data$depth[i]) - 6.1,
+                                                speed_of_sound = 1530, 
+                                                max_horizontal_dist = 1000, 
+                                                plot = FALSE)
+  max_cpdi = min(which(colSums(ith_receiver_cpdi[(dim(ith_receiver_cpdi)[1] - 20):dim(ith_receiver_cpdi)[1], ]) == length((dim(ith_receiver_cpdi)[1] - 20):dim(ith_receiver_cpdi)[1])))
+  predicted_cpdi = c(predicted_cpdi, max_cpdi)
+  
+  ## Now assume that fish can swim 20 m into the ground (like if there's a slope for example).
+    ith_receiver_cpdi = predict_cpdi_interference(bottom_depth = as.numeric(receiver_data$depth[i]) + 20,
+                                                ave_max_detection_radius = 847, 
+                                                receiver_depth = as.numeric(receiver_data$depth[i]) - 6.1,
+                                                speed_of_sound = 1530, 
+                                                max_horizontal_dist = 1000, 
+                                                plot = FALSE)
+  max_cpdi = min(which(colSums(ith_receiver_cpdi[(dim(ith_receiver_cpdi)[1] - 20):dim(ith_receiver_cpdi)[1], ]) == length((dim(ith_receiver_cpdi)[1] - 20):dim(ith_receiver_cpdi)[1])))
+    predicted_cpdi = c(predicted_cpdi, max_cpdi)
+}
+range(predicted_cpdi)
+
+### Now lets see what happens when we ignore seafloor reflections
+predicted_cpdi = c()
+for(i in 1:length(receiver_data$depth)){
+  ## First assume tha fish can swim 20m above the seafloor
+  ith_receiver_cpdi = predict_cpdi_interference(bottom_depth = as.numeric(receiver_data$depth[i]),
+                                                ave_max_detection_radius = 847, 
+                                                receiver_depth = as.numeric(receiver_data$depth[i]) - 6.1,
+                                                speed_of_sound = 1530, 
+                                                max_horizontal_dist = 1000, 
+                                                include_seafloor_reflections = FALSE,
+                                                plot = FALSE)
+  max_cpdi = min(which(colSums(ith_receiver_cpdi[(dim(ith_receiver_cpdi)[1] - 20):dim(ith_receiver_cpdi)[1], ]) == length((dim(ith_receiver_cpdi)[1] - 20):dim(ith_receiver_cpdi)[1])))
+  predicted_cpdi = c(predicted_cpdi, max_cpdi)
+  
+  ## Now assume that fish can swim 20 m into the ground (like if there's a slope for example).
+    ith_receiver_cpdi = predict_cpdi_interference(bottom_depth = as.numeric(receiver_data$depth[i]) + 20,
+                                                ave_max_detection_radius = 847, 
+                                                receiver_depth = as.numeric(receiver_data$depth[i]) - 6.1,
+                                                speed_of_sound = 1530, 
+                                                max_horizontal_dist = 1000, 
+                                                include_seafloor_reflections = FALSE,
+                                                plot = FALSE)
+    print(as.numeric(receiver_data$depth[i]))
+  max_cpdi = min(which(colSums(ith_receiver_cpdi[(dim(ith_receiver_cpdi)[1] - 20):dim(ith_receiver_cpdi)[1], ]) == length((dim(ith_receiver_cpdi)[1] - 20):dim(ith_receiver_cpdi)[1])))
+    predicted_cpdi = c(predicted_cpdi, max_cpdi)
+}
+
+range(predicted_cpdi)
+
+receiver_data$depth
+```
+
+#### Testing Receiver Fence Robustness
+We are going to test the robustness of our receiver gates by looking at the detection rate of a sync tag (located within one of our VR2ARs) at a receiver station located a fixed distance away. 
+
+The workspace we have preloaded contains our detection database (vue_df) and our receiver locations (receiver_df). We have also loaded a handfull of helpful functions. Let's first look at a map of our study area:
+
+```{r}
+plot_receiver_map(receiver_data, receiver_numbers = TRUE, save_plot = FALSE)
+```
+
+From our map, we can see that station 336 is within the detection region of station 14. We will isolate just detections from the internal sync tag of station 336 at station 14 and determine how far these stations are from one another.
+```{r}
+tag_id = 61375 # From receiver "Oahu - Makapuu BRFA 336"
+station_id = "Oahu - Makapuu BRFA 14"
+receiver_id = receiver_data$vr2w_serial[which(receiver_data$station_name == station_id & receiver_data$deployment_date > as.POSIXct('2017-06-01') & !is.na(receiver_data$recovery_date))]
+vue_df = raw_vue_data 
+vue_df = vue_df[vue_df$datetime > fy2018 & vue_df$tag_id == tag_id & vue_df$receiver == receiver_id, ]
+vue_df = clean_vue_data(vue_df, receiver_data)
+dist = distance_between_receivers(receiver_df = receiver_data, start_date = fy2018)
+dist['Oahu - Makapuu BRFA 14', "Oahu - Makapuu BRFA 336"] * 1000 # m
+  print(paste('Station 14 and Station 336 are', round(dist['Oahu - Makapuu BRFA 14', "Oahu - Makapuu BRFA 336"] * 1000, digits = 0), 'm from one another', sep = " "))
+```
+
+
+It would be helpful to understand how far apart fence receivers are in space. We should look at the maximum distance between any two nodes in each of the four fences to understand the space relationships between subsequent nodes. 
+
+Note that because detection envelopes are probability distributions, detection probability is additive when detection envelopes overlap. Therefore the distance between two subsequent receivers is usefull, but half that distance (the midpoint between two receivers), is what we will actually look at to understand detection rates
+
+```{r}
+ ## Which receivers were parts of fence?
+  outside_north = paste('Oahu - Makapuu BRFA', c(5, 4, 3, 2))
+  outside_south = paste('Oahu - Makapuu BRFA', c(311, 312, 313, 314, 315, 316, 317, 318, 319, 320))
+  inside_north = paste('Oahu - Makapuu BRFA', c(331, 332, 333))
+  inside_south = paste('Oahu - Makapuu BRFA', c(334, 335, 336, 337, 338, 339, 340, 341))
+  
+  ## How far apart were receivers spaced?
+  outside_north_receiver_dist_mat = distance_between_receivers(receiver_data[receiver_data$station_name %in% outside_north, ], start_date = fy2018, end_date = fy2018 + (24*60*60), include_lost = TRUE)
+    range(apply(outside_north_receiver_dist_mat$matrix, 1, min, na.rm = TRUE))
+
+  outside_south_receiver_dist_mat = distance_between_receivers(receiver_data[receiver_data$station_name %in% outside_south, ], start_date = fy2018, end_date = fy2018 + (24*60*60), include_lost = TRUE)
+    range(apply(outside_south_receiver_dist_mat$matrix, 1, min, na.rm = TRUE))
+  
+  inside_north_receiver_dist_mat = distance_between_receivers(receiver_data[receiver_data$station_name %in% inside_north, ], start_date = fy2018, end_date = fy2018 + (24*60*60), include_lost = TRUE)
+    range(apply(inside_north_receiver_dist_mat$matrix, 1, min, na.rm = TRUE))
+  
+  inside_south_receiver_dist_mat = distance_between_receivers(receiver_data[receiver_data$station_name %in% inside_south, ], start_date = fy2018, end_date = fy2018 + (24*60*60), include_lost = TRUE)
+    range(apply(inside_south_receiver_dist_mat$matrix, 1, min, na.rm = TRUE))
+  
+  ## Which fence nodes were lost? When?
+  View(receiver_data[receiver_data$recovered != "" & receiver_data$recovery_date >= fy2018 & receiver_data$deployment_date <= fy2018, ])
+  View(receiver_data[receiver_data$station_name == 'Oahu - Makapuu BRFA 338', ])
+  
+  ## What does this mean for detection?
+  inside_south_recovered_receiver_dist_mat = distance_between_receivers(receiver_data[receiver_data$station_name %in% inside_south & receiver_data$recovered == "", ], start_date = fy2018, end_date = fy2018 + (24*60*60), include_lost = TRUE)
+  max_dist_between_is_fence_receivers = max(apply(inside_south_recovered_receiver_dist_mat$matrix, 1, min, na.rm = TRUE))
+    max_dist_between_is_fence_receivers / 2 
+```
+
+From our range testing results, we know that at 827 m, we should have an aproximate detection rate of 6.06 %. Let's look at how many periods we had such a detection rate.
+We need to define how long each period is, the number of transmissions sent during each period and the number of those transmissions that were detected.
+```{r}
+## Binning hours into periods 
+hours_per_bin = 2
+hourbins = seq.POSIXt(from = as.POSIXct('2017-08-30'), to = max(vue_df$datetime), by = 'hours') 
+  hourbins = hourbins[seq(from = 1, to = length(hourbins), by = hours_per_bin)]
+  
+## Calculating sent transmissions per period
+  transmissions_per_hour = 6 * hours_per_bin
+
+## Counting the number of detections from sync tag detected by station hourly
+hourly_self_detections = c()
+for(i in 1:length(hourbins)){
+  hourly_self_detections = c(hourly_self_detections, length(vue_df$datetime[vue_df$datetime >= hourbins[i] & vue_df$datetime < hourbins[i+1]]))
+}
+
+## Plotting results
+plot(hourly_self_detections ~ hourbins, pch = 19, cex = .5)
+
+# What percentage of hourly detections were greater than the threshold?
+length(which(hourly_self_detections >= transmissions_per_hour * 0.0606)) / length(hourbins)
+  # 85.5%
+
+# How many total hour bins are we talking about?
+length(hourly_det)
+
+```
+So for 2 receivers separated by 828 m, the number of times shit falls beneath the acceptable threshold is 7.5%. 
+
+I feel reasonably confident that this means the detection rate is adaquate at half that distance.
+
+38% of the time we're below our 25% mark at this distance, which means the majority of the time, we're more than good with half of the current receiver spacing. 
+
+To me it stands to reason that at 503 m (half of 1046 m, the dist between two stations in fence) we're probably well and good. 
+
+From our range testing, 503 m corrosponded to 27.27% detection threshold.
+
+
+#### Fish Capture and Tagging
+```{r}
+## Minimum fork lengths
+analysis_summary = fy2018_valid_and_uncertain
+## Table of stuff
+individual_fish_table = data.frame(
+                            'Species' = "P. filamentosus", 
+                            'Tag ID' = analysis_summary$summary_df$tag_id, 
+                            'Track Status' = 'Questionable',
+                            'Fork Length (cm)' = analysis_summary$summary_df$fork_length_cm,
+                            'Tagging Date' = analysis_summary$summary_df$tagging_date,
+                            'Days at Liberty' = analysis_summary$summary_df$days_at_liberty,
+                            'Transmissions Detected' = analysis_summary$summary_df$n_detections,
+                            'Unique Days Detected' = analysis_summary$summary_df$unique_days,
+                            'Linear Home Range (km)' = analysis_summary$summary_df$z_constrained_path_distance,
+                            'Movements Detected' = analysis_summary$summary_df$movements_detected,
+                            'Movements Across BRFA Boundaries' = analysis_summary$summary_df$total_brfa_crossings,
+                            stringsAsFactors = FALSE)
+individual_fish_table$`Track.Status`[individual_fish_table$Tag.ID %in% valid_tracks] = 'Valid'
+write.csv(individual_fish_table, 'Fish Table.csv')
+```
+
+
+How about comparing the receiver network's coverage, both what we initially planned, and what we recovered, using the acoustic web app.
+
+```{r}
+## Source Acoustic Web App via wrapper Function
+source('/Volumes/GoogleDrive/My Drive/Weng Lab/Personal_Folders/Steve/dissertation work/Acoustic Network Design/Acoustic Web App/')
+
+## Source SensorFenceR program
+source('/Volumes/GoogleDrive/My Drive/Weng Lab/Personal_Folders/Steve/dissertation work/Acoustic Network Design/Acoustic Fences/src/SensorFenceR.R')
+
+## Source VemcoUtilityFunctions
+source('/Volumes/GoogleDrive/My Drive/Weng Lab/Code_Library/R_code/vemcoUtilityFunctions.R')
+
+## Importing current receiver position data ----
+receiver_data = load_receiver_data('/Volumes/GoogleDrive/My Drive/Weng Lab/Data/Bottomfish/Oahu Receiver Data Files/DEPLOYMENT_RECOVERY_LOG.csv')
+
+#### iii. User Selected Parameters ------
+### General Parameters
+n_receivers = 0  # Number of total receivers to place (As of 31 May 2017, there are 24 receivers currently deployed with 20 more on order and 1 set in lab. Will keep one as backup)
+sensor_elevation = 6.1 # in meters from the benthos
+
+### Acoustic Web App Parameters
+bathymetry_map = "MHI_50m" # Bathymetry file/resolution
+## Sensor Detection Range
+sensor_detection_range = 847 # 847 m From range testing results for receiver at 3 m. See R script Range_test_june_july2014Analysis_2.R
+
+all_sensors = receiver_data[receiver_data$lon >= -157.6833 & receiver_data$lon <= -157.53333 & receiver_data$lat >= 21.2833 & receiver_data$lat <= 21.4167 & receiver_data$deployment_date <= as.POSIXct('2017-07-01') & receiver_data$recovery_date >= as.POSIXct('2018-4-15'), ]
+all_sensor_lon_lat = c()
+for(i in 1:dim(all_sensors)[1]){
+  all_sensor_lon_lat = c(all_sensor_lon_lat, c(as.character(all_sensors[i, c("lon", "lat")])))
+}
+
+recovered_sensors = all_sensors[all_sensors$recovered == "", ]
+recovered_sensor_lon_lat = c()
+for(i in 1:dim(recovered_sensors)[1]){
+  recovered_sensor_lon_lat = c(recovered_sensor_lon_lat, c(as.character(recovered_sensors[i, c("lon", "lat")])))
+}
+
+
+
+recovered_sensors = run_web_app(bathymetry_dataset = bathymetry_map, # options are 'MHI_1km', 'MHI_50m', and 'Palmyra'
+                     ### Bound by the boundaries of of BRFA E to east and west and the output of SensorFenceR to the north and south
+                     northern_grid_boundary = 21.4167, # as decimal degrees 
+                     southern_grid_boundary = 21.2833, # as decimal degrees
+                     western_grid_boundary = -157.6833, # as decimal degrees
+                     eastern_grid_boundary = -157.53333, # as decimal degrees
+                     ### Fish Movement Model
+                     fish_model_algorithm = 'rw', # options are rw = random walk or ou = Ornstein-Uhlenbeck
+                     home_range_center_x = FALSE, # as decimal degrees. Required for OU fish model. 
+                     home_range_center_y = FALSE, # as decimal degrees. Required for OU fish model
+                     home_range_extent_x = FALSE, # in meters. Required for OU fish model. Standard deviation in meters of home range extent in the x direction. Controls home range width. A rule of thumb says that for each direction in isolation approximately 95% of the time is spent within plus minus two standard deviations. A non-negative real number.
+                     home_range_extent_y = FALSE, # in meters. Required for OU fish model. Standard deviation in meters of home range extent in the y direction. Controls home range height. A rule of thumb says that for each direction in isolation approximately 95% of the time is spent within plus minus two standard deviations. A non-negative real number.
+                     directional_correlation_of_home_range = FALSE, # Required for OU fish model. Correlation of spatial distribution between directions. Controls the tilt of the home range. This is useful if the home range shape is angled relative to the x,y coordinate system. The correlation must be between -1 and 1.
+                     ### Fish Distribution
+                     restrict_vertical_habitat_range = TRUE, # Options are TRUE or FALSE#### Habitat depths
+                     ## Selected after consulting bottomfish distributions presented on pages 19 and 89 of Appendix 3. of 
+                     ## Kelley, C.D., Moriwake, V.N., 2012. Appendix 3: essential fish habitat descriptions, Part 1: bottomfish. In: WPRFMC (ed) Final fishery management plan for coral reef ecosystems of the western Pacific region, volume III, Essential Fish Habitat for Management Unit Species, p 597.
+                     ### These depths represent 90% the vertical distribution for all bottomfish encounters
+                     min_depth = -100, # units are in negative meters. Required if restrict_vertical_habitat_range == TRUE. [Optional] Specifies the shallowest depth in meters a fish will visit. Valid values are non-positive real numbers. Specifying a value for mindepth requires specifying a value for maxdepth. 
+                     max_depth = -400, # units are in negative meters. [Optional] Specifies the deepest depth in meters a fish will visit. Valid values are non-positive real numbers. Specifying a value for maxdepth requires specifying a value for mindepth.
+                     ### Depth preference also based on Kelley & Moriwake 2012 which says 2-10 m. Pg 88 based on Haight 1989
+                     use_depth_preference = TRUE, # Options are TRUE or FALSE
+                     prefered_depth = 6, # [Optional] Depth preference of fish relative to bottom (in meters off the bottom). Valid values are non-negative real numbers. Specifying a value for depth_off_bottom requires specifying a value for depth_off_bottom_sd. 
+                     sd_of_preferred_depth = 2, # Set to 2 by default# [Optional] Standard deviation of preferred depth (in meters). Animals spend 95% of their time within plus/minus 2 SD of their preferred depth.
+                     ### List of already existing sensors, two that we dont want to move as tehy have been part of the study for some time and are in areas of critical habitat. Also results from sensorFenceR
+                     user_specified_sensors = recovered_sensor_lon_lat, #  These sensors are placed and down-weighed before running the program. Useful for including already existing sensors, or forcing the placement of a few sensors. Do not include these sensors in the sensor count below. Provide sensor locations as a string in the format: <sensor1_Long>, <sensor1_Lat>, <sensor2_Long>, <sensor2_Lat>..." # If blank, leave as NULL
+                     ### The total number of available receivers minus those used in the fences
+                     number_of_sensors_to_use =  0, # Specifies how many sensors the program should place. Valid values are non-negative integers. 
+                     number_of_sensors_to_project = 0, # Specifies how many sensors the program should provide projections for. Valid values are non-negative integers. 
+                     goodness_algorthm = 3, # options are 1, 2, 3. Specifies how you want the system to determine the "goodness" of a cell. Valid values are 1, 2, or 3.
+                     # A value of '1' indicates that a "good" cell has a high number of animals within detection range (ignoring line of sight). This is useful for sensors not restricted to line-of-sight detection.
+                     # A value of '2' indicates that a "good" cell has the best visibility (taking into account bathymetry and shadowing, but completely ignoring fish density). This is useful for networks restricted to line-of-sight detection and having no prior knowledge of animal habitat.
+                     # A value of '3' indicates that a "good" cell has a high number of visible fish (incorporating both bathymetry and animal density). This is useful for networks restricted to line-of-sight detection, and having some idea of animal habitat.
+                     sensor_elevation = sensor_elevation, # Specifies how far off the bottom a sensor should be placed in meters. Valid values are non-negative real numbers. 
+                     sensor_shape_function = 'shape.gauss', # Determines which functional shape to represent horizontal acoustic attenuation in the water. The detection function specifies how the chance of signal detection declines as a function of distance to sensor. Ranging experiments should preferably be carried out locally at the study site to approximate this function. Currently, the only valid value is "shape.gauss". 
+                     max_detection_value = .98, # The probability of detecting a fish located right next to the sensor. Specifies a maximum value for the shape function. Valid values should be a decimal in the range (0.05,1]. 
+                     # From range testing results for receiver at 3 m. See R script Range_test_june_july2014Analysis_2.R
+                     detection_range = sensor_detection_range, # in meters. The distance in meters from the sensor where the chance of detecting a signal is 0.05. Valid values are non-negative real numbers. 
+                     supression_factor = 2, # Specifies the range of suppression in multiples of the detection range. For example, a suppression factor of 2 enforces a suppression range of two times the detection range. Cells within the suppression range of a sensor will be subject to the specified suppression function. To deter sensor overlap, a good value to use is twice the sensor detectionRange. Valid values are non-negative real numbers. 
+                     supression_function = 'supression.scale', # Specifies which suppression function to use. Options are suppression.static, suppression.scale, detection.function, detection.function.shadow, or detection.function.exact. 
+                     # suppression.static: Replaces all cells within range of a sensor with the value specified in minsuppressionValue.
+                     # suppression.scale: Multiplies the values of cells within range of a sensor by a scaling factor according to the cell's distance from the sensor. Nearby cells receive a higher scaling factor, and lower cells receive a lower scaling factor. The scaling factor is linearly related to the distance between the sensor and cell. Selecting this option requires specifyign values for minsuppressionValue and maxsuppressionValue
+                     # detection.function: Uses the inverse of the detection function to down scale goodness of grid cells near the sensor, but does not take objects that block signal into account. Grid cells' goodness will increase as a function of distance to the sensor.
+                     # detection.function.shadow: Uses the inverse of the shapeFcn to down scale goodness of grid cells near the sensor, and does take objects that block signal into account. This means that sensors on opposite sides of a blocking wall will not affect each other's goodness. Unblocked grid cells' goodness will increase as a function of distance to the sensor.
+                     # detection.function.exact: 
+                     # The above suppression functions do not recalculate the goodness grid after placing a new sensor and therefore only provide an approximately optimal solution. This suppression function does recalculate the goodness iteratively, and is therefore slower by a factor equal to the number of sensors.
+                     max_supression_value = 1, # Specifies the minimum scaling factor to apply. Cells at the edge of the suppression Range will receive this as a scaling factor. Valid values are non negative real numbers in the range [0,1] 
+                     min_supression_value = .5, # Specifies the maximum scaling factor to apply. Cells directly adjacent to a sensor will receive this as a scaling factor. Valid values are non negative real numbers in the range [0,1] 
+                     input_file = FALSE,  # Currently false because file is selected using bathymetry_dataset argument. # Specifies the file location of the Bathy File to use. For arcGIS filetypes, this is a path to the folder containing the data files. For netCDF filetypes, this is a path to the ncdf file itself. )
+                     input_file_type = FALSE)
+
+
+
+
+all_sensors = run_web_app(bathymetry_dataset = bathymetry_map, # options are 'MHI_1km', 'MHI_50m', and 'Palmyra'
+                     ### Bound by the boundaries of of BRFA E to east and west and the output of SensorFenceR to the north and south
+                     northern_grid_boundary = 21.4167, # as decimal degrees 
+                     southern_grid_boundary = 21.2833, # as decimal degrees
+                     western_grid_boundary = -157.6833, # as decimal degrees
+                     eastern_grid_boundary = -157.53333, # as decimal degrees
+                     ### Fish Movement Model
+                     fish_model_algorithm = 'rw', # options are rw = random walk or ou = Ornstein-Uhlenbeck
+                     home_range_center_x = FALSE, # as decimal degrees. Required for OU fish model. 
+                     home_range_center_y = FALSE, # as decimal degrees. Required for OU fish model
+                     home_range_extent_x = FALSE, # in meters. Required for OU fish model. Standard deviation in meters of home range extent in the x direction. Controls home range width. A rule of thumb says that for each direction in isolation approximately 95% of the time is spent within plus minus two standard deviations. A non-negative real number.
+                     home_range_extent_y = FALSE, # in meters. Required for OU fish model. Standard deviation in meters of home range extent in the y direction. Controls home range height. A rule of thumb says that for each direction in isolation approximately 95% of the time is spent within plus minus two standard deviations. A non-negative real number.
+                     directional_correlation_of_home_range = FALSE, # Required for OU fish model. Correlation of spatial distribution between directions. Controls the tilt of the home range. This is useful if the home range shape is angled relative to the x,y coordinate system. The correlation must be between -1 and 1.
+                     ### Fish Distribution
+                     restrict_vertical_habitat_range = TRUE, # Options are TRUE or FALSE#### Habitat depths
+                     ## Selected after consulting bottomfish distributions presented on pages 19 and 89 of Appendix 3. of 
+                     ## Kelley, C.D., Moriwake, V.N., 2012. Appendix 3: essential fish habitat descriptions, Part 1: bottomfish. In: WPRFMC (ed) Final fishery management plan for coral reef ecosystems of the western Pacific region, volume III, Essential Fish Habitat for Management Unit Species, p 597.
+                     ### These depths represent 90% the vertical distribution for all bottomfish encounters
+                     min_depth = -100, # units are in negative meters. Required if restrict_vertical_habitat_range == TRUE. [Optional] Specifies the shallowest depth in meters a fish will visit. Valid values are non-positive real numbers. Specifying a value for mindepth requires specifying a value for maxdepth. 
+                     max_depth = -400, # units are in negative meters. [Optional] Specifies the deepest depth in meters a fish will visit. Valid values are non-positive real numbers. Specifying a value for maxdepth requires specifying a value for mindepth.
+                     ### Depth preference also based on Kelley & Moriwake 2012 which says 2-10 m. Pg 88 based on Haight 1989
+                     use_depth_preference = TRUE, # Options are TRUE or FALSE
+                     prefered_depth = 6, # [Optional] Depth preference of fish relative to bottom (in meters off the bottom). Valid values are non-negative real numbers. Specifying a value for depth_off_bottom requires specifying a value for depth_off_bottom_sd. 
+                     sd_of_preferred_depth = 2, # Set to 2 by default# [Optional] Standard deviation of preferred depth (in meters). Animals spend 95% of their time within plus/minus 2 SD of their preferred depth.
+                     ### List of already existing sensors, two that we dont want to move as tehy have been part of the study for some time and are in areas of critical habitat. Also results from sensorFenceR
+                     user_specified_sensors = all_sensor_lon_lat, #  These sensors are placed and down-weighed before running the program. Useful for including already existing sensors, or forcing the placement of a few sensors. Do not include these sensors in the sensor count below. Provide sensor locations as a string in the format: <sensor1_Long>, <sensor1_Lat>, <sensor2_Long>, <sensor2_Lat>..." # If blank, leave as NULL
+                     ### The total number of available receivers minus those used in the fences
+                     number_of_sensors_to_use =  0, # Specifies how many sensors the program should place. Valid values are non-negative integers. 
+                     number_of_sensors_to_project = 0, # Specifies how many sensors the program should provide projections for. Valid values are non-negative integers. 
+                     goodness_algorthm = 3, # options are 1, 2, 3. Specifies how you want the system to determine the "goodness" of a cell. Valid values are 1, 2, or 3.
+                     # A value of '1' indicates that a "good" cell has a high number of animals within detection range (ignoring line of sight). This is useful for sensors not restricted to line-of-sight detection.
+                     # A value of '2' indicates that a "good" cell has the best visibility (taking into account bathymetry and shadowing, but completely ignoring fish density). This is useful for networks restricted to line-of-sight detection and having no prior knowledge of animal habitat.
+                     # A value of '3' indicates that a "good" cell has a high number of visible fish (incorporating both bathymetry and animal density). This is useful for networks restricted to line-of-sight detection, and having some idea of animal habitat.
+                     sensor_elevation = sensor_elevation, # Specifies how far off the bottom a sensor should be placed in meters. Valid values are non-negative real numbers. 
+                     sensor_shape_function = 'shape.gauss', # Determines which functional shape to represent horizontal acoustic attenuation in the water. The detection function specifies how the chance of signal detection declines as a function of distance to sensor. Ranging experiments should preferably be carried out locally at the study site to approximate this function. Currently, the only valid value is "shape.gauss". 
+                     max_detection_value = .98, # The probability of detecting a fish located right next to the sensor. Specifies a maximum value for the shape function. Valid values should be a decimal in the range (0.05,1]. 
+                     # From range testing results for receiver at 3 m. See R script Range_test_june_july2014Analysis_2.R
+                     detection_range = sensor_detection_range, # in meters. The distance in meters from the sensor where the chance of detecting a signal is 0.05. Valid values are non-negative real numbers. 
+                     supression_factor = 2, # Specifies the range of suppression in multiples of the detection range. For example, a suppression factor of 2 enforces a suppression range of two times the detection range. Cells within the suppression range of a sensor will be subject to the specified suppression function. To deter sensor overlap, a good value to use is twice the sensor detectionRange. Valid values are non-negative real numbers. 
+                     supression_function = 'supression.scale', # Specifies which suppression function to use. Options are suppression.static, suppression.scale, detection.function, detection.function.shadow, or detection.function.exact. 
+                     # suppression.static: Replaces all cells within range of a sensor with the value specified in minsuppressionValue.
+                     # suppression.scale: Multiplies the values of cells within range of a sensor by a scaling factor according to the cell's distance from the sensor. Nearby cells receive a higher scaling factor, and lower cells receive a lower scaling factor. The scaling factor is linearly related to the distance between the sensor and cell. Selecting this option requires specifyign values for minsuppressionValue and maxsuppressionValue
+                     # detection.function: Uses the inverse of the detection function to down scale goodness of grid cells near the sensor, but does not take objects that block signal into account. Grid cells' goodness will increase as a function of distance to the sensor.
+                     # detection.function.shadow: Uses the inverse of the shapeFcn to down scale goodness of grid cells near the sensor, and does take objects that block signal into account. This means that sensors on opposite sides of a blocking wall will not affect each other's goodness. Unblocked grid cells' goodness will increase as a function of distance to the sensor.
+                     # detection.function.exact: 
+                     # The above suppression functions do not recalculate the goodness grid after placing a new sensor and therefore only provide an approximately optimal solution. This suppression function does recalculate the goodness iteratively, and is therefore slower by a factor equal to the number of sensors.
+                     max_supression_value = 1, # Specifies the minimum scaling factor to apply. Cells at the edge of the suppression Range will receive this as a scaling factor. Valid values are non negative real numbers in the range [0,1] 
+                     min_supression_value = .5, # Specifies the maximum scaling factor to apply. Cells directly adjacent to a sensor will receive this as a scaling factor. Valid values are non negative real numbers in the range [0,1] 
+                     input_file = FALSE,  # Currently false because file is selected using bathymetry_dataset argument. # Specifies the file location of the Bathy File to use. For arcGIS filetypes, this is a path to the folder containing the data files. For netCDF filetypes, this is a path to the ncdf file itself. )
+                     input_file_type = FALSE)
+
+```
+
+
+
+Lets run all of our tag data 
+
+```{r}
+all_tags = run(run_description = paste("All Tags"),
+                           vue_df = vue_data,
+                           receiver_df = receiver_data,
+                           tagging_df = tagging_data,
+                           end_date = as.POSIXct('2018-04-15'),
+                           region = "Makapuu",
+                           plot = T)
+
+```
